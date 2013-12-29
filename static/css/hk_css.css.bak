@@ -1,0 +1,132 @@
+/* main layout */
+
+html, #main_container{
+    width: 100%;
+    height: 100%;   
+    background: #1b1b1b;
+}
+    
+body {
+    width: 100%;
+    height: 100%;   
+}
+
+body {
+    padding-top: 40px;
+}
+
+.sidebar-nav {
+    padding: 9px 0;
+}   
+        
+#map_container {
+	height: 100%;
+	width: 60%;
+	float: left;
+}
+#map_canvas {
+    width: 100%;
+    height: 100%;
+    float: left;
+    /*
+    position: absolute; 
+    top: 40px;
+    left: 0;
+    z-index: -10; 
+    */
+}
+
+#interface {
+	width: 40%;
+	height: 100%;
+	float: left;
+	background-color: #252525;
+	color: white;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;    
+    margin-left: auto;
+    margin-right:auto;
+    overflow: auto;
+}
+
+#content_display, #memory_display {
+	width: 95%;
+	height: 49%;
+	float: left;
+	padding: 2px;
+}
+
+
+
+#right_panel {
+    opacity:0.95;
+    background-color:#FAFAFA;
+    margin: 0;
+    padding: 0;
+    background-color: #1b1b1b;
+    background-image: -moz-linear-gradient(top, #222222, #111111);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
+    background-image: -webkit-linear-gradient(top, #222222, #111111);
+    background-image: -o-linear-gradient(top, #222222, #111111);
+    background-image: linear-gradient(to bottom, #222222, #111111);
+    background-repeat: repeat-x;
+    border-color: #252525;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);    
+}
+		
+/*        
+#header_menu {
+    opacity:0.95;
+}
+
+
+.nav-tabs > li > a {
+  color: #999
+}
+
+.nav-tabs > .active > a,
+.nav-tabs > .active > a:hover {
+  color: #ffffff;
+  cursor: default;
+  background-color: #111;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+*/
+		
+				
+								
+/* YT player */        
+.playerInnerBox_gsvb .player_gsvb {
+    width : 360px;
+    height : 260px;
+}      
+        
+#videoBar {
+    width : 100px;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-top : 4px;
+    padding-right : 4px;
+    padding-left : 4px;
+    padding-bottom : 0px;
+}
+
+
+#player {
+	width: 100%;
+	height: 100%;
+    margin-left: auto;
+    margin-right:auto;	
+}
+
+#search_tab, #share_tab {
+	width: 85%;
+	height: 90%;
+    margin-left: auto;
+    margin-right:auto;	
+    margin-top: 10px;
+}
+
+#share_tab {
+	display: none;
+}

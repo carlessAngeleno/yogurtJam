@@ -1,0 +1,16 @@
+{{left_sidebar_enabled,right_sidebar_enabled=True,('message' in globals())}}
+{{extend 'layout.html'}}
+
+{{if 'message' in globals():}}
+
+
+
+{{elif 'content' in globals():}}
+{{=content}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
+
+{{block right_sidebar}}
+
+{{end}}

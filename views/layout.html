@@ -1,0 +1,249 @@
+<!--[if HTML5]><![endif]-->
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]><html class="ie ie6 ie-lte9 ie-lte8 ie-lte7 no-js" lang="{{=T.accepted_language or 'en'}}"> <![endif]-->
+<!--[if IE 7]><html class="ie ie7 ie-lte9 ie-lte8 ie-lte7 no-js" lang="{{=T.accepted_language or 'en'}}"> <![endif]-->
+<!--[if IE 8]><html class="ie ie8 ie-lte9 ie-lte8 no-js" lang="{{=T.accepted_language or 'en'}}"> <![endif]-->
+<!--[if IE 9]><html class="ie9 ie-lte9 no-js" lang="{{=T.accepted_language or 'en'}}"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{=T.accepted_language or 'en'}}"> <!--<![endif]-->
+<head>
+<title>{{="yogurtJam"}}</title>
+  <!--[if !HTML5]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge{{=not request.is_local and ',chrome=1' or ''}}">
+  <![endif]-->
+  <!-- www.phpied.com/conditional-comments-block-downloads/ -->
+  <!-- Always force latest IE rendering engine
+       (even in intranet) & Chrome Frame
+       Remove this if you use the .htaccess -->
+	   
+  <meta charset="utf-8" />
+
+  <!-- http://dev.w3.org/html5/markup/meta.name.html -->
+  <meta name="application-name" content="{{=request.application}}" />
+
+  <!-- Speaking of Google, don't forget to set your site up:
+       http://google.com/webmasters -->
+  <meta name="google-site-verification" content="" />
+
+  <!--  Mobile Viewport Fix
+        j.mp/mobileviewport & davidbcalhoun.com/2010/viewport-metatag
+        device-width: Occupy full width of the screen in its current orientation
+        initial-scale = 1.0 retains dimensions instead of zooming out if page height > device height
+        user-scalable = yes allows the user to zoom in -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
+  <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
+
+  <!-- All JavaScript at the bottom, except for Modernizr which enables
+       HTML5 elements & feature detects -->
+  <script src="{{=URL('static','js/modernizr.custom.js')}}"></script>
+
+  <!-- enable GSVideoBar -->
+  <link href="http://www.google.com/uds/css/gsearch.css" rel="stylesheet" type="text/css"/>
+  <script src="http://www.google.com/uds/api?file=uds.js&v=1.0" type="text/javascript"></script>
+  <script src="http://www.google.com/uds/solutions/videobar/gsvideobar.js" type="text/javascript"></script>
+  <link href="http://www.google.com/uds/solutions/videobar/gsvideobar.css" rel="stylesheet" type="text/css"/>
+
+  <!-- include stylesheets -->
+  {{  
+    response.files.append(URL('static','css/web2py.css'))
+    response.files.append(URL('static','css/bootstrap.min.css'))
+    response.files.append(URL('static','css/bootstrap-responsive.min.css'))
+    response.files.append(URL('static','css/web2py_bootstrap.css'))
+    response.files.append(URL('static','css/hk_css.css'))
+  }}
+
+  {{include 'web2py_ajax.html'}}
+
+  {{
+    # using sidebars need to know what sidebar you want to use
+    left_sidebar_enabled = globals().get('left_sidebar_enabled',False)
+    right_sidebar_enabled = globals().get('right_sidebar_enabled',False)
+    middle_columns = {0:'span12',1:'span9',2:'span6'}[
+      (left_sidebar_enabled and 1 or 0)+(right_sidebar_enabled and 1 or 0)
+    ]
+  }}
+    
+  <!-- jQuery ui 
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script> -->
+  
+  
+  <noscript><link href="{{=URL('static', 'css/web2py_bootstrap_nojs.css')}}" rel="stylesheet" type="text/css" /></noscript>
+  {{block head}}{{end}}
+  
+  <!-- enable YouTube API -->
+  <script type="text/javascript" src="http://swfobject.googlecode.com/svn/trunk/swfobject/swfobject.js"></script>	
+  <!-- google maps extra stuff -->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7PEZa32AVC6IYmBZcQYyrSW7I2gFuXww&sensor=true&libraries=places"></script>
+
+
+  <!-- to enable jQuery ui datepicker -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+
+</head>
+
+<body onload="initialize()">  
+  <!-- Navbar ================================================== -->
+  <div class='navbar navbar-inverse navbar-fixed-top'>
+    <div class='navbar-inner'>
+      <div class='container'>
+        <!-- the next tag is necessary for bootstrap menus, do not remove -->
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+          <span class='icon-bar'></span>
+        </button>          
+          <a class='brand' href='yogurtjam'>yogurtJam</a>
+        <div class='nav-collapse collapse'>  
+          <li class="btn-group offset2" data-toggle="buttons-radio">
+            <button id="search_mode" class="btn btn-success" type="button">search</button>
+            <button id="share_mode" class="btn btn-success" type="button">share</button>
+          </li>                    
+          <ul class='nav nav pull-right'>           
+            <!--<li><a class='brand' href='http://apps.carlessangeleno.com' target='_blank'><i>here for apps?</i></a></li>              -->
+            <li class='btn-group'>
+              <button class='btn btn-info'> by carlessAngeleno:</button>
+              <button class='btn btn-info dropdown-toggle' data-toggle='dropdown'>
+                <span class='caret'></span>
+              </button>
+              <ul class='dropdown-menu' id='menu_occupation'>
+                <li role='presentation'><a href='http://apps.carlessangeleno.com/yogurtjam' role='menuitem' tabindex='-1' target='_blank'>yogurtJam</a></li>
+                <li role='presentation'><a href='http://www.yogurtjam.com/sociagora' role='menuitem' tabindex='-1' target='_blank'>sociagora</a></li>
+                <li role='presentation'><a href='http://www.tinyurl.com/kivaflava2' role='menuitem' tabindex='-1' target='_blank'>kivaFlava</a></li>
+                <li role='presentation'><a href='http://www.yogurtjam.com/twitPit/html/justice4charles.php' role='menuitem' tabindex='-1' target='_blank'>twitPit</a></li>
+                <li role='presentation'><a href='http://www.carlessangeleno.com' role='menuitem' tabindex='-1' target='_blank'><b>BLOG</b></a></li>                  
+              </ul>
+            </li> 
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div><!--/top navbar -->  
+    
+  <div id="main_container">
+    <div id="map_container">   
+      <div id="map_canvas"></div>
+    </div>
+    <div id="interface">
+      <div class="memory_display">
+        <div id = "search_tab">
+          <h4>Search Memories</h4>
+            <p>What does your song mean to other people? </p>
+          <div class="search_tab_sub">                  
+            <form id="search_form">                                       
+              <fieldset>                        
+                <div class="control-group">
+                  <input id = "title_search" name="title" placeholder="title (e.g. smells like teen spirit)" type="text"/>
+                </div>
+                <div class="control-group">
+                  <input id="artist_search" name="artist" placeholder="artist (e.g. nirvana)" type="text"/>
+                </div>
+                <div id="memoryDateRange">
+                  <div>
+                    <label for="memoryDateMin">From</label>
+                    <input type="text" id="memoryDateMin" name="memoryDateMin" />
+                  </div>
+                  <div>
+                    <label for="memoryDateMax">to</label>
+                    <input type="text" id="memoryDateMax" name="memoryDateMax" />
+                  </div>
+                </div>
+                <div class="control-group">
+                  <button id="search_button" class="btn btn-primary" type="submit">search for memories</button>                               
+                </div>
+              </fieldset>            
+            </form>	           
+          </div>      
+        </div>          
+        <div id = "share_tab">
+          <h4>Share Memories</h4>
+          <!-- first, ask which song -->
+          <div class="share_tab_sub" id="share_tab_select_video">
+            <p>Which song? </p>            
+            <form>
+              <fieldset>
+              <div class="control-group">
+                <input id = "title_share" name="title" placeholder="title (e.g. the scientist)" type="text"/>
+              </div>
+              <div class="control-group">
+                <input id="artist_share" name="artist" placeholder="artist (e.g. coldplay)" type="text"/>
+              </div>
+              <!-- clicking on button pulls up next stage -->
+              <div class="control-group">
+                <button id="youtube_search_button"> find videos for it </button> 
+              </div>
+            </fieldset>
+            </form>                 
+            <!-- pick which YT video -->
+                <button id="select_video" class="btn btn-success" style="display:none"> choose video currently playing </button>
+            <!-- container for YT player -->
+            <div id="video_section_share">                             
+              <div id="player_container_share"> </div>                                           
+              <!-- GSVideoBar (interactive search result that plays YT videos when you click on thumbnails)-->
+              <div><div id="videoBar"></div></div>                  
+            </div>               
+          </div>
+          <!-- secondly, choose location associated with memory -->
+          <div class="share_tab_sub" id="share_tab_select_location" style="display:none">
+              <p> Enter location associated with memory </p>                    
+              <!-- search box for location -->      
+              <input id="autocomplete" placeholder="start typing and click on drop-down menu" type="text">  
+              <br/>
+              <button id="select_place_button" class="btn btn-success"> yup - this is the place! </button>                                            
+              </input>        
+          </div>                                
+          <!-- finally, details about the memory -->
+          <form class="share_tab_sub" id="share_tab_final_submit" style="display:none">
+              <p> Finally, tell us what the song reminds you of! </p>     
+              <div>
+                <label for="memoryDateShare">When</label>
+                <input type="text" id="memoryDateShare" name="memoryDateShare" />
+              </div>  
+              <!--          
+              <div class="control-group">
+                  <input id="year_share" name="year" placeholder="year" type="text"/>
+              </div>
+              <div class="control-group">
+                  <input id="month_share" name="month" placeholder="month (in numbers)" type="text"/>
+              </div>                            
+              -->
+              <div class="control-group">
+                  <TEXTAREA id="story_share" name="story" placeholder="reminds me of..." ROWS=10 COLS=30></TEXTAREA>
+              </div>           
+              <div class="control-group">
+                  <input id="tag1_share" name="tag1" placeholder="tags (e.g. trip, friend)" type="text"/>
+              </div>                                                                                  
+              <div class="control-group">
+                  <button id="share_button" class="btn btn-primary">share memory</button> 
+              </div>                
+          </form>
+        </div>          
+      </div>
+      <div class="content_display"><div id="player"></div></div>      
+    </div>       
+  </div> 
+  <!-- The javascript =============================================
+       (Placed at the end of the document so the pages load faster) -->
+  <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
+  <script src="{{=URL('static','js/web2py_bootstrap.js')}}"></script>
+  <script src="{{=URL('static','js/hk_js.js')}}"></script>
+  <!--[if lt IE 7 ]>
+      <script src="{{=URL('static','js/dd_belatedpng.js')}}"></script>
+      <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+      <![endif]-->
+  
+  {{if response.google_analytics_id:}}
+  <script src="{{=URL('static','js/analytics.min.js')}}"></script>
+  <script type="text/javascript">
+  analytics.initialize({
+    'Google Analytics':{trackingId:'{{=response.google_analytics_id}}'} 
+  });</script>
+  {{pass}}
+  <script src="{{=URL('static','js/share.js',vars=dict(static=URL('static','images')))}}"></script>
+</body>
+</html>
