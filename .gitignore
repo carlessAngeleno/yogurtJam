@@ -1,5 +1,3 @@
 /.project
 private/*.*
 errors/*.*
-databases/*.*
-*.pyc
