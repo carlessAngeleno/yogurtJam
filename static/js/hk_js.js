@@ -254,7 +254,20 @@ $(document).ready(function() {
         console.log(memoryDateMin);
         console.log(memoryDateMax);
         console.log(maxMonth);
-
+        console.log({
+                title: title,
+                artist: artist,
+                //memoryDateMin: memoryDateMin,
+                //memoryDateMax: memoryDateMax
+                rawDateMin: rawDateMin,
+                rawDateMax: rawDateMax,
+                minMonth: minMonth,
+                minDate: minDate,
+                minYear: minYear,
+                maxMonth: maxMonth,
+                maxDate: maxDate,
+                maxYear: maxYear
+            })
         $.ajax({        
             url: 'yogurtjam/video_search/searchVideos',
             type: 'POST',
@@ -586,7 +599,7 @@ $(function() {
     // auto-populate date range
     var today = new Date();
     var dd = today.getDate();
-    var dd_min = 1;
+    var min_dd = 1;
 
     var mm = today.getMonth()+1; //January is 0!
 
@@ -597,7 +610,7 @@ $(function() {
     if (mm < 10) {mm = '0' + mm} 
     
     today = mm + '/' + dd + '/' + yyyy;
-    var min_day = mm + '/' + dd_min + '/' + yyyy;
+    var min_day = mm + '/' + min_dd + '/' + (yyyy - 1);
 
     $("#memoryDateMin").val(min_day);
     $("#memoryDateMax").val(today);
