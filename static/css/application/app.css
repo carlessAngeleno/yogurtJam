@@ -1,9 +1,57 @@
+/* Override ca */
+.navbar-inner .container, .navbar-inverse div.navbar-inner {
+  background-color: rgba(231,41,138, 1);  
+}
+
+.navbar-inverse div.navbar-inner  {
+  border-color: rgba(231,41,138, 1);
+  /*border-bottom: 2px solid rgba(0, 119, 86, 1);*/
+}
+
+body {
+  background-color: rgb(244, 255, 252);
+}
+
+.ca_section {
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(255, 220, 215, 0.4);  
+}
+
+button.ca_button {
+  background-color: rgba(255, 110, 86, 0.9);  
+}
+
+button.ca_button:hover {
+  background-color: rgba(255,66,35, 1);  
+}
+
+button.ca_button.active {
+  background-color: rgba(5,66,35, 1);  
+}
+
+.nav-pills>.active>a, .nav-pills>.active>a:hover {
+  background-color: rgba(0, 191, 143, 0.9);  
+}
+
+.nav-pills a {
+  color: rgba(0, 191, 143, 0.65);
+  background-color: rgba(0, 191, 143, 0.05);
+}
+
+.nav-pills a:hover {
+  color: rgba(0, 191, 143, 1);
+}
+
+
+/* app-specific */
+
 /* main layout */
 
 html, #main_container{
     width: 100%;
     height: 100%;   
-    background: #1b1b1b;
+    background: #fef6fa;
 }
     
 body {
@@ -20,10 +68,11 @@ body {
 }   
         
 #map_container {
-	height: 100%;
-	width: 60%;
-	float: left;
+  height: 100%;
+  width: 60%;
+  float: left;
 }
+
 #map_canvas {
     width: 100%;
     height: 100%;
@@ -37,22 +86,24 @@ body {
 }
 
 #interface {
-	width: 40%;
-	height: 100%;
-	float: left;
-	background-color: #252525;
-	color: white;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;    
+  width: 39%;
+  height: 100%;
+  float: left;
+  border-left: 1px solid #fad4e7;
+  /*background-color: #17040d;*/
+  /*color: white;*/
+  color: #2e081b;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;    
     margin-left: auto;
     margin-right:auto;
     overflow: auto;
 }
 
 .content_display, .memory_display {
-	width: 95%;
-	height: 49%;
-	float: left;
-	padding: 2px;
+  width: 95%;
+  height: 49%;
+  float: left;
+  padding: 2px;
 }
     
 #memory_display {    
@@ -74,7 +125,7 @@ body {
     border-color: #252525;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);    
 }
-		
+    
 /*        
 #header_menu {
     opacity:0.95;
@@ -94,8 +145,8 @@ body {
   border-bottom-color: transparent;
 }
 */
-		
-							
+    
+              
 /* YT player */        
 .playerInnerBox_gsvb .player_gsvb {
     width : 480px;
@@ -114,21 +165,21 @@ body {
 
 
 #player, #player_container_share {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
     margin-left: auto;
-    margin-right:auto;	
+    margin-right:auto;  
 }
 
 #search_tab, #share_tab {
-	width: 85%;
-	height: 90%;
+  width: 85%;
+  height: 90%;
     margin-left: auto;
-    margin-right:auto;	
+    margin-right:auto;  
 }
 
 #share_tab {
-	display: none;
+  display: none;
 }
 
 
@@ -141,11 +192,6 @@ body {
       border-top-color: #ffffff;
       border-bottom-color: #ffffff;
 }      
-
-.container a.brand {
-  color: #dddddd;
-}
-
 
 
 /*

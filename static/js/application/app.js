@@ -85,7 +85,7 @@ function initialize() {
         center: usa_lat_lng,
         zoom: 4,
         mapTypeControlOptions: {
-        	mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+          mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
         }               
     };
 
@@ -139,7 +139,7 @@ function initialize() {
 
         // take down place's location (lat/long)
         var new_place_lat_lng = place.geometry.location;
-		
+    
         // put a marker on the location 
         marker.setPosition(new_place_lat_lng);
         
@@ -524,7 +524,7 @@ $("#myTab").click(function() {
 
 $(document).ready(function() {
     $('#search_button').click(function () {        
-    	    $("input[type=text], textarea").val("");
+          $("input[type=text], textarea").val("");
     })
 })
 
@@ -533,18 +533,18 @@ $(document).ready(function() {
     
     // click on the tab switches view
     $("#share_mode").click(function () {
-		$("#search_tab").hide();
-    	$("#share_tab").show();
+    $("#search_tab").hide();
+      $("#share_tab").show();
         $('#share_tab_final_submit').hide();
         $('#share_tab_select_location').hide();
         $('#video_section_share').hide();        
         $('.content_display').hide();  
         clearAll();
-	})
+  })
     // click on the tab switches view
     $("#search_mode").click(function () {
-		$("#share_tab").hide();
-    	$("#search_tab").show();
+    $("#share_tab").hide();
+      $("#search_tab").show();
         $('.content_display').show();  
         clearAll();        
     })

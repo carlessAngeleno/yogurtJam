@@ -29,7 +29,5 @@ jQuery(function(){
   }
   hoverMenu(); // first page load
   jQuery(window).resize(hoverMenu); // on resize event
-  jQuery('ul.nav li.dropdown a').click(function(){window.location=jQuery(this).attr('href');});
-  // make all buttons bootstrap buttons
-  jQuery('button, form input[type="submit"], form input[type="button"]').addClass('btn');
+  // jQuery('ul.nav li.dropdown a').click(function(){window.location=jQuery(this).attr('href');});
 });
