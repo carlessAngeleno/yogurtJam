@@ -1,6 +1,6 @@
 // show player on initial load
 $(document).ready(function() {          
-   $("#player").show();
+   $("#player").hide();
 })
 
 // draws map and plants markers
@@ -291,6 +291,7 @@ $(document).ready(function() {
                 //player.loadVideoById(response);
                 // plant the new markers
                 initialize();
+                $("#search_tab").hide();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status);

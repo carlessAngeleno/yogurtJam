@@ -123,7 +123,49 @@
     </div>
   </div><!--/top navbar -->
 
-  {{include}} 
+  <div id="main_body" class="container">
+
+    <section id="main" class="main row">
+        {{if left_sidebar_enabled:}}
+        <div class="span3 left-sidebar">
+            {{block left_sidebar}}            
+            {{end}}
+        </div>
+        {{pass}}
+
+        <div class="span4">
+            {{block center}}
+            {{include}}
+            {{end}}
+        </div>
+
+        {{if right_sidebar_enabled:}}
+        <div class="span3">
+            {{block right_sidebar}}
+            {{end}}
+        </div>
+        {{pass}}
+    </section><!--/main-->
+
+    <!-- Footer ================================================== -->
+    <div class="row hidden">
+        
+        <footer class="footer span12" id="footer">
+            <div class="footer-content">
+              {{include 'application/help_nav.html'}}
+                {{block footer}} <!-- this is default footer -->
+                <div class="copyright pull-left"> &#169; {{=request.now.year}} carlessAngeleno </div>                
+                {{end}}
+            </div>
+        </footer>
+    </div>
+
+  </div> <!-- /container -->
+
+
+   
+
+
 
   <!-- The javascript =============================================
        (Placed at the end of the document so the pages load faster) -->
