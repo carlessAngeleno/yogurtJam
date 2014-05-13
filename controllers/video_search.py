@@ -25,14 +25,14 @@ def searchVideos():
 
     data = request.vars
 
-    rawDateMin = datetime.strptime(data.rawDateMin, '%m/%d/%Y')
-    rawDateMin = rawDateMin.strftime('%Y-%m-%d')
+    # rawDateMin = datetime.strptime(data.rawDateMin, '%m/%d/%Y')
+    # rawDateMin = rawDateMin.strftime('%Y-%m-%d')
 
-    rawDateMax = datetime.strptime(data.rawDateMax, '%m/%d/%Y')
-    rawDateMax = rawDateMax.strftime('%Y-%m-%d')
+    # rawDateMax = datetime.strptime(data.rawDateMax, '%m/%d/%Y')
+    # rawDateMax = rawDateMax.strftime('%Y-%m-%d')
 
-    #cur.execute("SELECT * FROM memory WHERE artist = %s AND title = %s;" , (request.vars.artist, request.vars.title))
-    cur.execute("SELECT * FROM memory WHERE artist = %s AND title = %s AND memoryDateShare >= %s AND memoryDateShare <= %s;" , (data.artist, data.title, rawDateMin, rawDateMax))
+    cur.execute("SELECT * FROM memory WHERE artist = %s AND title = %s;" , (request.vars.artist, request.vars.title))
+    # cur.execute("SELECT * FROM memory WHERE artist = %s AND title = %s AND memoryDateShare >= %s AND memoryDateShare <= %s;" , (data.artist, data.title, rawDateMin, rawDateMax))
 
     rows = cur.fetchall()
 
