@@ -409,6 +409,7 @@ $(document).ready(function() {
 
         // switch tabs
         $('#select_video').show();
+        $("#gsvb_modal").modal();
         $('#video_section_share').show();          
         $('#share_tab_final_submit').hide;
 

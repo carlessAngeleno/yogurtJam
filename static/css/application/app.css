@@ -78,3 +78,12 @@ button.ca_button.active {
     margin-right:auto;
     margin-left: auto;   
 }
+
+.playerInnerBox_gsvb .player_gsvb {
+  width: 420px;
+  height: 260px;
+}
+
+.playerBox_gsvb div.alldone_gsvb {
+  display: none;
+}
