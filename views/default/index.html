@@ -1,44 +1,29 @@
 {{extend "layout.html"}}
 
-    
   <div id="main_container">
-    <div id="map_container">   
-      <div id="map_canvas"></div>
-    </div>
     <div id="interface">
-      <div class="memory_display">
+
+      <div class="memory_display ca_section">
         <div id = "search_tab">
           <h4>Search Memories</h4>
             <p>What does your song mean to other people? </p>
           <div class="search_tab_sub">                  
-            <form id="search_form">                                       
+            <form id="search_form">            
               <fieldset>                        
                 <div class="control-group">
-                  <input id = "title_search" name="title" placeholder="title (e.g. smells like teen spirit)" type="text"/>
+                  <input id="title_search" name="title" placeholder="title (e.g. smells like teen spirit)" type="text"/>
                 </div>
                 <div class="control-group">
                   <input id="artist_search" name="artist" placeholder="artist (e.g. nirvana)" type="text"/>
                 </div>
-
-                
-<!--                 <div id="memoryDateRange">
-                  <div>
-                    <label for="memoryDateMin">From</label>
-                    <input type="text" id="memoryDateMin" name="memoryDateMin" />
-                  </div>
-                  <div>
-                    <label for="memoryDateMax">to</label>
-                    <input type="text" id="memoryDateMax" name="memoryDateMax" />
-                  </div>
-                </div> -->
-
                 <div class="control-group">
-                  <button id="search_button" class="btn btn-primary ca_button" type="submit">search for memories</button>                               
-                </div>
+                  <button id="search_button" class="btn btn-primary ca_button" type="submit">search for memories</button>
+                </div>                
               </fieldset>            
             </form>	           
           </div>      
-        </div>          
+        </div>    
+
         <div id = "share_tab">
           <h4>Share Memories</h4>
           <!-- first, ask which song -->
@@ -83,14 +68,6 @@
                 <label for="memoryDateShare">When</label>
                 <input type="text" id="memoryDateShare" name="memoryDateShare" />
               </div>  
-              <!--          
-              <div class="control-group">
-                  <input id="year_share" name="year" placeholder="year" type="text"/>
-              </div>
-              <div class="control-group">
-                  <input id="month_share" name="month" placeholder="month (in numbers)" type="text"/>
-              </div>                            
-              -->
               <div class="control-group">
                   <TEXTAREA id="story_share" name="story" placeholder="reminds me of..." ROWS=10 COLS=30></TEXTAREA>
               </div>           
@@ -103,6 +80,8 @@
           </form>
         </div>          
       </div>
+
+
       <div class="content_display"><div id="player"></div></div>      
     </div>       
   </div> 
