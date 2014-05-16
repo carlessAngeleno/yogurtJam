@@ -87,3 +87,8 @@ button.ca_button.active {
 .playerBox_gsvb div.alldone_gsvb {
   display: none;
 }
+
+#main_body {
+  width: 100%;
+  margin-left: 20px;
+}
