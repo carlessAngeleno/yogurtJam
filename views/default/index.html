@@ -11,10 +11,10 @@
             <form id="search_form">            
               <fieldset>                        
                 <div class="control-group">
-                  <input id="title_search" name="title" placeholder="title (e.g. smells like teen spirit)" type="text"/>
+                  <input id="title_search" name="title" placeholder="title (e.g. smells like teen spirit)" type="text" value="The Scientist"/>
                 </div>
                 <div class="control-group">
-                  <input id="artist_search" name="artist" placeholder="artist (e.g. nirvana)" type="text"/>
+                  <input id="artist_search" name="artist" placeholder="artist (e.g. nirvana)" type="text" value="Coldplay"/>
                 </div>
                 <div class="control-group">
                   <button id="search_button" class="btn btn-primary ca_button" type="submit">search for memories</button>
@@ -39,12 +39,12 @@
               </div>
               <!-- clicking on button pulls up next stage -->
               <div class="control-group">
-                <button id="youtube_search_button"> find videos for it </button> 
+                <button id="youtube_search_button" class="ca_button"> find videos for it </button> 
               </div>
             </fieldset>
             </form>                 
             <!-- pick which YT video -->
-                <button id="select_video" class="btn btn-success" style="display:none"> choose video currently playing </button>
+                <button id="select_video" class="btn btn-success ca_button" style="display:none"> choose video currently playing </button>
             <!-- container for YT player -->
             <div id="video_section_share">                             
               <div id="player_container_share"> </div>                                           
@@ -58,7 +58,7 @@
               <!-- search box for location -->      
               <input id="autocomplete" placeholder="start typing and click on drop-down menu" type="text">  
               <br/>
-              <button id="select_place_button" class="btn btn-success"> yup - this is the place! </button>                                            
+              <button id="select_place_button" class="btn btn-success ca_button"> yup - this is the place! </button>                                            
               </input>        
           </div>                                
           <!-- finally, details about the memory -->
@@ -75,7 +75,7 @@
                   <input id="tag1_share" name="tag1" placeholder="tags (e.g. trip, friend)" type="text"/>
               </div>                                                                                  
               <div class="control-group">
-                  <button id="share_button" class="btn btn-primary">share memory</button> 
+                  <button id="share_button" class="btn btn-primary ca_button">share memory</button> 
               </div>                
           </form>
         </div>          
