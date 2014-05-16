@@ -271,7 +271,7 @@ $(document).ready(function() {
 
 
         $.ajax({        
-            url: 'yogurtjam/video_search/searchVideos',
+            url: '/yogurtjam/video_search/searchVideos',
             type: 'POST',
             data: {
                 title: title,
@@ -346,7 +346,7 @@ $(document).ready(function() {
         //  and pulls all memories with the same title and artist as user's input)
         $.ajax({
         
-            url: 'yogurtjam/video_share/shareVideos',
+            url: '/yogurtjam/video_share/shareVideos',
             type: 'POST',
             data: {
                 title: title,
