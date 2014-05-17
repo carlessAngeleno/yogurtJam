@@ -78,3 +78,15 @@
       <div class="content_display"><div id="player"></div></div>      
     </div>       
   </div> 
+
+  <script type="text/x-handlebars" data-template-name="memories">            
+    <ul id="memory-list">
+      {{#each}}
+        <li>
+          <input type="checkbox" class="toggle">
+          <label>{{title}}</label><button class="destroy"></button>
+        </li>
+      {{/each}}
+    </ul>            
+  </script>
+
