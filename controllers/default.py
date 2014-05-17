@@ -9,7 +9,7 @@
 ## - call exposes all registered services (none by default)
 #########################################################################
 
-
+response.delimiters = ('<?','?>')
 def index():
     """
     example action using the internationalization operator T and flash
