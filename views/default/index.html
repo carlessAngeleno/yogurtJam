@@ -10,7 +10,7 @@
  
 
 
- 
+
   <script type="text/x-handlebars" data-template-name="memories">  
     
     <div class="memory_display ca_section">
@@ -45,10 +45,10 @@
           <form>
             <fieldset>
               <div class="control-group">
-                <input id = "title_share" name="title" placeholder="title (e.g. the scientist)" type="text"/>
+                {{input type="text" placeholder="title (e.g. the scientist)" value=newTitle}} 
               </div>
               <div class="control-group">
-                <input id="artist_share" name="artist" placeholder="artist (e.g. coldplay)" type="text"/>
+                {{input type="text" placeholder="artist (e.g. the coldplay)" value=newArtist}}
               </div>
               <!-- clicking on button pulls up next stage -->
               <div class="control-group">
@@ -75,13 +75,14 @@
           <div>
             <label for="memoryDateShare">When</label>
             <input type="text" id="memoryDateShare" name="memoryDateShare" />
+            {{input type="text" value=newMemoryDate}} 
           </div>  
           <div class="control-group">
-              <TEXTAREA id="story_share" name="story" placeholder="reminds me of..." ROWS=10 COLS=30></TEXTAREA>
+              {{textarea placeholder="reminds me of..." rows=10 cols=30 value=newStory}} 
           </div>           
           <div class="control-group">
-              <input id="tag1_share" name="tag1" placeholder="tags (e.g. trip, friend)" type="text"/>
-          </div>                                                                                  
+              {{input type="text" placeholder="tags (e.g. trip, friend)" value=newTags}} 
+          </div>                                                                   
           <div class="control-group">
               <button id="share_button" class="btn ca_button" {{action 'insertMemory'}}>share memory</button> 
           </div>                
@@ -89,4 +90,3 @@
       </div> 
     </div>     
   </script>
-

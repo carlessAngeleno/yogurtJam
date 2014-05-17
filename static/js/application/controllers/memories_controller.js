@@ -36,8 +36,8 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       $('#video_section_share').show();          
       $('#share_tab_final_submit').hide;
 
-      var title = $("#title_share").val();
-      var artist = $("#artist_share").val();
+      var title = this.get('newTitle');
+      var artist = this.get('newArtist');
 
       // GSVideoBar
       LoadVideoBar(title, artist, "player_container_share");
@@ -51,27 +51,32 @@ Memories.MemoriesController = Ember.ArrayController.extend({
     },
 
     confirmLocation: function() {
-        alert(title);
-        alert(artist);
         // switch tabs
         $('#share_tab_final_submit').show();
         $('#share_tab_select_location').hide();         
     },    
 
-    insertMemory: function() {      
+    insertMemory: function() {     
+
+      function formatDate(raw) {        
+        var parts = raw.split('/');
+        var formatted = parts[2] + '-' + parts[0] + '-' + parts[1]
+        return formatted +  ' 00:00:00';
+      }
+
       $.post(
         "http://127.0.0.1:8000/yogurtjam/default/api/memory",
         { 
-          "story": "new", 
-          "tag1": "sdfs", 
-          "title": "new_firework", 
+          "story": this.get('newStory'), 
+          "tag1": this.get('newTags'), 
+          "title": this.get('newTitle'), 
           "video_id": "QGJuMBdaqIw", 
           "g_place": "Hotel Cir S", 
           "lat": 32.7589995, 
           "lng": -117.1763604, 
-          "artist": "katy perry", 
+          "artist": this.get('newArtist'), 
           "time_added": "2013-05-17 05:42:30", 
-          "memoryDateShare": "2014-05-01 00:00:00"
+          "memoryDateShare": formatDate(this.get('newMemoryDate'))
         }
       )
       .done(function(data) {
