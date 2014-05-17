@@ -1,3 +1,3 @@
-Todos.Router.map(function() {
+Memories.Router.map(function() {
   this.resource('todos', { path: '/' });
 });

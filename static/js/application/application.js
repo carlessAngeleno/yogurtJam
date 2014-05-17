@@ -1,1 +1,1 @@
-window.Todos = Ember.Application.create();
+window.Memories = Ember.Application.create();
