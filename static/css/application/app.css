@@ -92,3 +92,8 @@ button.ca_button.active {
   width: 100%;
   margin-left: 20px;
 }
+
+#search_form_rest {
+  position:relative; 
+  z-index: 20;
+}
