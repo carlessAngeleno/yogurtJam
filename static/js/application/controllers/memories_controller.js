@@ -76,6 +76,12 @@ Memories.MemoriesController = Ember.ArrayController.extend({
             numberOfMonths: 1,
         });
 
+        var place = autocomplete.getPlace();
+        var new_place_lat_lng = place.geometry.location;
+        this.set('lat', new_place_lat_lng.lat()); 
+        this.set('lng', new_place_lat_lng.lng());
+        this.set('g_place', place.name);   
+
         // switch tabs
         $('#share_tab_final_submit').show();
         $('#share_tab_select_location').hide();         
@@ -96,9 +102,9 @@ Memories.MemoriesController = Ember.ArrayController.extend({
           "tag1": this.get('newTags'), 
           "title": this.get('newTitle'), 
           "video_id": this.get('video_id'), 
-          "g_place": "Hotel Cir S", 
-          "lat": 32.7589995,
-          "lng": -117.1763604,
+          "g_place": this.get('g_place'), 
+          "lat": this.get('lat'),
+          "lng": this.get('lng'),
           "artist": this.get('newArtist'),
           "memoryDateShare": formatDate(this.get('newMemoryDate'))
         }
