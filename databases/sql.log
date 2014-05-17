@@ -111,3 +111,237 @@ CREATE TABLE pet(
     info CHAR(512)
 );
 success!
+timestamp: 2014-05-16T22:23:58.920153
+CREATE TABLE foo(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    artist VARCHAR(512),
+    time_added VARCHAR(512),
+    video_id VARCHAR(512),
+    lat VARCHAR(512),
+    lng VARCHAR(512),
+    g_place VARCHAR(512),
+    story VARCHAR(512),
+    tag1 VARCHAR(512),
+    memoryDateShare VARCHAR(512),
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-05-16T22:26:44.021360
+ALTER TABLE foo ADD time_added__tmp TIME;
+success!
+UPDATE foo SET time_added__tmp=time_added;
+success!
+ALTER TABLE foo DROP COLUMN time_added;
+success!
+ALTER TABLE foo ADD time_added TIME;
+success!
+UPDATE foo SET time_added=time_added__tmp;
+success!
+ALTER TABLE foo DROP COLUMN time_added__tmp;
+success!
+success!
+timestamp: 2014-05-16T22:28:08.569301
+CREATE TABLE foo2(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    artist VARCHAR(512),
+    time_added TIME,
+    video_id VARCHAR(512),
+    lat VARCHAR(512),
+    lng VARCHAR(512),
+    g_place VARCHAR(512),
+    story VARCHAR(512),
+    tag1 VARCHAR(512),
+    memoryDateShare VARCHAR(512),
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-05-16T22:29:44.065443
+ALTER TABLE foo2 ADD story__tmp VARCHAR(2000);
+success!
+UPDATE foo2 SET story__tmp=story;
+success!
+ALTER TABLE foo2 DROP COLUMN story;
+success!
+ALTER TABLE foo2 ADD story VARCHAR(2000);
+success!
+UPDATE foo2 SET story=story__tmp;
+success!
+ALTER TABLE foo2 DROP COLUMN story__tmp;
+success!
+timestamp: 2014-05-16T22:29:45.380227
+ALTER TABLE foo2 ADD tag1__tmp VARCHAR(50);
+success!
+UPDATE foo2 SET tag1__tmp=tag1;
+success!
+ALTER TABLE foo2 DROP COLUMN tag1;
+success!
+ALTER TABLE foo2 ADD tag1 VARCHAR(50);
+success!
+UPDATE foo2 SET tag1=tag1__tmp;
+success!
+ALTER TABLE foo2 DROP COLUMN tag1__tmp;
+success!
+timestamp: 2014-05-16T22:29:46.506621
+ALTER TABLE foo2 ADD lat__tmp NUMERIC(14,10);
+success!
+UPDATE foo2 SET lat__tmp=lat;
+success!
+ALTER TABLE foo2 DROP COLUMN lat;
+success!
+ALTER TABLE foo2 ADD lat NUMERIC(14,10);
+success!
+UPDATE foo2 SET lat=lat__tmp;
+success!
+ALTER TABLE foo2 DROP COLUMN lat__tmp;
+success!
+timestamp: 2014-05-16T22:29:47.617267
+ALTER TABLE foo2 ADD lng__tmp NUMERIC(14,10);
+success!
+UPDATE foo2 SET lng__tmp=lng;
+success!
+ALTER TABLE foo2 DROP COLUMN lng;
+success!
+ALTER TABLE foo2 ADD lng NUMERIC(14,10);
+success!
+UPDATE foo2 SET lng=lng__tmp;
+success!
+ALTER TABLE foo2 DROP COLUMN lng__tmp;
+success!
+timestamp: 2014-05-16T22:29:48.631351
+ALTER TABLE foo2 ADD time_added__tmp DATETIME;
+success!
+UPDATE foo2 SET time_added__tmp=time_added;
+success!
+ALTER TABLE foo2 DROP COLUMN time_added;
+success!
+ALTER TABLE foo2 ADD time_added DATETIME;
+success!
+UPDATE foo2 SET time_added=time_added__tmp;
+success!
+ALTER TABLE foo2 DROP COLUMN time_added__tmp;
+success!
+timestamp: 2014-05-16T22:29:49.645420
+ALTER TABLE foo2 ADD memorydateshare__tmp DATETIME;
+success!
+UPDATE foo2 SET memorydateshare__tmp=memorydateshare;
+success!
+ALTER TABLE foo2 DROP COLUMN memorydateshare;
+success!
+ALTER TABLE foo2 ADD memorydateshare DATETIME;
+success!
+UPDATE foo2 SET memorydateshare=memorydateshare__tmp;
+success!
+ALTER TABLE foo2 DROP COLUMN memorydateshare__tmp;
+success!
+timestamp: 2014-05-16T22:30:16.533225
+CREATE TABLE foo4(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    artist VARCHAR(512),
+    time_added DATETIME,
+    video_id VARCHAR(512),
+    lat NUMERIC(14,10),
+    lng NUMERIC(14,10),
+    g_place VARCHAR(512),
+    story VARCHAR(2000),
+    tag1 VARCHAR(50),
+    memoryDateShare DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-05-16T22:35:40.170691
+CREATE TABLE foo5(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    artist VARCHAR(512),
+    time_added DATETIME,
+    video_id VARCHAR(512),
+    lat NUMERIC(14,10),
+    lng NUMERIC(14,10),
+    g_place VARCHAR(512),
+    story VARCHAR(2000),
+    tag1 VARCHAR(50),
+    memoryDateShare DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-05-16T22:36:24.245021
+CREATE TABLE foo7(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    artist VARCHAR(512),
+    time_added DATETIME,
+    video_id VARCHAR(512),
+    lat NUMERIC(14,10),
+    lng NUMERIC(14,10),
+    g_place VARCHAR(512),
+    story VARCHAR(2000),
+    tag1 VARCHAR(50),
+    memoryDateShare DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-05-16T22:38:02.895993
+CREATE TABLE memory(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    artist VARCHAR(512),
+    time_added DATETIME,
+    video_id VARCHAR(512),
+    lat NUMERIC(14,10),
+    lng NUMERIC(14,10),
+    g_place VARCHAR(512),
+    story VARCHAR(2000),
+    tag1 VARCHAR(50),
+    memoryDateShare DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2014-05-16T22:38:38.410604
+CREATE TABLE memory(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    artist VARCHAR(512),
+    time_added DATETIME,
+    video_id VARCHAR(512),
+    lat NUMERIC(14,10),
+    lng NUMERIC(14,10),
+    g_place VARCHAR(512),
+    story VARCHAR(2000),
+    tag1 VARCHAR(50),
+    memoryDateShare DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
+timestamp: 2014-05-16T23:32:30.269021
+CREATE TABLE memory_bu(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    artist VARCHAR(512),
+    time_added DATETIME,
+    video_id VARCHAR(512),
+    lat NUMERIC(14,10),
+    lng NUMERIC(14,10),
+    g_place VARCHAR(512),
+    story VARCHAR(2000),
+    tag1 VARCHAR(50),
+    memoryDateShare DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+timestamp: 2014-05-17T08:51:14.991427
+CREATE TABLE foo4(
+    id INT AUTO_INCREMENT NOT NULL,
+    title VARCHAR(512),
+    artist VARCHAR(512),
+    time_added DATETIME,
+    video_id VARCHAR(512),
+    lat NUMERIC(14,10),
+    lng NUMERIC(14,10),
+    g_place VARCHAR(512),
+    story VARCHAR(2000),
+    tag1 VARCHAR(50),
+    memoryDateShare DATETIME,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB CHARACTER SET utf8;
+success!
