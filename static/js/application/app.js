@@ -384,25 +384,25 @@ $(document).ready(function() {
 *       
 *
 */
-$(document).ready(function() {
-    // once video selected (while filling out share form)
-    $("#select_video").click(function() { 
+// $(document).ready(function() {
+//     // once video selected (while filling out share form)
+//     $("#select_video").click(function() { 
 
-        // switch tabs
-        $('#share_tab_select_location').show();
-        $('#share_tab_select_video').hide();
-        $('#share_tab_final_submit').hide();
+//         // switch tabs
+//         $('#share_tab_select_location').show();
+//         $('#share_tab_select_video').hide();
+//         $('#share_tab_final_submit').hide();
 
-        // parse video_url and store video's unique id (by YT)
-        // as a global that can be used by other functions
-        var video_url = $("a.title_gsvb").attr("href");
-        video_id = video_url.substr(
-            video_url.indexOf("watch?v=") + 8, 
-            video_url.length
-        );
-        $("#share_button").show();
-    });
-});
+//         // parse video_url and store video's unique id (by YT)
+//         // as a global that can be used by other functions
+//         var video_url = $("a.title_gsvb").attr("href");
+//         video_id = video_url.substr(
+//             video_url.indexOf("watch?v=") + 8, 
+//             video_url.length
+//         );
+//         $("#share_button").show();
+//     });
+// });
  
 
 /*

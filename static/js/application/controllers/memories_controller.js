@@ -49,6 +49,23 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       
       return false;        
     },
+    
+    selectVideo: function() {
+      // switch tabs
+      $('#share_tab_select_location').show();
+      $('#share_tab_select_video').hide();
+      $('#share_tab_final_submit').hide();
+
+      // parse video_url and store video's unique id (by YT)
+      // as a global that can be used by other functions
+      var video_url = $("a.title_gsvb").attr("href");
+      video_id = video_url.substr(
+          video_url.indexOf("watch?v=") + 8, 
+          video_url.length
+      );
+      this.set('video_id', video_id);
+      $("#share_button").show();      
+    },
 
     confirmLocation: function() {
         // enable datepicker (not the ember way - need to fix)
@@ -78,7 +95,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
           "story": this.get('newStory'), 
           "tag1": this.get('newTags'), 
           "title": this.get('newTitle'), 
-          "video_id": "QGJuMBdaqIw", 
+          "video_id": this.get('video_id'), 
           "g_place": "Hotel Cir S", 
           "lat": 32.7589995,
           "lng": -117.1763604,
