@@ -537,7 +537,7 @@ function clearAll() {
 
 
 // datepicker
-$(function() {
+// $(function() {
     // $( "#memoryDateMin" ).datepicker({
     //     defaultDate: "+1w",
     //     changeYear: true,
@@ -558,15 +558,15 @@ $(function() {
     //     }
     // });
 
-    $( "#memoryDateShare" ).datepicker({
-        defaultDate: "+1w",
-        changeYear: true,      
-        changeMonth: true,
-        numberOfMonths: 1,
+    // $( "#memoryDateShare" ).datepicker({
+        // defaultDate: "+1w",
+        // changeYear: true,      
+        // changeMonth: true,
+        // numberOfMonths: 1,
         // onClose: function( selectedDate ) {
         //     $( "#memoryDateMin" ).datepicker( "option", "maxDate", selectedDate );
         // }
-    });
+    // });
 
     // // auto-populate date range
     // var today = new Date();
@@ -587,4 +587,4 @@ $(function() {
     // $("#memoryDateMin").val(min_day);
     // $("#memoryDateMax").val(today);
 
-});
+// });

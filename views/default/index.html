@@ -73,9 +73,8 @@
         <form class="share_tab_sub" id="share_tab_final_submit" style="display:none">
           <p> Finally, tell us what the song reminds you of! </p>     
           <div>
-            <label for="memoryDateShare">When</label>
-            <input type="text" id="memoryDateShare" name="memoryDateShare" />
-            {{input type="text" value=newMemoryDate}} 
+            <label>When</label>            
+            {{input type="text" id="memoryDateShare" value=newMemoryDate}} 
           </div>  
           <div class="control-group">
               {{textarea placeholder="reminds me of..." rows=10 cols=30 value=newStory}} 
@@ -84,7 +83,7 @@
               {{input type="text" placeholder="tags (e.g. trip, friend)" value=newTags}} 
           </div>                                                                   
           <div class="control-group">
-              <button id="share_button" class="btn ca_button" {{action 'insertMemory'}}>share memory</button> 
+              <button class="btn ca_button" {{action 'insertMemory'}}>share memory</button> 
           </div>                
         </form>            
       </div> 

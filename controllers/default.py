@@ -9,6 +9,8 @@
 ## - call exposes all registered services (none by default)
 #########################################################################
 import pdb
+import datetime
+
 response.delimiters = ('<?','?>')
 def index():
     """
@@ -52,8 +54,10 @@ def api():
     #     )            
         
     def POST(tablename,**fields):
+        # pdb.set_trace()
         # if not tablename=='person': raise HTTP(400)
         # return db.person.validate_and_insert(**fields)
+        fields['time_added'] = datetime.datetime.now()
         return yj[tablename].validate_and_insert(**fields)
 
     return locals()

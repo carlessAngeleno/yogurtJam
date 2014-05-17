@@ -51,6 +51,14 @@ Memories.MemoriesController = Ember.ArrayController.extend({
     },
 
     confirmLocation: function() {
+        // enable datepicker (not the ember way - need to fix)
+        $( "#memoryDateShare" ).datepicker({
+            defaultDate: "+1w",
+            changeYear: true,      
+            changeMonth: true,
+            numberOfMonths: 1,
+        });
+
         // switch tabs
         $('#share_tab_final_submit').show();
         $('#share_tab_select_location').hide();         
@@ -72,10 +80,9 @@ Memories.MemoriesController = Ember.ArrayController.extend({
           "title": this.get('newTitle'), 
           "video_id": "QGJuMBdaqIw", 
           "g_place": "Hotel Cir S", 
-          "lat": 32.7589995, 
-          "lng": -117.1763604, 
-          "artist": this.get('newArtist'), 
-          "time_added": "2013-05-17 05:42:30", 
+          "lat": 32.7589995,
+          "lng": -117.1763604,
+          "artist": this.get('newArtist'),
           "memoryDateShare": formatDate(this.get('newMemoryDate'))
         }
       )
