@@ -86,13 +86,13 @@
     <form id="search_form_rest">            
       <fieldset>                        
         <div class="control-group">
-          {{input type="text" id="title_search_rest" placeholder="title (e.g. smells like teen spirit)" value=newTitle}}                  
+          {{input type="text" placeholder="title (e.g. smells like teen spirit)" value=newTitle}}                  
         </div>
         <div class="control-group">
-          {{input type="text" id="artist_search_rest" placeholder="artist (e.g. nirvana)" value=newArtist}}
+          {{input type="text" placeholder="artist (e.g. nirvana)" value=newArtist}}
         </div>
         <div class="control-group">
-          <button id="search_button_rest" class="btn ca_button" {{action 'searchMemories'}}>GET button</button>
+          <button class="btn ca_button" {{action 'searchMemories'}}>GET button</button>
         </div>   
       </fieldset>            
     </form>     
