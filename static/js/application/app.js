@@ -1,6 +1,6 @@
 // show player on initial load
 $(document).ready(function() {          
-   $("#player").show();
+   $("#player").hide();
 })
 
 // draws map and plants markers
@@ -85,7 +85,7 @@ function initialize() {
         center: usa_lat_lng,
         zoom: 4,
         mapTypeControlOptions: {
-        	mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+          mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
         }               
     };
 
@@ -139,7 +139,7 @@ function initialize() {
 
         // take down place's location (lat/long)
         var new_place_lat_lng = place.geometry.location;
-		
+    
         // put a marker on the location 
         marker.setPosition(new_place_lat_lng);
         
@@ -238,52 +238,55 @@ $(document).ready(function() {
         var title = $("#title_search").val();
         var artist = $("#artist_search").val();
 
-        rawDateMin = $("#memoryDateMin").val();
-        rawDateMax = $("#memoryDateMax").val();
+        // rawDateMin = $("#memoryDateMin").val();
+        // rawDateMax = $("#memoryDateMax").val();
 
-        memoryDateMin = $("#memoryDateMin").val().split("/");
-        memoryDateMax = $("#memoryDateMax").val().split("/");        
-        var minMonth = parseInt(memoryDateMin[0]);
-        var minDate = parseInt(memoryDateMin[1]);
-        var minYear = parseInt(memoryDateMin[2]);
+        // memoryDateMin = $("#memoryDateMin").val().split("/");
+        // memoryDateMax = $("#memoryDateMax").val().split("/");        
+        // var minMonth = parseInt(memoryDateMin[0]);
+        // var minDate = parseInt(memoryDateMin[1]);
+        // var minYear = parseInt(memoryDateMin[2]);
         
-        var maxMonth = parseInt(memoryDateMax[0]);
-        var maxDate = parseInt(memoryDateMax[1]);
-        var maxYear = parseInt(memoryDateMax[2]);
+        // var maxMonth = parseInt(memoryDateMax[0]);
+        // var maxDate = parseInt(memoryDateMax[1]);
+        // var maxYear = parseInt(memoryDateMax[2]);
 
-        console.log(memoryDateMin);
-        console.log(memoryDateMax);
-        console.log(maxMonth);
-        console.log({
-                title: title,
-                artist: artist,
-                //memoryDateMin: memoryDateMin,
-                //memoryDateMax: memoryDateMax
-                rawDateMin: rawDateMin,
-                rawDateMax: rawDateMax,
-                minMonth: minMonth,
-                minDate: minDate,
-                minYear: minYear,
-                maxMonth: maxMonth,
-                maxDate: maxDate,
-                maxYear: maxYear
-            })
+        // console.log(memoryDateMin);
+        // console.log(memoryDateMax);
+        // console.log(maxMonth);
+        // console.log({
+        //         title: title,
+        //         artist: artist,
+        //         //memoryDateMin: memoryDateMin,
+        //         //memoryDateMax: memoryDateMax
+        //         rawDateMin: rawDateMin,
+        //         rawDateMax: rawDateMax,
+        //         minMonth: minMonth,
+        //         minDate: minDate,
+        //         minYear: minYear,
+        //         maxMonth: maxMonth,
+        //         maxDate: maxDate,
+        //         maxYear: maxYear
+        //     })
+
+
         $.ajax({        
-            url: 'yogurtjam/video_search/searchVideos',
+            url: '/yogurtjam/video_search/searchVideos',
             type: 'POST',
             data: {
                 title: title,
-                artist: artist,
+                artist: artist
+                // ,
                 //memoryDateMin: memoryDateMin,
                 //memoryDateMax: memoryDateMax
-                rawDateMin: rawDateMin,
-                rawDateMax: rawDateMax,
-                minMonth: minMonth,
-                minDate: minDate,
-                minYear: minYear,
-                maxMonth: maxMonth,
-                maxDate: maxDate,
-                maxYear: maxYear
+                // rawDateMin: rawDateMin,
+                // rawDateMax: rawDateMax,
+                // minMonth: minMonth,
+                // minDate: minDate,
+                // minYear: minYear,
+                // maxMonth: maxMonth,
+                // maxDate: maxDate,
+                // maxYear: maxYear
             },
             dataType: "json",
             success: function(response) {               
@@ -291,6 +294,7 @@ $(document).ready(function() {
                 //player.loadVideoById(response);
                 // plant the new markers
                 initialize();
+                $("#search_tab").hide();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status);
@@ -342,7 +346,7 @@ $(document).ready(function() {
         //  and pulls all memories with the same title and artist as user's input)
         $.ajax({
         
-            url: 'yogurtjam/video_share/shareVideos',
+            url: '/yogurtjam/video_share/shareVideos',
             type: 'POST',
             data: {
                 title: title,
@@ -405,6 +409,7 @@ $(document).ready(function() {
 
         // switch tabs
         $('#select_video').show();
+        $("#gsvb_modal").modal();
         $('#video_section_share').show();          
         $('#share_tab_final_submit').hide;
 
@@ -524,7 +529,7 @@ $("#myTab").click(function() {
 
 $(document).ready(function() {
     $('#search_button').click(function () {        
-    	    $("input[type=text], textarea").val("");
+          $("input[type=text], textarea").val("");
     })
 })
 
@@ -533,18 +538,18 @@ $(document).ready(function() {
     
     // click on the tab switches view
     $("#share_mode").click(function () {
-		$("#search_tab").hide();
-    	$("#share_tab").show();
+    $("#search_tab").hide();
+      $("#share_tab").show();
         $('#share_tab_final_submit').hide();
         $('#share_tab_select_location').hide();
         $('#video_section_share').hide();        
         $('.content_display').hide();  
         clearAll();
-	})
+  })
     // click on the tab switches view
     $("#search_mode").click(function () {
-		$("#share_tab").hide();
-    	$("#search_tab").show();
+    $("#share_tab").hide();
+      $("#search_tab").show();
         $('.content_display').show();  
         clearAll();        
     })
@@ -566,25 +571,25 @@ function clearAll() {
 
 // datepicker
 $(function() {
-    $( "#memoryDateMin" ).datepicker({
-        defaultDate: "+1w",
-        changeYear: true,
-        changeMonth: true,
-        numberOfMonths: 1,
-        onClose: function( selectedDate ) {
-            $( "#memoryDateMax" ).datepicker( "option", "minDate", selectedDate );
-        }
-    });
+    // $( "#memoryDateMin" ).datepicker({
+    //     defaultDate: "+1w",
+    //     changeYear: true,
+    //     changeMonth: true,
+    //     numberOfMonths: 1,
+    //     onClose: function( selectedDate ) {
+    //         $( "#memoryDateMax" ).datepicker( "option", "minDate", selectedDate );
+    //     }
+    // });
 
-    $( "#memoryDateMax" ).datepicker({
-        defaultDate: "+1w",
-        changeYear: true,      
-        changeMonth: true,
-        numberOfMonths: 1,
-        onClose: function( selectedDate ) {
-            $( "#memoryDateMin" ).datepicker( "option", "maxDate", selectedDate );
-        }
-    });
+    // $( "#memoryDateMax" ).datepicker({
+    //     defaultDate: "+1w",
+    //     changeYear: true,      
+    //     changeMonth: true,
+    //     numberOfMonths: 1,
+    //     onClose: function( selectedDate ) {
+    //         $( "#memoryDateMin" ).datepicker( "option", "maxDate", selectedDate );
+    //     }
+    // });
 
     $( "#memoryDateShare" ).datepicker({
         defaultDate: "+1w",
@@ -596,23 +601,23 @@ $(function() {
         // }
     });
 
-    // auto-populate date range
-    var today = new Date();
-    var dd = today.getDate();
-    var min_dd = 1;
+    // // auto-populate date range
+    // var today = new Date();
+    // var dd = today.getDate();
+    // var min_dd = 1;
 
-    var mm = today.getMonth()+1; //January is 0!
+    // var mm = today.getMonth()+1; //January is 0!
 
-    var yyyy = today.getFullYear();
+    // var yyyy = today.getFullYear();
     
-    if (dd < 10) {dd = '0' + dd} 
+    // if (dd < 10) {dd = '0' + dd} 
     
-    if (mm < 10) {mm = '0' + mm} 
+    // if (mm < 10) {mm = '0' + mm} 
     
-    today = mm + '/' + dd + '/' + yyyy;
-    var min_day = mm + '/' + min_dd + '/' + (yyyy - 1);
+    // today = mm + '/' + dd + '/' + yyyy;
+    // var min_day = mm + '/' + min_dd + '/' + (yyyy - 1);
 
-    $("#memoryDateMin").val(min_day);
-    $("#memoryDateMax").val(today);
+    // $("#memoryDateMin").val(min_day);
+    // $("#memoryDateMax").val(today);
 
 });

@@ -1,0 +1,94 @@
+/***** Override ca *****/
+.navbar-inner .container, .navbar-inverse div.navbar-inner {
+  background-color: rgba(231,41,138, 1);  
+}
+
+.navbar-inverse div.navbar-inner  {
+  border-color: rgba(231,41,138, 1);
+  /*border-bottom: 2px solid rgba(0, 119, 86, 1);*/
+}
+
+body {
+  /*background-color: rgb(244, 255, 252);*/
+}
+
+.ca_section {
+  padding: 20px;
+  background-color: rgba(254, 248, 251, 0.8);
+  border: 1px solid rgba(255, 220, 215, 0.4);  
+}
+
+button.ca_button {
+  background-color: rgba(255, 110, 86, 0.9);  
+}
+
+button.ca_button:hover {
+  background-color: rgba(255,66,35, 1);  
+}
+
+button.ca_button.active {
+  background-color: rgba(255, 110, 86, 0.7);  
+}
+
+.nav-pills>.active>a, .nav-pills>.active>a:hover {
+  background-color: rgba(255, 110, 86, 0.9);  
+}
+
+.nav-pills a {
+  color: rgba(255, 110, 86, 0.65);
+  background-color: rgba(255, 110, 86, 0.05);
+}
+
+.nav-pills a:hover {
+  color: rgba(255, 110, 86, 1);
+}
+
+
+/***** app-specific *****/
+
+/* main layout */
+
+#map_canvas {
+    position: absolute; 
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;    
+    z-index: 10;
+}
+
+#interface {
+  width: 380px;
+  z-index: 20;
+  position: relative;  
+  overflow: auto;
+  color: #2e081b;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;    
+}   
+ 
+#share_tab {
+  display: none;
+}
+
+
+/* content player */
+
+.content_display iframe {
+    display: block;
+    margin-right:auto;
+    margin-left: auto;   
+}
+
+.playerInnerBox_gsvb .player_gsvb {
+  width: 420px;
+  height: 260px;
+}
+
+.playerBox_gsvb div.alldone_gsvb {
+  display: none;
+}
+
+#main_body {
+  width: 100%;
+  margin-left: 20px;
+}
