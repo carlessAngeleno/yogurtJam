@@ -8,7 +8,7 @@
 ## - download is for downloading files uploaded in the db (does streaming)
 ## - call exposes all registered services (none by default)
 #########################################################################
-
+import pdb
 response.delimiters = ('<?','?>')
 def index():
     """
@@ -27,32 +27,38 @@ def api():
     # def GET(tablename,id):
         # if not tablename=='person': raise HTTP(400)
         # return dict(person = db.person(id))
-    def GET():
-        return dict(
-            memories = [
-                dict(
-                    id = 1,
-                    title = 'web2py restful Ember.js',
-                    isCompleted = True
-                ),
-                dict(
-                    id = 2,
-                    title = '2.',
-                    isCompleted = False
-                ),
-                dict(
-                    id = 3,
-                    title = 'Profit!',
-                    isCompleted = False
-                )                
-            ]
-        )            
+    def GET(tablename, title, artist):
+        results = yj(yj[tablename].title == title and yj[tablename].artist == artist).select()
+        return dict(memories = results)        
+    # def GET():
+    #     return dict(
+    #         memories = [
+    #             dict(
+    #                 id = 1,
+    #                 title = 'web2py restful Ember.js',
+    #                 isCompleted = True
+    #             ),
+    #             dict(
+    #                 id = 2,
+    #                 title = '2.',
+    #                 isCompleted = False
+    #             ),
+    #             dict(
+    #                 id = 3,
+    #                 title = 'Profit!',
+    #                 isCompleted = False
+    #             )                
+    #         ]
+    #     )            
         
     def POST(tablename,**fields):
-        if not tablename=='person': raise HTTP(400)
-        return db.person.validate_and_insert(**fields)
+        # if not tablename=='person': raise HTTP(400)
+        # return db.person.validate_and_insert(**fields)
+        return yj[tablename].validate_and_insert(**fields)
+
     return locals()
-   
+
+
 def user():
     """
     exposes:

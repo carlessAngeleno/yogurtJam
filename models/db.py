@@ -8,6 +8,9 @@
 ## if SSL/HTTPS is properly configured and you want all HTTP requests to
 ## be redirected to HTTPS, uncomment the line below:
 # request.requires_https()
+import pdb
+import os
+import json
 
 if not request.env.web2py_runtime_gae:
     ## if NOT running on Google App Engine use SQLite or other DB
@@ -84,3 +87,52 @@ use_janrain(auth, filename='private/janrain.key')
 
 db.define_table('person',Field('name'),Field('info'))
 db.define_table('pet',Field('owner_name',db.person),Field('name'),Field('info'))
+
+
+credentials = open(os.path.join(request.folder, 'private', 'mysql_credentials.json'))    
+credentials = json.load(credentials)
+
+yj = DAL(
+    'mysql://' + 
+    credentials['user'] + ':' + 
+    credentials['password'] + '@' + 
+    credentials['host'] + '/' + 
+    credentials['db'],
+    pool_size=1,
+    check_reserved=['all']
+)
+
+yj.define_table('memory', 
+    Field('title'),   
+    Field('artist'), 
+    Field('time_added', 'datetime'),  
+    Field('video_id'),    
+    Field('lat', 'decimal(14,10)'),  
+    Field('lng', 'decimal(14,10)'),  
+    Field('g_place'), 
+    Field('story', length=2000),   
+    Field('tag1', length=50),   
+    Field('memoryDateShare', 'datetime')
+)
+
+# field type  default field validators
+# string  IS_LENGTH(length) default length is 512
+# text    IS_LENGTH(65536)
+# blob    None
+# boolean None
+# integer IS_INT_IN_RANGE(-1e100, 1e100)
+# double  IS_FLOAT_IN_RANGE(-1e100, 1e100)
+# decimal(n,m)    IS_DECIMAL_IN_RANGE(-1e100, 1e100)
+# date    IS_DATE()
+# time    IS_TIME()
+# datetime    IS_DATETIME()
+# password    None
+# upload  None
+# reference <table>   IS_IN_DB(db,table.field,format)
+# list:string None
+# list:integer    None
+# list:reference <table>  IS_IN_DB(db,table.field,format,multiple=True)
+# json    IS_JSON()
+# bigint  None
+# big-id  None
+# big-reference   None
