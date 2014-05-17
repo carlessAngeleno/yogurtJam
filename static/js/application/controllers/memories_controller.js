@@ -32,7 +32,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
     searchYoutube: function() {
       // switch tabs
       $('#select_video').show();
-      $("#gsvb_modal").modal();
+      $("#gsvb_modal").modal({backdrop: false});
       $('#video_section_share').show();          
       $('#share_tab_final_submit').hide;
 
