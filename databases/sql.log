@@ -96,3 +96,18 @@ CREATE TABLE wiki_media(
     modified_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE
 );
 success!
+timestamp: 2014-05-16T19:57:48.156442
+CREATE TABLE person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    info CHAR(512)
+);
+success!
+timestamp: 2014-05-16T19:58:19.510507
+CREATE TABLE pet(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    owner_name INTEGER REFERENCES person (id) ON DELETE CASCADE,
+    name CHAR(512),
+    info CHAR(512)
+);
+success!
