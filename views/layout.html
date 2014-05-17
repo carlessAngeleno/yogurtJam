@@ -108,7 +108,7 @@
         {{=response.logo or ''}}        
         <!-- <ul id="navbar" class="nav pull-right hidden">{{='auth' in globals() and auth.navbar(mode="dropdown") or ''}}</ul> -->
 
-        <li class="btn-group offset2" data-toggle="buttons-radio">
+        <li class="{{='btn-group' if is_mobile else 'btn-group offset2'}}" data-toggle="buttons-radio">
           <button id="search_mode" class="btn btn-success ca_button" type="button">search</button>
           <button id="share_mode" class="btn btn-success ca_button" type="button">share</button>
         </li>          
