@@ -403,41 +403,7 @@ $(document).ready(function() {
         $("#share_button").show();
     });
 });
-
-$(document).ready(function() {    
-    // once user searches videos (while filling out share form)
-    $("#youtube_search_button").click(function() {
-
-        // switch tabs
-        $('#select_video').show();
-        $("#gsvb_modal").modal();
-        $('#video_section_share').show();          
-        $('#share_tab_final_submit').hide;
-
-        var title = $("#title_share").val();
-        var artist = $("#artist_share").val();
-
-        // GSVideoBar
-        LoadVideoBar(title, artist, "player_container_share");
-
-        // simulate a click on the first thumnail so user doesn't have to
-        setTimeout(function(){
-            $('.resultDiv_gsvb img[vspace$="1"]')[0].click();
-        }, 1000);
-        
-        return false;              
-    });
-});               
-
-$(document).ready(function() {    
-    // once user searches videos (while filling out share form)
-    $("#select_place_button").click(function() {
-
-        // switch tabs
-        $('#share_tab_final_submit').show();
-        $('#share_tab_select_location').hide();           
-    });
-});    
+ 
 
 /*
 *

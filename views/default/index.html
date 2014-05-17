@@ -3,37 +3,47 @@
 
 
   <div id="main_container">
-    <div id="interface">
-
-      <div class="memory_display ca_section">
-        <div id = "search_tab">
-          <h4>Search Memories</h4>
-            <p>What does your song mean to other people? </p>
-          <div class="search_tab_sub">                  
-            <form id="search_form">            
-              <fieldset>                        
-                <div class="control-group">
-                  <input id="title_search" name="title" placeholder="title (e.g. smells like teen spirit)" type="text" value="The Scientist"/>
-                </div>
-                <div class="control-group">
-                  <input id="artist_search" name="artist" placeholder="artist (e.g. nirvana)" type="text" value="Coldplay"/>
-                </div>
-                <div class="control-group">
-                  <button id="search_button" class="btn btn-primary ca_button" type="submit">search for memories</button>
-                </div>                             
-              </fieldset>            
-            </form>	                                                
-          </div>      
-        </div>    
+    <div id="interface">     
+      <div class="content_display"><div id="player"></div></div>      
+    </div>       
+  </div>       
+ 
 
 
-        <div id = "share_tab">
-          <h4>Share Memories</h4>
-          <!-- first, ask which song -->
-          <div class="share_tab_sub" id="share_tab_select_video">
-            <p>Which song? </p>            
-            <form>
-              <fieldset>
+ 
+  <script type="text/x-handlebars" data-template-name="memories">  
+    
+    <div class="memory_display ca_section">
+      
+      <div id = "search_tab"> 
+        <h4>Search Memories</h4>
+          <p>What does your song mean to other people? </p>
+        <div class="search_tab_sub">
+          <form id="search_form_rest">            
+            <fieldset>                        
+              <div class="control-group">
+                {{input type="text" placeholder="title (e.g. smells like teen spirit)" value=newTitle}}                  
+              </div>
+              <div class="control-group">
+                {{input type="text" placeholder="artist (e.g. nirvana)" value=newArtist}}
+              </div>
+              <div class="control-group">
+                <button class="btn ca_button" {{action 'searchMemories'}}>GET button</button>
+              </div>   
+            </fieldset>            
+          </form>
+        </div>
+      </div>
+
+      <div id = "share_tab">
+      
+        <h4>Share Memories</h4>      
+      
+        <!-- first, ask which song -->
+        <div class="share_tab_sub" id="share_tab_select_video">
+          <p>Which song? </p>            
+          <form>
+            <fieldset>
               <div class="control-group">
                 <input id = "title_share" name="title" placeholder="title (e.g. the scientist)" type="text"/>
               </div>
@@ -42,59 +52,41 @@
               </div>
               <!-- clicking on button pulls up next stage -->
               <div class="control-group">
-                <button id="youtube_search_button" class="ca_button"> find videos for it </button> 
+                <button id="youtube_search_button" class="ca_button" {{action 'searchYoutube'}}> find videos for it </button> 
               </div>
             </fieldset>
-            </form>                 
-                     
-          </div>
-          <!-- secondly, choose location associated with memory -->
-          <div class="share_tab_sub" id="share_tab_select_location" style="display:none">
-              <p> Enter location associated with memory </p>                    
-              <!-- search box for location -->      
-              <input id="autocomplete" placeholder="start typing and click on drop-down menu" type="text">  
-              <br/>
-              <button id="select_place_button" class="btn btn-success ca_button"> yup - this is the place! </button>                                            
-              </input>        
-          </div>                                
-          <!-- finally, details about the memory -->
-          <form class="share_tab_sub" id="share_tab_final_submit" style="display:none">
-              <p> Finally, tell us what the song reminds you of! </p>     
-              <div>
-                <label for="memoryDateShare">When</label>
-                <input type="text" id="memoryDateShare" name="memoryDateShare" />
-              </div>  
-              <div class="control-group">
-                  <TEXTAREA id="story_share" name="story" placeholder="reminds me of..." ROWS=10 COLS=30></TEXTAREA>
-              </div>           
-              <div class="control-group">
-                  <input id="tag1_share" name="tag1" placeholder="tags (e.g. trip, friend)" type="text"/>
-              </div>                                                                                  
-              <div class="control-group">
-                  <button id="share_button" class="btn btn-primary ca_button">share memory</button> 
-              </div>                
-          </form>
-        </div>          
-      </div>
+          </form>  
+        </div>
 
 
-      <div class="content_display"><div id="player"></div></div>      
-    </div>       
-  </div>        
- 
-  <script type="text/x-handlebars" data-template-name="memories">  
-    <form id="search_form_rest">            
-      <fieldset>                        
-        <div class="control-group">
-          {{input type="text" placeholder="title (e.g. smells like teen spirit)" value=newTitle}}                  
-        </div>
-        <div class="control-group">
-          {{input type="text" placeholder="artist (e.g. nirvana)" value=newArtist}}
-        </div>
-        <div class="control-group">
-          <button class="btn ca_button" {{action 'searchMemories'}}>GET button</button>
+        <!-- secondly, choose location associated with memory -->
+        <div class="share_tab_sub" id="share_tab_select_location" style="display:none">
+          <p> Enter location associated with memory </p>                    
+          <!-- search box for location -->      
+          <input id="autocomplete" placeholder="start typing and click on drop-down menu" type="text">  
+          <br/>
+          <button id="select_place_button" class="btn ca_button" {{action 'confirmLocation'}}> yup - this is the place! </button>                                            
+          </input>        
         </div>   
-      </fieldset>            
-    </form>     
+
+        <!-- finally, details about the memory -->
+        <form class="share_tab_sub" id="share_tab_final_submit" style="display:none">
+          <p> Finally, tell us what the song reminds you of! </p>     
+          <div>
+            <label for="memoryDateShare">When</label>
+            <input type="text" id="memoryDateShare" name="memoryDateShare" />
+          </div>  
+          <div class="control-group">
+              <TEXTAREA id="story_share" name="story" placeholder="reminds me of..." ROWS=10 COLS=30></TEXTAREA>
+          </div>           
+          <div class="control-group">
+              <input id="tag1_share" name="tag1" placeholder="tags (e.g. trip, friend)" type="text"/>
+          </div>                                                                                  
+          <div class="control-group">
+              <button id="share_button" class="btn ca_button" {{action 'insertMemory'}}>share memory</button> 
+          </div>                
+        </form>            
+      </div> 
+    </div>     
   </script>
 

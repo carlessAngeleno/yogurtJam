@@ -93,7 +93,7 @@ button.ca_button.active {
   margin-left: 20px;
 }
 
-#search_form_rest {
+#search_tab, #share_tab {
   position:relative; 
   z-index: 20;
 }
