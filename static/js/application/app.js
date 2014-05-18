@@ -158,11 +158,10 @@ function initialize() {
             new_place_lng = new_place_lat_lng.lng();
             new_place_g_place = place.name;            
         });        
-    });    
-    drawOnMap();  
+    });      
 };
   
-function drawOnMap() {
+function drawOnMap(markers) {
     var infowindow = new google.maps.InfoWindow({
         maxWidth: 240
     });      

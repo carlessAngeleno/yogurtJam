@@ -33,7 +33,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
           markers = response.memories;          
           Memories.Memory.store.unloadAll(Memories.Memory);
           Memories.Memory.store.pushMany('memory', markers);
-          drawOnMap();
+          drawOnMap(markers);
           $("#search_tab").hide();
       });
 
@@ -105,6 +105,8 @@ Memories.MemoriesController = Ember.ArrayController.extend({
         return formatted +  ' 00:00:00';
       }
 
+      var placeholder = this;
+
       $.post(
         "http://127.0.0.1:8000/yogurtjam/default/api/memory",
         { 
@@ -120,7 +122,11 @@ Memories.MemoriesController = Ember.ArrayController.extend({
         }
       )
       .done(function(data) {
-        alert("Data Loaded");
+        initialize();
+        placeholder.send('searchMemories');
+        
+        // debugger;
+        // drawOnMap(markers);
       });
     }
   }
