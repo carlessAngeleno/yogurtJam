@@ -70,7 +70,9 @@
         </div>      
     </div>
     <div class="modal-footer">
-      <button class="ca_button" data-dismiss="modal" aria-hidden="true" {{action 'selectVideo'}}>Choose</button>
+      {{#link-to "memories.share.location"}}
+        <button class="ca_button" data-dismiss="modal" aria-hidden="true" {{action 'selectVideo'}}>Choose</button>
+      {{/link-to}}
     </div>
   </div>       
 </script>
@@ -103,7 +105,9 @@
     <!-- search box for location -->      
     <input id="autocomplete" placeholder="start typing and click on drop-down menu" type="text">  
     <br/>
-    <button id="select_place_button" class="btn ca_button" {{action 'confirmLocation'}}> yup - this is the place! </button>                                            
+    {{#link-to "memories.share.story"}}
+      <button id="select_place_button" class="btn ca_button" {{action 'confirmLocation'}}> yup - this is the place! </button>
+    {{/link-to}}                                            
     </input>        
   </div>     
 </script>

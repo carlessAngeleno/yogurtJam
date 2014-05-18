@@ -39,3 +39,10 @@ Memories.MemoriesShareSongRoute = Ember.Route.extend({
   },
   controllerName: 'Memories'
 });
+
+Memories.MemoriesShareLocationRoute = Ember.Route.extend({
+  model: function() {
+    return this.modelFor('memories');
+  },
+  controllerName: 'Memories'
+});
