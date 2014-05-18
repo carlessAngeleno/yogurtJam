@@ -1,29 +1,19 @@
 Memories.Router.map(function() {
   this.resource('memories', { path: '/' }, function() {
-    this.route('hot');
+    this.route('share');
   });
 });
 
-// Load from api
 Memories.MemoriesRoute = Ember.Route.extend({
   model: function() {
+    // // Load from api
     // return $.getJSON('http://127.0.0.1:8000/yogurtjam/default/api/memory?artist=katy%20perry&title=firework')
     //   .then(function(response) {
     //     return response.memories;
     // })
-     return this.store.find('memory');
+    return this.store.find('memory');
   }
 });
-
-
-
-// Todos.Router.map(function () {
-//   this.resource('todos', { path: '/' }, function () {
-//     // additional child routes will go here later
-//   });
-// });
-
-
 
 Memories.MemoriesIndexRoute = Ember.Route.extend({
   model: function() {
@@ -31,8 +21,9 @@ Memories.MemoriesIndexRoute = Ember.Route.extend({
   }
 });
 
-Memories.MemoriesHotRoute = Ember.Route.extend({
+Memories.MemoriesShareRoute = Ember.Route.extend({
   model: function() {
     return this.modelFor('memories');
-  }
+  },
+  controllerName: 'Memories'
 });

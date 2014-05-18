@@ -1,136 +1,126 @@
 <?extend "layout.html"?>
 
-
-
-  <div id="main_container">
-    <div id="interface">     
-      <div class="content_display"><div id="player"></div></div>      
-    </div>       
+<div id="main_container">
+  <div id="interface">     
+    <div class="content_display"><div id="player"></div></div>      
   </div>       
- 
+</div>       
 
+<script type="text/x-handlebars" data-template-name="memories/index">  
+  <b> index </b>
+</script>
 
+<script type="text/x-handlebars" data-template-name="memories/share">  
 
-  <script type="text/x-handlebars" data-template-name="memories/index">  
-    <h1> slfdkjsldkfjslkfjd </h1>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="memories/hot">  
-    <h1> HOT </h1>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="memories">  
-
-    <div class="memory_display ca_section">
-    {{outlet}}
-      <div id="search_tab"> 
-        <h4>Search Memories</h4>
-        
-          <p>What does your song mean to other people? </p>
-        <div class="search_tab_sub">
-          <!-- <button class="btn ca_button" {{action 'renderMap'}}><i class="icon-search icon-white"></i> search</button> -->
-          <form>            
-            <fieldset>                        
-              <div class="control-group">
-                {{input type="text" placeholder="title (e.g. smells like teen spirit)" value=newTitle}}                  
-              </div>
-              <div class="control-group">
-                {{input type="text" placeholder="artist (e.g. nirvana)" value=newArtist}}
-              </div>
-              <div class="control-group">
-                <button class="btn ca_button" {{action 'searchMemories'}}><i class="icon-search icon-white"></i> search</button>
-              </div>   
-            </fieldset>            
-          </form>
-        </div>
-
-        <div> 
-          <ul>
-            {{#each}}
-              <li>
-                {{title}} @ {{g_place}}
-              </li>
-            {{/each}}
-          </ul>
-        </div>
-
+    <div id="share_tab">
+    
+      <h4>Share Memories</h4>      
+    
+      <!-- first, ask which song -->
+      <div class="share_tab_sub" id="share_tab_select_video">
+        <p>Which song? </p>            
+        <form>
+          <fieldset>
+            <div class="control-group">
+              {{input type="text" placeholder="title (e.g. the scientist)" value=newTitle}} 
+            </div>
+            <div class="control-group">
+              {{input type="text" placeholder="artist (e.g. the coldplay)" value=newArtist}}
+            </div>
+            <!-- clicking on button pulls up next stage -->
+            <div class="control-group">
+              <button class="ca_button" {{action 'searchYoutube'}}> find videos for it </button> 
+            </div>
+          </fieldset>
+        </form>  
       </div>
 
-      <div id="share_tab">
+
+      <!-- secondly, choose location associated with memory -->
+      <div class="share_tab_sub" id="share_tab_select_location" style="display:none">
+        <p> Enter location associated with memory </p>                    
+        <!-- search box for location -->      
+        <input id="autocomplete" placeholder="start typing and click on drop-down menu" type="text">  
+        <br/>
+        <button id="select_place_button" class="btn ca_button" {{action 'confirmLocation'}}> yup - this is the place! </button>                                            
+        </input>        
+      </div>   
+
+      <!-- finally, details about the memory -->
+      <form class="share_tab_sub" id="share_tab_final_submit" style="display:none">
+        <p> Finally, tell us what the song reminds you of! </p>     
+        <div>
+          <label>When</label>            
+          {{input type="text" id="memoryDateShare" value=newMemoryDate}} 
+        </div>  
+        <div class="control-group">
+            {{textarea placeholder="reminds me of..." rows=10 cols=30 value=newStory}} 
+        </div>           
+        <div class="control-group">
+            {{input type="text" placeholder="tags (e.g. trip, friend)" value=newTags}} 
+        </div>                                                                   
+        <div class="control-group">
+            <button class="btn ca_button" {{action 'insertMemory'}}>share memory</button> 
+        </div>                
+      </form>            
+    </div> 
+  </div>  
+
+  <div id="gsvb_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Which Song?</h3>
+    </div>
+    <div class="modal-body">
+      <!-- container for YT player -->
+        <div id="video_section_share">
+          <div id="player_container_share"> </div>              
+          <!-- GSVideoBar (interactive search result that plays YT videos when you click on thumbnails)-->
+          <div><div id="videoBar"></div></div>                  
+        </div>      
+    </div>
+    <div class="modal-footer">
+      <button class="ca_button" data-dismiss="modal" aria-hidden="true" {{action 'selectVideo'}}>Choose</button>
+    </div>
+  </div>       
+</script>
+
+<script type="text/x-handlebars" data-template-name="memories">  
+
+  <div class="memory_display ca_section">
+  {{outlet}}
+    <div id="search_tab"> 
+      <h4>Search Memories</h4>
       
-        <h4>Share Memories</h4>      
-      
-        <!-- first, ask which song -->
-        <div class="share_tab_sub" id="share_tab_select_video">
-          <p>Which song? </p>            
-          <form>
-            <fieldset>
-              <div class="control-group">
-                {{input type="text" placeholder="title (e.g. the scientist)" value=newTitle}} 
-              </div>
-              <div class="control-group">
-                {{input type="text" placeholder="artist (e.g. the coldplay)" value=newArtist}}
-              </div>
-              <!-- clicking on button pulls up next stage -->
-              <div class="control-group">
-                <button class="ca_button" {{action 'searchYoutube'}}> find videos for it </button> 
-              </div>
-            </fieldset>
-          </form>  
-        </div>
-
-
-        <!-- secondly, choose location associated with memory -->
-        <div class="share_tab_sub" id="share_tab_select_location" style="display:none">
-          <p> Enter location associated with memory </p>                    
-          <!-- search box for location -->      
-          <input id="autocomplete" placeholder="start typing and click on drop-down menu" type="text">  
-          <br/>
-          <button id="select_place_button" class="btn ca_button" {{action 'confirmLocation'}}> yup - this is the place! </button>                                            
-          </input>        
-        </div>   
-
-        <!-- finally, details about the memory -->
-        <form class="share_tab_sub" id="share_tab_final_submit" style="display:none">
-          <p> Finally, tell us what the song reminds you of! </p>     
-          <div>
-            <label>When</label>            
-            {{input type="text" id="memoryDateShare" value=newMemoryDate}} 
-          </div>  
-          <div class="control-group">
-              {{textarea placeholder="reminds me of..." rows=10 cols=30 value=newStory}} 
-          </div>           
-          <div class="control-group">
-              {{input type="text" placeholder="tags (e.g. trip, friend)" value=newTags}} 
-          </div>                                                                   
-          <div class="control-group">
-              <button class="btn ca_button" {{action 'insertMemory'}}>share memory</button> 
-          </div>                
-        </form>            
-      </div> 
-
-
-    </div>     
-
-
-
-    <div id="gsvb_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Which Song?</h3>
+        <p>What does your song mean to other people? </p>
+      <div class="search_tab_sub">
+        <!-- <button class="btn ca_button" {{action 'renderMap'}}><i class="icon-search icon-white"></i> search</button> -->
+        <form>            
+          <fieldset>                        
+            <div class="control-group">
+              {{input type="text" placeholder="title (e.g. smells like teen spirit)" value=newTitle}}                  
+            </div>
+            <div class="control-group">
+              {{input type="text" placeholder="artist (e.g. nirvana)" value=newArtist}}
+            </div>
+            <div class="control-group">
+              <button class="btn ca_button" {{action 'searchMemories'}}><i class="icon-search icon-white"></i> search</button>
+            </div>   
+          </fieldset>            
+        </form>
       </div>
-      <div class="modal-body">
-        <!-- container for YT player -->
-          <div id="video_section_share">
-            <div id="player_container_share"> </div>              
-            <!-- GSVideoBar (interactive search result that plays YT videos when you click on thumbnails)-->
-            <div><div id="videoBar"></div></div>                  
-          </div>      
+
+      <div> 
+        <ul>
+          {{#each}}
+            <li>
+              {{title}} @ {{g_place}}
+            </li>
+          {{/each}}
+        </ul>
       </div>
-      <div class="modal-footer">
-        <button class="ca_button" data-dismiss="modal" aria-hidden="true" {{action 'selectVideo'}}>Choose</button>
-      </div>
+
     </div>
 
-    
-  </script>
+
+</script>
