@@ -217,167 +217,7 @@ function initialize() {
         })(marker, i));
     } 
 };
-
-/*
-*
-*   search memory
-*       pulls relevant videos from database when user submits search form
-*
-*/
-$(document).ready(function() {     
-    // when user clicks on search button
-    $("#search_button").click(function() {               
-        // make sure that if a video was already playing we remove it first
-        player.stopVideo();
-        //$("#player").hide();
-        // clear map by removing all current markers from map
-        //for (var i = 0; i < current_markers.length; i++) {
-        //    current_markers[i].setMap(null);
-        //}          
-        
-        // store input as variables
-        var title = $("#title_search").val();
-        var artist = $("#artist_search").val();
-
-        // rawDateMin = $("#memoryDateMin").val();
-        // rawDateMax = $("#memoryDateMax").val();
-
-        // memoryDateMin = $("#memoryDateMin").val().split("/");
-        // memoryDateMax = $("#memoryDateMax").val().split("/");        
-        // var minMonth = parseInt(memoryDateMin[0]);
-        // var minDate = parseInt(memoryDateMin[1]);
-        // var minYear = parseInt(memoryDateMin[2]);
-        
-        // var maxMonth = parseInt(memoryDateMax[0]);
-        // var maxDate = parseInt(memoryDateMax[1]);
-        // var maxYear = parseInt(memoryDateMax[2]);
-
-        // console.log(memoryDateMin);
-        // console.log(memoryDateMax);
-        // console.log(maxMonth);
-        // console.log({
-        //         title: title,
-        //         artist: artist,
-        //         //memoryDateMin: memoryDateMin,
-        //         //memoryDateMax: memoryDateMax
-        //         rawDateMin: rawDateMin,
-        //         rawDateMax: rawDateMax,
-        //         minMonth: minMonth,
-        //         minDate: minDate,
-        //         minYear: minYear,
-        //         maxMonth: maxMonth,
-        //         maxDate: maxDate,
-        //         maxYear: maxYear
-        //     })
-
-
-        $.ajax({        
-            url: '/yogurtjam/video_search/searchVideos',
-            type: 'POST',
-            data: {
-                title: title,
-                artist: artist
-                // ,
-                //memoryDateMin: memoryDateMin,
-                //memoryDateMax: memoryDateMax
-                // rawDateMin: rawDateMin,
-                // rawDateMax: rawDateMax,
-                // minMonth: minMonth,
-                // minDate: minDate,
-                // minYear: minYear,
-                // maxMonth: maxMonth,
-                // maxDate: maxDate,
-                // maxYear: maxYear
-            },
-            dataType: "json",
-            success: function(response) {               
-                markers = response;
-                //player.loadVideoById(response);
-                // plant the new markers
-                initialize();
-                $("#search_tab").hide();
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.status);
-                alert(thrownError);
-            }          
-        });
-
-        // not actually making POST, so have to return false
-        return false; 
-    });      
-});
-
-
-/*
-*
-*   share memory
-*       inserts user submission into database
-*
-*/
-$(document).ready(function() { 
-    // when user clicks on share button
-    $("#share_button").click(function() {
-
-        // take care of tabs
-        $('#share_tab_select_video').show();
-        $('#select_video').hide();
-        $('#video_selection_share').hide();
-        $('#share_tab_final_submit').hide();
-
-        // clear map by removing all current markers
-        for (var i = 0; i < current_markers.length; i++) {
-            current_markers[i].setMap(null);
-        }
-        
-        // store input as variables
-        var title = $("#title_share").val();
-        var artist = $("#artist_share").val();
-        var lat = new_place_lat;
-        var lng = new_place_lng;
-        var g_place = new_place_g_place;
-        // var month = $("#month_share").val();        
-        // var year = $("#year_share").val();
-        var story = $("#story_share").val();        
-        var tag1 = $("#tag1_share").val(); 
-
-        var memoryDateShare = $("#memoryDateShare").val(); 
-
-        // use stored variables to send ajax request
-        // (which validates input, inserts it into the "memory" table in SQL database, 
-        //  and pulls all memories with the same title and artist as user's input)
-        $.ajax({
-        
-            url: '/yogurtjam/video_share/shareVideos',
-            type: 'POST',
-            data: {
-                title: title,
-                artist: artist,
-                video_id: video_id,
-                lat: lat,
-                lng: lng,
-                g_place: g_place,
-                memoryDateShare: memoryDateShare,
-                // month: 1,
-                // year: 1,
-                story: story,
-                tag1: tag1
-            },
-            dataType: "json",
-            success: function(response) {             
-                markers = response;
-                $("#search_mode").click();                  
-                initialize();                                
-                // change the title of the website to match the title of the song
-                //$("#title").text(title + " - " + artist);                  
-                // direct user to the search tab                
-                //$('#myTab a[href="#search_tab"]').tab('show');
-            }              
-        }); 
-
-        return false; 
-    });         
-});      
+  
 
 /*
 *
@@ -459,14 +299,6 @@ function onYouTubeIframeAPIReady() {
     });
 } 
 
-// have YT player hidden at first so user doesn't get confused by empty container
-// $("#player").hide();
-
-//helper functions
-// function stopVideo() {
-//    player.stopVideo();
-// }
-
 /*
 *
 *   tab-related code
@@ -494,12 +326,6 @@ $(document).ready(function() {
 $("#myTab").click(function() {   
     player.stopVideo();
 }); 
-
-$(document).ready(function() {
-    $('#search_button').click(function () {        
-          $("input[type=text], textarea").val("");
-    })
-})
 
 $(document).ready(function() {
     $("#search_mode").click();
@@ -534,58 +360,3 @@ function clearAll() {
 
     $("input[type=text], textarea").val("");
 };
-
-
-
-// datepicker
-// $(function() {
-    // $( "#memoryDateMin" ).datepicker({
-    //     defaultDate: "+1w",
-    //     changeYear: true,
-    //     changeMonth: true,
-    //     numberOfMonths: 1,
-    //     onClose: function( selectedDate ) {
-    //         $( "#memoryDateMax" ).datepicker( "option", "minDate", selectedDate );
-    //     }
-    // });
-
-    // $( "#memoryDateMax" ).datepicker({
-    //     defaultDate: "+1w",
-    //     changeYear: true,      
-    //     changeMonth: true,
-    //     numberOfMonths: 1,
-    //     onClose: function( selectedDate ) {
-    //         $( "#memoryDateMin" ).datepicker( "option", "maxDate", selectedDate );
-    //     }
-    // });
-
-    // $( "#memoryDateShare" ).datepicker({
-        // defaultDate: "+1w",
-        // changeYear: true,      
-        // changeMonth: true,
-        // numberOfMonths: 1,
-        // onClose: function( selectedDate ) {
-        //     $( "#memoryDateMin" ).datepicker( "option", "maxDate", selectedDate );
-        // }
-    // });
-
-    // // auto-populate date range
-    // var today = new Date();
-    // var dd = today.getDate();
-    // var min_dd = 1;
-
-    // var mm = today.getMonth()+1; //January is 0!
-
-    // var yyyy = today.getFullYear();
-    
-    // if (dd < 10) {dd = '0' + dd} 
-    
-    // if (mm < 10) {mm = '0' + mm} 
-    
-    // today = mm + '/' + dd + '/' + yyyy;
-    // var min_day = mm + '/' + min_dd + '/' + (yyyy - 1);
-
-    // $("#memoryDateMin").val(min_day);
-    // $("#memoryDateMax").val(today);
-
-// });

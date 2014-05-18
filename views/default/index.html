@@ -15,12 +15,12 @@
     
     <div class="memory_display ca_section">
       
-      <div id = "search_tab"> 
+      <div id="search_tab"> 
         <h4>Search Memories</h4>
           <p>What does your song mean to other people? </p>
         <div class="search_tab_sub">
           <!-- <button class="btn ca_button" {{action 'renderMap'}}><i class="icon-search icon-white"></i> search</button> -->
-          <form id="search_form_rest">            
+          <form>            
             <fieldset>                        
               <div class="control-group">
                 {{input type="text" placeholder="title (e.g. smells like teen spirit)" value=newTitle}}                  
@@ -44,10 +44,10 @@
             {{/each}}
           </ul>
         </div>
-        
+
       </div>
 
-      <div id = "share_tab">
+      <div id="share_tab">
       
         <h4>Share Memories</h4>      
       
@@ -64,7 +64,7 @@
               </div>
               <!-- clicking on button pulls up next stage -->
               <div class="control-group">
-                <button id="youtube_search_button" class="ca_button" {{action 'searchYoutube'}}> find videos for it </button> 
+                <button class="ca_button" {{action 'searchYoutube'}}> find videos for it </button> 
               </div>
             </fieldset>
           </form>  
@@ -115,7 +115,7 @@
           </div>      
       </div>
       <div class="modal-footer">
-        <button id="select_video" class="ca_button" data-dismiss="modal" aria-hidden="true" {{action 'selectVideo'}}>Choose</button>
+        <button class="ca_button" data-dismiss="modal" aria-hidden="true" {{action 'selectVideo'}}>Choose</button>
       </div>
     </div>
 
