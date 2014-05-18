@@ -27,13 +27,13 @@ Memories.MemoriesController = Ember.ArrayController.extend({
     searchMemories: function() {
       var title = this.get('newTitle');
       var artist = this.get('newArtist');
-      
+
       $.getJSON('http://127.0.0.1:8000/yogurtjam/default/api/memory?artist=' + artist + '&title=' + title)
         .then(function(response) {          
           markers = response.memories;          
           Memories.Memory.store.unloadAll(Memories.Memory);
           Memories.Memory.store.pushMany('memory', markers);
-          initialize();
+          drawOnMap();
           $("#search_tab").hide();
       });
 

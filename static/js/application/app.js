@@ -110,10 +110,10 @@ function initialize() {
 
     //once user types into Google Places text box and selects a location, pull relevant info
        
-    // infowindow object (i.e. pop-up window in Google Maps)
-    var infowindow = new google.maps.InfoWindow({
-        maxWidth: 240
-    });   
+    // // infowindow object (i.e. pop-up window in Google Maps)
+    // var infowindow = new google.maps.InfoWindow({
+    //     maxWidth: 240
+    // });   
     
     // once place "changes" (user selects location using the autocomplete text box)   
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
@@ -158,8 +158,14 @@ function initialize() {
             new_place_lng = new_place_lat_lng.lng();
             new_place_g_place = place.name;            
         });        
+    });    
+    drawOnMap();  
+};
+  
+function drawOnMap() {
+    var infowindow = new google.maps.InfoWindow({
+        maxWidth: 240
     });      
-           
     // if data (memories) were fed in the form of an array called "markers", plan them 
     // global array "current_markers" - used to keep track of planted markers and clear maps throughout the website        
     current_markers = [];
@@ -216,8 +222,8 @@ function initialize() {
             }
         })(marker, i));
     } 
-};
-  
+}
+
 
 /*
 *
