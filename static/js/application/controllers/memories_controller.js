@@ -18,15 +18,25 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       todo.save();
     },
 
+    renderMap: function() {
+      // debugger;
+      var items = this.store.find('memory');
+      console.log(items);
+    },
+
     searchMemories: function() {
       var title = this.get('newTitle');
       var artist = this.get('newArtist');
-      $.getJSON('http://127.0.0.1:8000/yogurtjam/default/api/memory?artist=' + artist + '&title=' + title + 'firework')
-        .then(function(response) {
-          markers = response.memories;
+      
+      $.getJSON('http://127.0.0.1:8000/yogurtjam/default/api/memory?artist=' + artist + '&title=' + title)
+        .then(function(response) {          
+          markers = response.memories;          
+          Memories.Memory.store.unloadAll(Memories.Memory);
+          Memories.Memory.store.pushMany('memory', markers);
           initialize();
           $("#search_tab").hide();
-      })
+      });
+
     },
 
     searchYoutube: function() {

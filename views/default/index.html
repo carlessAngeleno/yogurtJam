@@ -19,6 +19,7 @@
         <h4>Search Memories</h4>
           <p>What does your song mean to other people? </p>
         <div class="search_tab_sub">
+          <!-- <button class="btn ca_button" {{action 'renderMap'}}><i class="icon-search icon-white"></i> search</button> -->
           <form id="search_form_rest">            
             <fieldset>                        
               <div class="control-group">
@@ -33,6 +34,17 @@
             </fieldset>            
           </form>
         </div>
+
+        <div> 
+          <ul>
+            {{#each}}
+              <li>
+                {{title}} @{{g_place}}
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+        
       </div>
 
       <div id = "share_tab">
