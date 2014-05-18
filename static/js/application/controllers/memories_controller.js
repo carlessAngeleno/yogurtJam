@@ -69,7 +69,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
           video_url.length
       );
       this.set('video_id', video_id);
-      $("#share_button").show();      
+      // $("#share_button").show();      
     },
 
     confirmLocation: function() {
@@ -88,8 +88,8 @@ Memories.MemoriesController = Ember.ArrayController.extend({
         this.set('g_place', place.name);   
 
         // switch tabs
-        $('#share_tab_final_submit').show();
-        $('#share_tab_select_location').hide();         
+        // $('#share_tab_final_submit').show();
+        // $('#share_tab_select_location').hide();         
     },    
 
     insertMemory: function() {     
