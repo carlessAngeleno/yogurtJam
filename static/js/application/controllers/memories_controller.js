@@ -19,12 +19,6 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       todo.save();
     },
 
-    renderMap: function() {
-      // debugger;
-      var items = this.store.find('memory');
-      console.log(items);
-    },
-
     searchMemories: function() {
       var title = this.get('newTitle');
       var artist = this.get('newArtist');

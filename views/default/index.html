@@ -11,12 +11,21 @@
 
 
 
+  <script type="text/x-handlebars" data-template-name="memories/index">  
+    <h1> slfdkjsldkfjslkfjd </h1>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="memories/hot">  
+    <h1> HOT </h1>
+  </script>
+
   <script type="text/x-handlebars" data-template-name="memories">  
-    
+
     <div class="memory_display ca_section">
-      
+    {{outlet}}
       <div id="search_tab"> 
         <h4>Search Memories</h4>
+        
           <p>What does your song mean to other people? </p>
         <div class="search_tab_sub">
           <!-- <button class="btn ca_button" {{action 'renderMap'}}><i class="icon-search icon-white"></i> search</button> -->
@@ -99,7 +108,11 @@
           </div>                
         </form>            
       </div> 
+
+
     </div>     
+
+
 
     <div id="gsvb_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
@@ -119,4 +132,5 @@
       </div>
     </div>
 
-</script>
+    
+  </script>

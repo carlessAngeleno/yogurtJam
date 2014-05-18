@@ -1,5 +1,7 @@
 Memories.Router.map(function() {
-  this.resource('memories', { path: '/' });
+  this.resource('memories', { path: '/' }, function() {
+    this.route('hot');
+  });
 });
 
 // Load from api
@@ -10,5 +12,27 @@ Memories.MemoriesRoute = Ember.Route.extend({
     //     return response.memories;
     // })
      return this.store.find('memory');
+  }
+});
+
+
+
+// Todos.Router.map(function () {
+//   this.resource('todos', { path: '/' }, function () {
+//     // additional child routes will go here later
+//   });
+// });
+
+
+
+Memories.MemoriesIndexRoute = Ember.Route.extend({
+  model: function() {
+    return this.modelFor('memories');
+  }
+});
+
+Memories.MemoriesHotRoute = Ember.Route.extend({
+  model: function() {
+    return this.modelFor('memories');
   }
 });
