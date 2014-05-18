@@ -23,7 +23,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       var title = this.get('newTitle');
       var artist = this.get('newArtist');
 
-      $.getJSON('http://127.0.0.1:8000/yogurtjam/default/api/memory?artist=' + artist + '&title=' + title)
+      $.getJSON('http://apps.carlessangeleno.com/yogurtjam/default/api/memory?artist=' + artist + '&title=' + title)
         .then(function(response) {          
           markers = response.memories;          
           Memories.Memory.store.unloadAll(Memories.Memory);
@@ -103,7 +103,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       var placeholder = this;
 
       $.post(
-        "http://127.0.0.1:8000/yogurtjam/default/api/memory",
+        "http://apps.carlessangeleno.com/yogurtjam/default/api/memory",
         { 
           "story": this.get('newStory'), 
           "tag1": this.get('newTags'), 
