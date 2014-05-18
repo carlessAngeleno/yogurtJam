@@ -1,4 +1,5 @@
 Memories.MemoriesController = Ember.ArrayController.extend({
+
   actions: {
     createTodo: function() {
       // Get the todo title set by the "New Todo" text field
@@ -124,9 +125,6 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       .done(function(data) {
         initialize();
         placeholder.send('searchMemories');
-        
-        // debugger;
-        // drawOnMap(markers);
       });
     }
   }
