@@ -95,6 +95,9 @@
         <p>What does your song mean to other people? </p>
       <div class="search_tab_sub">
         <!-- <button class="btn ca_button" {{action 'renderMap'}}><i class="icon-search icon-white"></i> search</button> -->
+        {{#link-to "memories.share" activeClass="selected"}}        
+          <button class="btn ca_button" type="button">share</button>
+        {{/link-to}}
         <form>            
           <fieldset>                        
             <div class="control-group">
