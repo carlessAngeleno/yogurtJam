@@ -163,7 +163,9 @@
         {{input type="text" placeholder="tags (e.g. trip, friend)" value=newTags}} 
     </div>                                                                   
     <div class="control-group">
+    {{#link-to "memories.index"}}    
         <button class="btn ca_button" {{action 'insertMemory'}}>share memory</button> 
+    {{/link-to}}
     </div>                
   </form>    
 </script>
