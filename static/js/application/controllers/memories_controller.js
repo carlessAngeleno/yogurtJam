@@ -57,9 +57,9 @@ Memories.MemoriesController = Ember.ArrayController.extend({
     
     selectVideo: function() {
       // switch tabs
-      $('#share_tab_select_location').show();
-      $('#share_tab_select_video').hide();
-      $('#share_tab_final_submit').hide();
+      // $('#share_tab_select_location').show();
+      // $('#share_tab_select_video').hide();
+      // $('#share_tab_final_submit').hide();
 
       // parse video_url and store video's unique id (by YT)
       // as a global that can be used by other functions
@@ -120,6 +120,25 @@ Memories.MemoriesController = Ember.ArrayController.extend({
         initialize();
         placeholder.send('searchMemories');
       });
+    },
+
+    // resetShare: function() {
+    //   $("#share_tab").hide();
+    //   $("#search_tab").show();
+    //   $('.content_display').show();  
+    //   clearAll();       
+    // },    
+
+    resetSearch: function() {
+      // $("#search_tab").hide();
+      // $("#share_tab").show();
+      // $('#share_tab_final_submit').hide();
+      // $('#share_tab_select_location').hide();
+      // $('#video_section_share').hide();        
+      // $('.content_display').hide();  
+      // clearAll();    
+      // player.stopVideo();
+      // $("#player").hide();         
     }
   }
 });

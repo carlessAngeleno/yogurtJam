@@ -34,7 +34,7 @@
             <button class="btn ca_button" type="button">search</button>
           {{/link-to}}   
           {{#link-to "memories.share.song"}}        
-            <button class="btn ca_button" type="button">share</button>
+            <button class="btn ca_button" type="button" {{action 'resetSearch'}}>share</button>
           {{/link-to}}
         </li>          
 
@@ -139,7 +139,7 @@
   <div class="share_tab_sub" id="share_tab_select_location">
     <p> Enter location associated with memory </p>                    
     <!-- search box for location -->      
-    <input id="autocomplete" placeholder="start typing and click on drop-down menu" type="text">  
+    {{g-places-input id="autocomplete" placeholder="start typing and click on drop-down menu"}}    
     <br/>
     {{#link-to "memories.share.story"}}
       <button id="select_place_button" class="btn ca_button" {{action 'confirmLocation'}}> yup - this is the place! </button>
