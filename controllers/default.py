@@ -30,7 +30,7 @@ def api():
         # if not tablename=='person': raise HTTP(400)
         # return dict(person = db.person(id))
     def GET(tablename, title, artist):
-        results = yj(yj[tablename].title == title and yj[tablename].artist == artist).select()
+        results = yj((yj[tablename].title == title) & (yj[tablename].artist == artist)).select()
         return dict(memories = results)        
     # def GET():
     #     return dict(
