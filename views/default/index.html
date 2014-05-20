@@ -55,7 +55,7 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="memories/index">  
-  <div id="search_tab"> 
+  <div id="search_tab">
     <h4>Search Memories</h4>      
       <p>What does your song mean to other people? </p>
     <div class="search_tab_sub">
@@ -69,10 +69,22 @@
             {{input type="text" placeholder="artist (e.g. nirvana)" value=newArtist}}
           </div>
           <div class="control-group">
+           {{#link-to "memories.results"}}
             <button class="btn ca_button" {{action 'searchMemories'}}><i class="icon-search icon-white"></i> search</button>
+            {{/link-to}}
           </div>   
         </fieldset>            
       </form>
+    </div>
+  </div>  
+</script>
+
+<script type="text/x-handlebars" data-template-name="memories/results"> 
+  <div>
+    <h4>{{newTitle}}</h4>      
+      <p>well? </p>
+    <div class="search_tab_sub">
+      <!-- <button class="btn ca_button" {{action 'renderMap'}}><i class="icon-search icon-white"></i> search</button> -->
     </div>
     <!-- Placeholder for memory list display-->
     <div> 

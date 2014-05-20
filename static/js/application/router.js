@@ -1,5 +1,6 @@
 Memories.Router.map(function() {
   this.resource('memories', { path: '/' }, function() {
+    this.route('results');
     this.resource('memories.share', {path: '/share'}, function() {
     	this.route('song');
     	this.route('location');
@@ -15,6 +16,13 @@ Memories.MemoriesRoute = Ember.Route.extend({
 });
 
 Memories.MemoriesIndexRoute = Ember.Route.extend({
+  model: function() {
+    return this.modelFor('memories');
+  },
+  controllerName: 'Memories'
+});
+
+Memories.MemoriesResultsRoute = Ember.Route.extend({
   model: function() {
     return this.modelFor('memories');
   },
