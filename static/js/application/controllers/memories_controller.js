@@ -29,15 +29,15 @@ Memories.MemoriesController = Ember.ArrayController.extend({
           Memories.Memory.store.unloadAll(Memories.Memory);
           Memories.Memory.store.pushMany('memory', markers);
           drawOnMap(markers);
-          $("#search_tab").hide();
+          // $("#search_tab").hide();
       });
     },
 
     searchYoutube: function() {
       // switch tabs
-      $('#select_video').show();
+      // $('#select_video').show();
       $("#gsvb_modal").modal({backdrop: false});
-      $('#video_section_share').show();          
+      // $('#video_section_share').show();          
       $('#share_tab_final_submit').hide;
 
       var title = this.get('newTitle');
