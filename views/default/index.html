@@ -1,10 +1,4 @@
-<?extend "layout.html"?>
-
-<div id="main_container">
-  <div id="interface">     
-    <div class="content_display"><div id="player"></div></div>      
-  </div>       
-</div>       
+<?extend "layout.html"?>     
 
 <script type="text/x-handlebars" data-template-name="memories">  
 
@@ -49,9 +43,13 @@
     </div>
   </div><!--/top navbar -->
 
-  <div class="memory_display ca_section">
-    {{outlet}}
-  </div> 
+  <div id="main_container">
+    <div id="interface">             
+      <div class="memory_display ca_section">
+        {{outlet}}
+      </div> 
+    </div>       
+  </div>          
 </script>
 
 <script type="text/x-handlebars" data-template-name="memories/index">  
@@ -80,6 +78,9 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="memories/results"> 
+  <div class="content_display">
+    {{youtube-iframe-player id="player"}}
+  </div> 
   <div>
     <h4>{{newTitle}} - {{newArtist}}</h4>
     <div class="control-group">      

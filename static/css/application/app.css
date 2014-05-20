@@ -59,7 +59,7 @@ button.ca_button.active {
 }
 
 #interface {
-  width: 380px;
+  width: 400px;
   z-index: 20;
   position: relative;  
   overflow: auto;
@@ -90,8 +90,8 @@ button.ca_button.active {
 }
 
 #main_body {
-  width: 100%;
-  margin-left: 20px;
+  /*width: 100%;*/
+  /*margin-left: 20px;*/
 }
 
 #search_tab, #share_tab {

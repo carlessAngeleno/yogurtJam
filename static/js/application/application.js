@@ -1,5 +1,5 @@
 window.Memories = Ember.Application.create({
-	rootElement: "#interface",
+	// rootElement: "#main_body",
     LOG_TRANSITIONS: true
 });
 
