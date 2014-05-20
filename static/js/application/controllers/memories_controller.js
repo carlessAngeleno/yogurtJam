@@ -31,7 +31,6 @@ Memories.MemoriesController = Ember.ArrayController.extend({
           drawOnMap(markers);
           $("#search_tab").hide();
       });
-
     },
 
     searchYoutube: function() {
@@ -56,11 +55,6 @@ Memories.MemoriesController = Ember.ArrayController.extend({
     },
     
     selectVideo: function() {
-      // switch tabs
-      // $('#share_tab_select_location').show();
-      // $('#share_tab_select_video').hide();
-      // $('#share_tab_final_submit').hide();
-
       // parse video_url and store video's unique id (by YT)
       // as a global that can be used by other functions
       var video_url = $("a.title_gsvb").attr("href");
@@ -69,27 +63,14 @@ Memories.MemoriesController = Ember.ArrayController.extend({
           video_url.length
       );
       this.set('video_id', video_id);
-      // $("#share_button").show();      
     },
 
     confirmLocation: function() {
-        // enable datepicker (not the ember way - need to fix)
-        $( "#memoryDateShare" ).datepicker({
-            defaultDate: "+1w",
-            changeYear: true,      
-            changeMonth: true,
-            numberOfMonths: 1,
-        });
-
         var place = autocomplete.getPlace();
         var new_place_lat_lng = place.geometry.location;
         this.set('lat', new_place_lat_lng.lat()); 
         this.set('lng', new_place_lat_lng.lng());
-        this.set('g_place', place.name);   
-
-        // switch tabs
-        // $('#share_tab_final_submit').show();
-        // $('#share_tab_select_location').hide();         
+        this.set('g_place', place.name);
     },    
 
     insertMemory: function() {     

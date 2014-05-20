@@ -152,9 +152,8 @@
   <!-- finally, details about the memory -->
   <form class="share_tab_sub" id="share_tab_final_submit">
     <p> Finally, tell us what the song reminds you of! </p>     
-    <div>
-      <label>When</label>            
-      {{input type="text" id="memoryDateShare" value=newMemoryDate}} 
+    <div class="control-group">
+      {{datepicker-input value=newMemoryDate placeholder="when?"}} 
     </div>  
     <div class="control-group">
         {{textarea placeholder="reminds me of..." rows=10 cols=30 value=newStory}} 
