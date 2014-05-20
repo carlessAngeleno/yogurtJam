@@ -34,11 +34,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
     },
 
     searchYoutube: function() {
-      // switch tabs
-      // $('#select_video').show();
       $("#gsvb_modal").modal({backdrop: false});
-      // $('#video_section_share').show();          
-      $('#share_tab_final_submit').hide;
 
       var title = this.get('newTitle');
       var artist = this.get('newArtist');
@@ -101,25 +97,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
         // initialize();
         placeholder.send('searchMemories');
       });
-    },
-
-    // resetShare: function() {
-    //   $("#share_tab").hide();
-    //   $("#search_tab").show();
-    //   $('.content_display').show();  
-    //   clearAll();       
-    // },    
-
-    resetSearch: function() {
-      // $("#search_tab").hide();
-      // $("#share_tab").show();
-      // $('#share_tab_final_submit').hide();
-      // $('#share_tab_select_location').hide();
-      // $('#video_section_share').hide();        
-      // $('.content_display').hide();  
-      // clearAll();    
-      // player.stopVideo();
-      // $("#player").hide();         
     }
-  }
+
+  } // end of actions
 });
