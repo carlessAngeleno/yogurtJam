@@ -34,7 +34,7 @@
             <button class="btn ca_button" type="button">search</button>
           {{/link-to}}   
           {{#link-to "memories.share.song"}}        
-            <button class="btn ca_button" type="button" {{action 'resetSearch'}}>share</button>
+            <button class="btn ca_button" type="button">share</button>
           {{/link-to}}
         </li>          
 
@@ -81,9 +81,9 @@
 
 <script type="text/x-handlebars" data-template-name="memories/results"> 
   <div>
-    <h4>{{newTitle}}</h4>
+    <h4>{{newTitle}} - {{newArtist}}</h4>
     <div class="control-group">      
-      <button class="btn ca_button"><i class="icon-random icon-white"></i></button>
+      <!-- <button class="btn ca_button"><i class="icon-random icon-white"></i></button> -->
       <button class="btn ca_button"><i class="icon-resize-small icon-white"></i> </button>
       <!-- <button class="btn ca_button"><i class=" icon-zoom-out icon-white"></i> </button> -->
       <button class="btn ca_button"><i class="icon-forward icon-white"></i> </button>                  
@@ -181,7 +181,7 @@
         {{input type="text" placeholder="tags (e.g. trip, friend)" value=newTags}} 
     </div>                                                                   
     <div class="control-group">
-    {{#link-to "memories.index"}}    
+    {{#link-to "memories.results"}}    
         <button class="btn ca_button" {{action 'insertMemory'}}>share memory</button> 
     {{/link-to}}
     </div>                
