@@ -240,15 +240,3 @@ $(document).ready(function() {
 $("#myTab").click(function() {   
     player.stopVideo();
 });
-
-function clearAll() {
-    
-    player.stopVideo();
-    $("#player").hide();
-
-    for (var i = 0; i < current_markers.length; i++) {
-        current_markers[i].setMap(null);
-    }
-
-    $("input[type=text], textarea").val("");
-};
