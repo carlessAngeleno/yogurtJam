@@ -22,14 +22,14 @@ Memories.MemoriesController = Ember.ArrayController.extend({
     searchMemories: function() {
       var title = this.get('newTitle');
       var artist = this.get('newArtist');
+      var scope = this;
 
       $.getJSON('/yogurtjam/default/api/memory?artist=' + artist + '&title=' + title)
         .then(function(response) {          
           markers = response.memories;          
           Memories.Memory.store.unloadAll(Memories.Memory);
           Memories.Memory.store.pushMany('memory', markers);
-          drawOnMap(markers);
-          // $("#search_tab").hide();
+          scope.drawOnMap(markers);
       });
     },
 
@@ -40,7 +40,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       var artist = this.get('newArtist');
 
       // GSVideoBar
-      LoadVideoBar(title, artist, "player_container_share");
+      this.loadVideoBar(title, artist, "player_container_share");
 
       // simulate a click on the first thumnail so user doesn't have to
       setTimeout(function(){
@@ -77,7 +77,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
         return formatted +  ' 00:00:00';
       }
 
-      var placeholder = this;
+      var scope = this;
 
       $.post(
         "/yogurtjam/default/api/memory",
@@ -94,9 +94,97 @@ Memories.MemoriesController = Ember.ArrayController.extend({
         }
       )
       .done(function(data) {
-        placeholder.send('searchMemories');
+        scope.send('searchMemories');
       });
     }
 
-  } // end of actions
+  }, // end of actions
+
+  drawOnMap: function(markers) {
+      var infowindow = new google.maps.InfoWindow({
+          maxWidth: 240
+      });      
+      // if data (memories) were fed in the form of an array called "markers", plan them 
+      // global array "current_markers" - used to keep track of planted markers and clear maps throughout the website        
+      current_markers = [];
+
+      // for every element in the "markers" array
+      for (i = 0; i < markers.length; i++) {  
+          
+          // plant a marker on the map using lat/long coordinates
+          var marker = new google.maps.Marker({
+              map: map,
+              clickable: true,
+              position: new google.maps.LatLng(markers[i].lat, markers[i].lng)                                            
+          });
+          
+          // add the marker to the current_markers array (so we can remove them later by referring to this)
+          current_markers.push(marker)
+          
+          // plant info (pulled from db) into each marker
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              return function() {  
+
+                  // map focuses onto marker
+                  map.setCenter(marker.position);
+                  map.setZoom(17);
+
+
+                  // display infowindow                  
+                  infowindow.setContent(
+                      '<div><strong>' 
+                      //+ markers[i].m_month + '/' + markers[i].m_year + ' - ' + markers[i].g_place 
+                      + markers[i].memoryDateShare.split(" ")[0]
+                      + '</strong><br>' 
+                      + markers[i].g_place + '<br>'
+                      + markers[i].story + '<br><br>'
+                      + '<div style="font-style:italic; font-size:8pt;"> shared:' + markers[i].time_added + '</div>'
+                  );                
+                  infowindow.open(map, marker);
+                                 
+                  // marker's relationship with youtube player
+                  // extract the id of video currently playing (always between "watch?v=" and "&feature" strings in the url)
+                  var currently_playing = player.getVideoUrl();
+                  var currently_playing = currently_playing.substr(
+                      currently_playing.indexOf("v=") + 2, 
+                      11
+                  );
+                  
+                  // if the video associated with this marker is different than one currently playing (including empty value = none playing)                  
+                      
+                  if (currently_playing !== markers[i].video_id) {
+                      // load and play the new video
+                      $("#player").show();
+                      player.loadVideoById(markers[i].video_id);
+                  }
+              }
+          })(marker, i));
+      } 
+  },
+
+  loadVideoBar: function(title, artist, yt_player_name) {
+      // initialize
+      var videoBar;
+      var barContainer = document.getElementById("videoBar");
+      var player_container_search = document.getElementById(yt_player_name);
+
+      // config video bar; search is done using title and artist as keywords
+      var options = {
+          largeResultSet : true,
+          autoExecuteList : {
+              cycleTime : GSvideoBar.CYCLE_TIME_SHORT,
+              cycleMode : GSvideoBar.CYCLE_MODE_LINEAR,
+              executeList : [ 
+                  title, 
+                  artist,
+                  title + " " + artist,
+                  artist + " " + title 
+              ]          
+          },
+          horizontal : true,
+          thumbnailSize : GSvideoBar.THUMBNAILS_SMALL       
+      }
+
+      videoBar = new GSvideoBar(barContainer,  player_container_search, options);
+  }
 });
