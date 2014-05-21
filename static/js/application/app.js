@@ -95,18 +95,6 @@ function initialize() {
     //Associate the styled map with the MapTypeId and set it to display.
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
-
-    // insert Google Places search capability
-    // set autocomplete options to show only establishments
-    var acOptions = {
-        types: ['establishment', 'geocode']
-    };
-    
-    autocomplete = new google.maps.places.Autocomplete(
-        document.getElementById('autocomplete'),acOptions
-    );
-    
-    autocomplete.bindTo('bounds', map);    
 };
   
 function drawOnMap(markers) {
