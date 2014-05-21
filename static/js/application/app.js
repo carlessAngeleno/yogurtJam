@@ -1,8 +1,3 @@
-// show player on initial load
-$(document).ready(function() {          
-   $("#player").hide();
-})
-
 // draws map and plants markers
 function initialize() {
 
@@ -209,30 +204,7 @@ function onYouTubeIframeAPIReady() {
     });
 } 
 
-/*
-*
-*   tab-related code
-*       
-*
-*/
-//Tab-menu interface feature
-$(document).ready(function() {      
-    // if user click away from the search tab to the share tab 
-    $('#myTab a[href="#share_tab"]').click(function() {  
-        // remove any video that might currently be playing on the search tab
-        player.stopVideo();
-        //$("#player").hide(); 
-    });
-});   
-
-$(document).ready(function() {
-    // click on the tab switches view
-    $('#myTab a').click(function (e) {
-        e.preventDefault();
-        $(this).tab('show');
-    })
-});  
-
-$("#myTab").click(function() {   
-    player.stopVideo();
-});
+// show player on initial load
+$(document).ready(function() {          
+   $("#player").hide();
+})
