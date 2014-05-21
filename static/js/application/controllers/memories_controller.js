@@ -106,7 +106,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       });      
       // if data (memories) were fed in the form of an array called "markers", plan them 
       // global array "current_markers" - used to keep track of planted markers and clear maps throughout the website        
-      current_markers = [];
+      var current_markers = [];
 
       // for every element in the "markers" array
       for (i = 0; i < markers.length; i++) {  
