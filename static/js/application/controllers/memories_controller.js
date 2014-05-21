@@ -54,7 +54,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       // parse video_url and store video's unique id (by YT)
       // as a global that can be used by other functions
       var video_url = $("a.title_gsvb").attr("href");
-      video_id = video_url.substr(
+      var video_id = video_url.substr(
           video_url.indexOf("watch?v=") + 8, 
           video_url.length
       );
