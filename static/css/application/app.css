@@ -74,6 +74,10 @@ button.ca_button.active {
 
 /* content player */
 
+#player {
+  display: none;
+}
+
 .content_display iframe {
     display: block;
     margin-right:auto;

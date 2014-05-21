@@ -2,8 +2,6 @@ window.Memories = Ember.Application.create({
   // rootElement: "#main_body",
     LOG_TRANSITIONS: true,
     ready: function() {
-      $("#player").hide();
-
       // create YT player
       var player;
       var tag = document.createElement('script');
