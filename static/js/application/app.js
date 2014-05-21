@@ -239,29 +239,7 @@ $(document).ready(function() {
 
 $("#myTab").click(function() {   
     player.stopVideo();
-}); 
-
-// $(document).ready(function() {
-//     $("#search_mode").click();
-    
-//     // click on the tab switches view
-//     $("#share_mode").click(function () {
-//     $("#search_tab").hide();
-//       $("#share_tab").show();
-//         $('#share_tab_final_submit').hide();
-//         $('#share_tab_select_location').hide();
-//         $('#video_section_share').hide();        
-//         $('.content_display').hide();  
-//         clearAll();
-//   })
-//     // click on the tab switches view
-//     $("#search_mode").click(function () {
-//     $("#share_tab").hide();
-//       $("#search_tab").show();
-//         $('.content_display').show();  
-//         clearAll();        
-//     })
-// });
+});
 
 function clearAll() {
     
