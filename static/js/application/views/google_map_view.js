@@ -13,7 +13,7 @@ Memories.GoogleMapView = Ember.View.extend({
     };
 
     // Create map (note global)
-    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    map = new google.maps.Map(this.$()[0], mapOptions);
 
     // Style for map
     var styles = [
