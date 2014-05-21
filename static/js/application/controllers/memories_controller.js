@@ -94,7 +94,6 @@ Memories.MemoriesController = Ember.ArrayController.extend({
         }
       )
       .done(function(data) {
-        // initialize();
         placeholder.send('searchMemories');
       });
     }

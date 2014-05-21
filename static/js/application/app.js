@@ -6,7 +6,21 @@ $(document).ready(function() {
 // draws map and plants markers
 function initialize() {
 
-    // Create an array of styles.
+    // Options for map
+    var usa_lat_lng = new google.maps.LatLng(40.044437, -96.554509);    // Coordinate for center of the US
+
+    var mapOptions = {        
+        center: usa_lat_lng,
+        zoom: 4,
+        mapTypeControlOptions: {
+          mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+        }               
+    };
+
+    // Create map (note global)
+    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+    // Style for map
     var styles = [
       {
         "stylers": [
@@ -69,30 +83,12 @@ function initialize() {
       }
     ];
 
-    // Create a new StyledMapType object, passing it the array of styles,
-    // as well as the name to be displayed on the map type control.
     var styledMap = new google.maps.StyledMapType(
         styles,
         {name: "Styled Map"}
     );
 
-    // create map object
-    // store center coordinate of the US
-    var usa_lat_lng = new google.maps.LatLng(40.044437, -96.554509);
-
-    // options for the map we will be creating (US centered)
-    var mapOptions = {        
-        center: usa_lat_lng,
-        zoom: 4,
-        mapTypeControlOptions: {
-          mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
-        }               
-    };
-
-    // global variable called map (global since this website uses only one map)
-    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-
-    //Associate the styled map with the MapTypeId and set it to display.
+    //Associate styled map
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
 };
