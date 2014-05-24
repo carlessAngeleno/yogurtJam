@@ -12,7 +12,7 @@ import pdb
 import datetime
 
 response.delimiters = ('<?','?>')
-@auth.requires_login()
+# @auth.requires_login()
 def index():
     """
     example action using the internationalization operator T and flash

@@ -98,7 +98,9 @@
       <ul>
         {{#each}}
           <li>
-            {{g_place}}, {{tag1}}
+            {{#link-to 'memories.display' id}}
+              {{g_place}}, {{tag1}}
+            {{/link-to}}
           </li>
         {{/each}}
       </ul>
@@ -189,6 +191,10 @@
     {{/link-to}}
     </div>                
   </form>    
+</script>
+
+<script type="text/x-handlebars" data-template-name="memories/display">  
+  <p>{{g_place}}</p> 
 </script>
 
 <script type="text/x-handlebars" data-template-name="g_map">

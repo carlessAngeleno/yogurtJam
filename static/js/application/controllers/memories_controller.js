@@ -153,7 +153,6 @@ Memories.MemoriesController = Ember.ArrayController.extend({
                       currently_playing.indexOf("v=") + 2, 
                       11
                   );
-                  
                   // if the video associated with this marker is different than one currently playing (including empty value = none playing)                  
                       
                   if (currently_playing !== markers[i].video_id) {
@@ -161,6 +160,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
                       $(player.a).show();
                       player.loadVideoById(markers[i].video_id);
                   }
+                  window.location.href = "#/display/" + markers[i].id;                  
               }
           })(marker, i));
       } 
