@@ -62,6 +62,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
     },
 
     confirmLocation: function() {
+        var autocomplete = this.get('autocomplete');
         var place = autocomplete.getPlace();
         var new_place_lat_lng = place.geometry.location;
         this.set('lat', new_place_lat_lng.lat()); 

@@ -2,15 +2,19 @@ Memories.GPlacesInputView = Ember.TextField.extend({
   didInsertElement: function() {
 
     var map = this.get('controller').get('g_map');
-    
+
     var acOptions = {
       types: ['establishment', 'geocode']
     };    
-    autocomplete = new google.maps.places.Autocomplete(
+
+    var autocomplete = new google.maps.places.Autocomplete(
       this.$()[0],
       acOptions
     );   
+    this.get('controller').set('autocomplete', autocomplete);
+
     autocomplete.bindTo('bounds', map);
+
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
         
       var infoWindow = new google.maps.InfoWindow();
