@@ -79,7 +79,7 @@ button.ca_button.active {
 }
 
 .content_display iframe {
-    display: block;
+    display: none;
     margin-right:auto;
     margin-left: auto;   
 }

@@ -104,6 +104,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
   drawOnMap: function(markers) {
 
       var map = this.get('g_map');
+      var player = this.get('player');
 
       var infowindow = new google.maps.InfoWindow({
           maxWidth: 240
@@ -145,7 +146,6 @@ Memories.MemoriesController = Ember.ArrayController.extend({
                       + '<div style="font-style:italic; font-size:8pt;"> shared:' + markers[i].time_added + '</div>'
                   );                
                   infowindow.open(map, marker);
-                                 
                   // marker's relationship with youtube player
                   // extract the id of video currently playing (always between "watch?v=" and "&feature" strings in the url)
                   var currently_playing = player.getVideoUrl();
@@ -158,7 +158,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
                       
                   if (currently_playing !== markers[i].video_id) {
                       // load and play the new video
-                      $("#player").show();
+                      $(player.a).show();
                       player.loadVideoById(markers[i].video_id);
                   }
               }
