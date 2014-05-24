@@ -53,12 +53,6 @@
   </div>          
 </script>
 
-<script type="text/x-handlebars" data-template-name="g_map">
-  <div id="map_container">   
-    {{#view Memories.GoogleMapView id="map_canvas"}}{{/view}}
-  </div>
-</script>
-
 <script type="text/x-handlebars" data-template-name="memories/index">  
   <div id="search_tab">
     <h4>Search Memories</h4>      
@@ -195,4 +189,10 @@
     {{/link-to}}
     </div>                
   </form>    
+</script>
+
+<script type="text/x-handlebars" data-template-name="g_map">
+  <div id="map_container">   
+    {{#view Memories.GoogleMapView id="map_canvas"}}{{/view}}
+  </div>
 </script>

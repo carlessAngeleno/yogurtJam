@@ -132,7 +132,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
 
                   // map focuses onto marker
                   map.setCenter(marker.position);
-                  map.setZoom(17);
+                  map.setZoom(14);
 
 
                   // display infowindow                  
