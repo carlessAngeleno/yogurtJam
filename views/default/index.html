@@ -44,15 +44,19 @@
   </div><!--/top navbar -->
 
   <div id="main_container">
-    <div id="map_container">   
-      {{google-map id="map_canvas"}}
-    </div>
+    {{render 'g_map' controller='Memories'}}
     <div id="interface">             
       <div class="memory_display ca_section">
         {{outlet}}
       </div> 
     </div>       
   </div>          
+</script>
+
+<script type="text/x-handlebars" data-template-name="g_map">
+  <div id="map_container">   
+    {{#view Memories.GoogleMapView id="map_canvas"}}{{/view}}
+  </div>
 </script>
 
 <script type="text/x-handlebars" data-template-name="memories/index">  
@@ -161,8 +165,9 @@
   <!-- secondly, choose location associated with memory -->
   <div class="share_tab_sub" id="share_tab_select_location">
     <p> Enter location associated with memory </p>                    
-    <!-- search box for location -->      
-    {{g-places-input id="autocomplete" placeholder="start typing and click on drop-down menu"}}    
+    <!-- search box for location -->
+    {{render 'g_places_input' id="autocomplete" controller='Memories'}}      
+    
     <br/>
     {{#link-to "memories.share.story"}}
       <button id="select_place_button" class="btn ca_button" {{action 'confirmLocation'}}> yup - this is the place! </button>

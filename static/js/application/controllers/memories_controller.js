@@ -101,6 +101,9 @@ Memories.MemoriesController = Ember.ArrayController.extend({
   }, // end of actions
 
   drawOnMap: function(markers) {
+
+      var map = this.get('g_map');
+
       var infowindow = new google.maps.InfoWindow({
           maxWidth: 240
       });      

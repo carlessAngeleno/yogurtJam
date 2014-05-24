@@ -1,5 +1,8 @@
 Memories.GPlacesInputView = Ember.TextField.extend({
   didInsertElement: function() {
+
+    var map = this.get('controller').get('g_map');
+    
     var acOptions = {
       types: ['establishment', 'geocode']
     };    
