@@ -12,9 +12,22 @@ import pdb
 import os
 import json
 
+credentials = open(os.path.join(request.folder, 'private', 'mysql_credentials.json'))    
+credentials = json.load(credentials)
+
 if not request.env.web2py_runtime_gae:
     ## if NOT running on Google App Engine use SQLite or other DB
-    db = DAL('sqlite://storage.sqlite',pool_size=1,check_reserved=['all'])
+    # db = DAL('sqlite://storage.sqlite',pool_size=1,check_reserved=['all'])
+    db = DAL(
+        'mysql://' + 
+        credentials['user'] + ':' + 
+        credentials['password'] + '@' + 
+        credentials['host'] + '/' + 
+        credentials['db'],
+        pool_size=1,
+        check_reserved=['all']
+    )    
+    session.connect(request, response, db)
 else:
     ## connect to Google BigTable (optional 'google:datastore://namespace')
     db = DAL('google:datastore')
@@ -51,9 +64,13 @@ auth.define_tables(username=False, signature=False)
 
 ## configure email
 mail = auth.settings.mailer
-mail.settings.server = 'logging' or 'smtp.gmail.com:587'
-mail.settings.sender = 'you@gmail.com'
-mail.settings.login = 'username:password'
+# mail.settings.server = 'logging' or 'smtp.gmail.com:587'
+# mail.settings.sender = 'you@gmail.com'
+# mail.settings.login = 'username:password'
+mail.settings.server = 'smtpout.secureserver.net'
+mail.settings.sender = 'info@carlessangeleno.com'
+mail.settings.login = 'info@carlessangeleno.com:' + credentials['password']
+mail.settings.tls = False
 
 ## configure auth policy
 auth.settings.registration_requires_verification = False
@@ -85,24 +102,7 @@ use_janrain(auth, filename='private/janrain.key')
 ## after defining tables, uncomment below to enable auditing
 # auth.enable_record_versioning(db)
 
-db.define_table('person',Field('name'),Field('info'))
-db.define_table('pet',Field('owner_name',db.person),Field('name'),Field('info'))
-
-
-credentials = open(os.path.join(request.folder, 'private', 'mysql_credentials.json'))    
-credentials = json.load(credentials)
-
-yj = DAL(
-    'mysql://' + 
-    credentials['user'] + ':' + 
-    credentials['password'] + '@' + 
-    credentials['host'] + '/' + 
-    credentials['db'],
-    pool_size=1,
-    check_reserved=['all']
-)
-
-yj.define_table('memory', 
+db.define_table('memory', 
     Field('title'),   
     Field('artist'), 
     Field('time_added', 'datetime'),  

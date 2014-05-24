@@ -12,6 +12,7 @@ import pdb
 import datetime
 
 response.delimiters = ('<?','?>')
+@auth.requires_login()
 def index():
     """
     example action using the internationalization operator T and flash
@@ -20,7 +21,6 @@ def index():
     if you need a simple wiki simple replace the two lines below with:
     return auth.wiki()
     """
-    # return auth.wiki()
     return dict(message=T('Hello World'))
 
 @request.restful()
@@ -30,35 +30,15 @@ def api():
         # if not tablename=='person': raise HTTP(400)
         # return dict(person = db.person(id))
     def GET(tablename, title, artist):
-        results = yj((yj[tablename].title == title) & (yj[tablename].artist == artist)).select()
-        return dict(memories = results)        
-    # def GET():
-    #     return dict(
-    #         memories = [
-    #             dict(
-    #                 id = 1,
-    #                 title = 'web2py restful Ember.js',
-    #                 isCompleted = True
-    #             ),
-    #             dict(
-    #                 id = 2,
-    #                 title = '2.',
-    #                 isCompleted = False
-    #             ),
-    #             dict(
-    #                 id = 3,
-    #                 title = 'Profit!',
-    #                 isCompleted = False
-    #             )                
-    #         ]
-    #     )            
+        results = db((db[tablename].title == title) & (db[tablename].artist == artist)).select()
+        return dict(memories = results)         
         
     def POST(tablename,**fields):
         # pdb.set_trace()
         # if not tablename=='person': raise HTTP(400)
         # return db.person.validate_and_insert(**fields)
         fields['time_added'] = datetime.datetime.now()
-        return yj[tablename].validate_and_insert(**fields)
+        return db[tablename].validate_and_insert(**fields)
 
     return locals()
 
