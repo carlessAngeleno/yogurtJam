@@ -183,15 +183,19 @@
     <button class="btn ca_button"><i class="icon-map-marker icon-white"></i> </button>    
    <!-- <button class="btn ca_button"><i class="icon-resize-full icon-white"></i> </button>
     <button class="btn ca_button"><i class=" icon-zoom-out icon-white"></i> </button> -->
-    <button class="btn ca_button offset2"><i class="icon-heart icon-white"></i> </button>   
-    <button class="btn ca_button"><i class="icon-thumbs-down icon-white"></i> </button>         
+    <button class="btn ca_button offset1"><i class="icon-heart icon-white"></i> </button>   
+    <button class="btn ca_button"><i class="icon-thumbs-down icon-white"></i> </button>       
+    <button class="btn ca_button offset1"><i class="icon-gift icon-white"></i> </button>       
     <button class="btn ca_button" style="float:right;"><i class="icon-forward icon-white"></i> </button>                  
   </div>
   <div class="content_display">
     {{#view Memories.YoutubeIframePlayerView}}{{/view}}
   </div> 
-  <h4>{{g_place}} - {{memoryDateShare}}</h4> 
-  <p>{{story}}</p> 
+  <h4>{{g_place}}   <small>{{memoryDateShare}}</small></h4>
+  
+  <div>
+  <p>{{story}}</p>
+  </div> 
 </script>
 
 <script type="text/x-handlebars" data-template-name="g_map">
