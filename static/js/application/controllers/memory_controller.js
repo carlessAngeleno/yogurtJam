@@ -1,4 +1,5 @@
 Memories.MemoryController = Ember.ObjectController.extend({
+  needs: "memories",
   isCompleted: function(key, value){
     var model = this.get('model');
 
@@ -11,7 +12,15 @@ Memories.MemoryController = Ember.ObjectController.extend({
       model.save();
       return value;
     }
-  }.property('model.isCompleted')
+  }.property('model.isCompleted'),
+
+  yellow: function() {
+    debugger;
+
+  },
+
+  foo: 4
+
 
   
 });

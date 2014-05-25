@@ -146,21 +146,9 @@ Memories.MemoriesController = Ember.ArrayController.extend({
                       + '<div style="font-style:italic; font-size:8pt;"> shared:' + markers[i].time_added + '</div>'
                   );                
                   infowindow.open(map, marker);
-                  // marker's relationship with youtube player
-                  // extract the id of video currently playing (always between "watch?v=" and "&feature" strings in the url)
-                  var currently_playing = player.getVideoUrl();
-                  var currently_playing = currently_playing.substr(
-                      currently_playing.indexOf("v=") + 2, 
-                      11
-                  );
-                  // if the video associated with this marker is different than one currently playing (including empty value = none playing)                  
-                      
-                  if (currently_playing !== markers[i].video_id) {
-                      // load and play the new video
-                      $(player.a).show();
-                      player.loadVideoById(markers[i].video_id);
-                  }
-                  window.location.href = "#/display/" + markers[i].id;                  
+
+                  window.location.href = "#/memory/" + markers[i].id;  
+            
               }
           })(marker, i));
       } 
@@ -190,5 +178,8 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       }
 
       videoBar = new GSvideoBar(barContainer,  player_container_search, options);
-  }
+  },
+
+  fo0o: 3,
+  g_map: null
 });

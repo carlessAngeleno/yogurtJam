@@ -66,9 +66,6 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="memories/results"> 
-  <div class="content_display">
-    {{youtube-iframe-player}}
-  </div> 
   <div>
     <h4>{{newTitle}} - {{newArtist}}</h4>
     <div class="control-group">      
@@ -173,7 +170,11 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="memory">  
-  <p>{{g_place}}</p> 
+  <div class="content_display">
+    {{#view Memories.YoutubeIframePlayerView}}{{/view}}
+  </div> 
+  <h4>{{g_place}} - {{memoryDateShare}}</h4> 
+  <p>{{story}}</p> 
 </script>
 
 <script type="text/x-handlebars" data-template-name="g_map">

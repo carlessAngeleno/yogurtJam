@@ -1,6 +1,9 @@
 Memories.GoogleMapView = Ember.View.extend({
+  didInsertElement: function () {
+    this.draw();
+  },
 
-  didInsertElement: function() {
+  draw: function() {
     // Options for map
     var usa_lat_lng = new google.maps.LatLng(40.044437, -96.554509);    // Coordinate for center of the US
 
