@@ -79,9 +79,9 @@
     </div>
     <div> 
       <ul>
-        {{#each}}
+        {{#each controller}}
           <li>
-            {{#link-to 'memories.display' id}}
+            {{#link-to 'memory' this}}
               {{g_place}}, {{tag1}}
             {{/link-to}}
           </li>
@@ -172,7 +172,7 @@
   </form>    
 </script>
 
-<script type="text/x-handlebars" data-template-name="memories/display">  
+<script type="text/x-handlebars" data-template-name="memory">  
   <p>{{g_place}}</p> 
 </script>
 
