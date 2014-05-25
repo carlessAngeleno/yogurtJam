@@ -12,15 +12,23 @@
           <?=XML("&nbsp&nbsp")?>
           <img src="<?=URL('static', 'images/favicon.png')?>"/>
         </a>
-        <?=response.logo or ''?>        
-        <li class="<?='btn-group' if is_mobile else 'btn-group offset2'?>" data-toggle="buttons-radio">
-          {{#link-to "memories.index"}}        
-            <button class="btn ca_button" type="button">search</button>
-          {{/link-to}}   
-          {{#link-to "memories.share.song"}}        
-            <button class="btn ca_button" type="button">share</button>
-          {{/link-to}}
-        </li>         
+        <?=response.logo or ''?>
+        <div class="offset4">
+        <ul class="nav ca_nav">
+          <li>
+            {{#link-to "memories.index" activeClass="active"}}
+            <i class="icon-search icon-white"></i> search
+            {{/link-to}}
+          </li>
+          <li>
+            {{#link-to "memories.share.song" activeClass="active"}}
+            <i class="icon-pencil icon-white"></i> share
+            {{/link-to}}
+          </li>
+        </ul>
+        </div>
+
+      
         <?include '../../shared/views/generic/also_by_ember.html'?>  
         <div class="<?='nav-collapse' if is_mobile else 'nav pull-right'?>">                          
           <?if response.menu:?>
