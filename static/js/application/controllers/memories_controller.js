@@ -27,12 +27,9 @@ Memories.MemoriesController = Ember.ArrayController.extend({
 
       $.getJSON('/yogurtjam/default/api/memory?artist=' + artist + '&title=' + title)
         .then(function(response) {          
-          // debugger;
           var markers = response.memories;          
-          // Memories.Memory.store.unloadAll(Memories.Memory);
-          // Memories.Memory.store.pushMany('memory', markers);
           scope.store.unloadAll(Memories.Memory);
-          scope.store.pushMany('memory', markers);          
+          scope.store.pushMany('memory', markers);    
           scope.drawOnMap(markers);
       });
     },

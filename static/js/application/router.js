@@ -64,5 +64,24 @@ Memories.ShareStoryRoute = Ember.Route.extend({
 Memories.MemoryRoute = Ember.Route.extend({
   model: function(params) {
     return this.store.find('memory', params.memory_id);
-  }
+  },
+  setupController: function(controller, model) {
+    this._super(controller, model);
+    var currentId = this.get('context').id;
+    var markers = this.controllerFor('memories').get('model').get('content');    
+
+    $.when(findOthers(markers)).then(function(ids) {
+      var index = Math.floor(Math.random() * (ids.length));
+      var newId = ids[index];
+      controller.set('next', newId);
+    });
+
+    function findOthers(markers) {
+      return $.map(markers, function(marker) {
+        if (marker.id !== currentId) {
+          return marker.id;
+        }
+      });
+    }    
+  }  
 });
