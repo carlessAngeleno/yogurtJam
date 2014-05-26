@@ -141,9 +141,9 @@ Memories.MemoriesController = Ember.ArrayController.extend({
                       //+ markers[i].m_month + '/' + markers[i].m_year + ' - ' + markers[i].g_place 
                       + markers[i].memoryDateShare.split(" ")[0]
                       + '</strong><br>' 
-                      + markers[i].g_place + '<br>'
-                      + markers[i].story + '<br><br>'
-                      + '<div style="font-style:italic; font-size:8pt;"> shared:' + markers[i].time_added + '</div>'
+                      + markers[i].g_place + '<br></div>'
+                      // + markers[i].story + '<br><br>'
+                      // + '<div style="font-style:italic; font-size:8pt;"> shared:' + markers[i].time_added + '</div>'
                   );                
                   infowindow.open(map, marker);
 
