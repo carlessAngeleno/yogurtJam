@@ -19,8 +19,5 @@ Memories.MemoryController = Ember.ObjectController.extend({
 
   },
 
-  foo: 4
-
-
-  
+  foo: 4  
 });
