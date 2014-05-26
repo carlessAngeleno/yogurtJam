@@ -1,6 +1,6 @@
 <?extend "layout.html"?>     
 
-<script type="text/x-handlebars" data-template-name="memories">  
+<script type="text/x-handlebars" data-template-name="application">  
 
   <!-- Navbar ================================================== -->
   <div class="navbar navbar-inverse navbar-fixed-top">
@@ -21,7 +21,7 @@
             {{/link-to}}
           </li>
           <li>
-            {{#link-to "memories.share.song" activeClass="active"}}
+            {{#link-to "share" activeClass="active"}}
             <i class="icon-pencil icon-white"></i> share
             {{/link-to}}
           </li>
@@ -63,7 +63,7 @@
             {{input type="text" placeholder="artist (e.g. nirvana)" value=newArtist}}
           </div>
           <div class="control-group">
-           {{#link-to "memories.results"}}
+           {{#link-to "results"}}
             <button class="btn ca_button" {{action 'searchMemories'}}><i class="icon-search icon-white"></i> search</button>
             {{/link-to}}
           </div>   
@@ -73,14 +73,14 @@
   </div>  
 </script>
 
-<script type="text/x-handlebars" data-template-name="memories/results"> 
+<script type="text/x-handlebars" data-template-name="results"> 
   <div class="control-group">      
     <button class="btn ca_button"><i class="icon-random icon-white"></i></button>
     <!-- <button class="btn ca_button"><i class=" icon-zoom-out icon-white"></i> </button> -->
     <button class="btn ca_button"><i class="icon-forward icon-white"></i> </button>                  
   </div>
   <div>
-    <h4>{{newTitle}} - {{newArtist}}</h4>
+    <h4>{{controller.newTitle}} - {{controller.newArtist}}</h4>
     <div> 
       <ul>
         {{#each controller}}
@@ -95,14 +95,14 @@
   </div>  
 </script>
 
-<script type="text/x-handlebars" data-template-name="memories/share">  
+<script type="text/x-handlebars" data-template-name="share">  
   <div id="share_tab">
     <h4>Share Memories</h4>       
     {{outlet}}     
   </div>      
 </script>
 
-<script type="text/x-handlebars" data-template-name="memories/share/song">  
+<script type="text/x-handlebars" data-template-name="share/song">  
 
   <div class="share_tab_sub" id="share_tab_select_video">
     <p>Which song? </p>            
@@ -136,7 +136,7 @@
         </div>      
     </div>
     <div class="modal-footer">
-      {{#link-to "memories.share.location"}}
+      {{#link-to "share.location"}}
         <button class="ca_button" data-dismiss="modal" aria-hidden="true" {{action 'selectVideo'}}>Choose</button>
       {{/link-to}}
     </div>
@@ -144,19 +144,19 @@
 
 </script>
 
-<script type="text/x-handlebars" data-template-name="memories/share/location">  
+<script type="text/x-handlebars" data-template-name="share/location">  
   <div class="share_tab_sub" id="share_tab_select_location">
     <p> Enter location associated with memory </p>                    
     {{render 'g_places_input' controller='Memories'}}     
     <br/>
-    {{#link-to "memories.share.story"}}
+    {{#link-to "share.story"}}
       <button id="select_place_button" class="btn ca_button" {{action 'confirmLocation'}}> yup - this is the place! </button>
     {{/link-to}}                                            
     </input>        
   </div>     
 </script>
 
-<script type="text/x-handlebars" data-template-name="memories/share/story">  
+<script type="text/x-handlebars" data-template-name="share/story">  
   <form class="share_tab_sub">
     <p> Finally, tell us what the song reminds you of! </p>     
     <div class="control-group">
@@ -169,7 +169,7 @@
         {{input type="text" placeholder="tags (e.g. trip, friend)" value=newTags}} 
     </div>                                                                   
     <div class="control-group">
-    {{#link-to "memories.results"}}    
+    {{#link-to "results"}}    
         <button class="btn ca_button" {{action 'insertMemory'}}>share memory</button> 
     {{/link-to}}
     </div>                

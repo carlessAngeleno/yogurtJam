@@ -1,13 +1,13 @@
 Memories.Router.map(function() {
   this.resource('memories', { path: '/' }, function() {
-    this.resource('memory', { path: '/memory/:memory_id' });
-    this.route('results');    
-    this.resource('memories.share', {path: '/share'}, function() {
-    	this.route('song');
-    	this.route('location');
-    	this.route('story');
-    })
   });  
+  this.resource('share', {path: '/share'}, function() {
+    this.route('song');
+    this.route('location');
+    this.route('story');
+  })  
+  this.resource('memory', { path: '/memory/:memory_id' });
+  this.resource('results');
 });
 
 Memories.MemoriesRoute = Ember.Route.extend({
@@ -23,35 +23,38 @@ Memories.MemoriesIndexRoute = Ember.Route.extend({
   controllerName: 'Memories'
 });
 
-Memories.MemoriesResultsRoute = Ember.Route.extend({
+Memories.ResultsRoute = Ember.Route.extend({
+  model: function() {
+    return this.store.find('memory');
+  },
+  controllerName: 'Memories'
+});
+
+Memories.ShareRoute = Ember.Route.extend({
+  model: function() {
+    return this.modelFor('memories');
+  },
+  controllerName: 'Memories',
+  beforeModel: function() {
+    this.transitionTo('share.song');
+  }
+});
+
+Memories.ShareSongRoute = Ember.Route.extend({
   model: function() {
     return this.modelFor('memories');
   },
   controllerName: 'Memories'
 });
 
-Memories.MemoriesShareRoute = Ember.Route.extend({
+Memories.ShareLocationRoute = Ember.Route.extend({
   model: function() {
     return this.modelFor('memories');
   },
   controllerName: 'Memories'
 });
 
-Memories.MemoriesShareSongRoute = Ember.Route.extend({
-  model: function() {
-    return this.modelFor('memories');
-  },
-  controllerName: 'Memories'
-});
-
-Memories.MemoriesShareLocationRoute = Ember.Route.extend({
-  model: function() {
-    return this.modelFor('memories');
-  },
-  controllerName: 'Memories'
-});
-
-Memories.MemoriesShareStoryRoute = Ember.Route.extend({
+Memories.ShareStoryRoute = Ember.Route.extend({
   model: function() {
     return this.modelFor('memories');
   },
