@@ -40,7 +40,7 @@
   </div><!--/top navbar -->
 
   <div id="main_container">
-    {{render 'g_map' controller='Memories'}}
+    {{render 'google-map' controller='Memories' id="map_canvas"}}
     <div id="interface">             
       <div class="memory_display ca_section">
         {{outlet}}
@@ -202,10 +202,4 @@
   <!--<p><small>{{tag1}}</small></p> -->
   <p class="muted"><small>uploaded {{timeAgo time_added}}</small></p>
   </div> 
-</script>
-
-<script type="text/x-handlebars" data-template-name="g_map">
-  <div id="map_container">   
-    {{#view Memories.GoogleMapView id="map_canvas"}}{{/view}}
-  </div>
 </script>

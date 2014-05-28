@@ -181,6 +181,14 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       videoBar = new GSvideoBar(barContainer,  player_container_search, options);
   },
 
-  fo0o: 3,
-  g_map: null
+  centerMap: function(lat, lng) {
+    var position = new google.maps.LatLng(lat, lng);
+    g_map.setCenter(position);
+    g_map.setZoom(14);
+  },
+
+  two: 2,
+
+  mapSel: "#map_canvas"
+
 });

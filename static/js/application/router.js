@@ -75,6 +75,12 @@ Memories.MemoryRoute = Ember.Route.extend({
       var newId = ids[index];
       controller.set('next', newId);
     });
+// debugger;
+    this.controllerFor('memories').send(
+      'centerMap', 
+      this.controllerFor('memory').get('model').get('lat'), 
+      this.controllerFor('memory').get('model').get('lng')
+    );
 
     function findOthers(markers) {
       return $.map(markers, function(marker) {

@@ -17,6 +17,7 @@ Memories.GoogleMapView = Ember.View.extend({
 
     // Create map (note global)
     var map = new google.maps.Map(this.$()[0], mapOptions);
+    g_map = map;
     this.get('controller').set('g_map', map);
 
     // Style for map
