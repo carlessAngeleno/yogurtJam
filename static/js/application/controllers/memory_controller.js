@@ -1,6 +1,30 @@
 Memories.MemoryController = Ember.ObjectController.extend({
   needs: "memories",
-  
+
+  actions: {
+    zoomOut: function() {
+      g_map.setZoom(g_map.zoom - 3);
+    },
+
+    centerMapSingle: function() {      
+      var position = new google.maps.LatLng(this.get('lat'), this.get('lng'));
+
+      
+      $.when(g_map.setZoom(5)).then(function() {
+        window.setTimeout(function() {panAndZoom(g_map, position);}, 1000)
+      })
+      
+      function panAndZoom(map, position) {
+        $.when(map.panTo(position)).then(function() {
+          window.setTimeout(function() {map.setZoom(14);}, 1000)
+        })      
+      }
+
+    }
+  },  
+
+
+
   isCompleted: function(key, value){
     var model = this.get('model');
 

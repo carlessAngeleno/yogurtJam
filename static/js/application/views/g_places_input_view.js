@@ -32,7 +32,7 @@ Memories.GPlacesInputView = Ember.TextField.extend({
         map.fitBounds(place.geometry.viewport);
       } 
       else {
-        map.setCenter(place.geometry.location);
+        map.panTo(place.geometry.location);
         map.setZoom(17);
       }
 

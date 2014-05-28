@@ -98,11 +98,40 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       .done(function(data) {
         scope.send('searchMemories');
       });
+    },
+
+    centerMap: function(lat, lng) {
+      var position = new google.maps.LatLng(lat, lng);
+      g_map.panTo(position);
+      g_map.setZoom(14);
+    },
+
+    pickRandomMemory: function() {
+      var that = this;
+      var markers = this.get('model').get('content');
+
+      $.when(findIds(markers)).then(function(ids) {
+        var index = Math.floor(Math.random() * (ids.length));
+        var newId = ids[index];
+        that.transitionToRoute('memory', newId);
+      });
+
+      function findIds(markers) {
+        return $.map(markers, function(marker) {
+            return marker.id;
+        });
+      }   
     }
 
   }, // end of actions
 
   drawOnMap: function(markers) {
+
+      function panAndZoom(map, position) {
+        $.when(map.panTo(position)).then(function() {
+          window.setTimeout(function() {map.setZoom(14);}, 1000)
+        })      
+      }
 
       var map = this.get('g_map');
       var player = this.get('player');
@@ -132,8 +161,9 @@ Memories.MemoriesController = Ember.ArrayController.extend({
               return function() {  
 
                   // map focuses onto marker
-                  map.setCenter(marker.position);
-                  map.setZoom(14);
+                  panAndZoom(map, marker.position)
+                  // map.panTo(marker.position);
+                  // map.setZoom(14);
 
 
                   // display infowindow                  
@@ -179,12 +209,6 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       }
 
       videoBar = new GSvideoBar(barContainer,  player_container_search, options);
-  },
-
-  centerMap: function(lat, lng) {
-    var position = new google.maps.LatLng(lat, lng);
-    g_map.setCenter(position);
-    g_map.setZoom(14);
   },
 
   two: 2,

@@ -75,9 +75,9 @@
 
 <script type="text/x-handlebars" data-template-name="results"> 
   <div class="control-group">      
-    <button class="btn ca_button"><i class="icon-random icon-white"></i></button>
+    <button class="btn ca_button" {{action 'pickRandomMemory'}} style="float:right;"><i class="icon-random icon-white"></i></button>
     <!-- <button class="btn ca_button"><i class=" icon-zoom-out icon-white"></i> </button> -->
-    <button class="btn ca_button"><i class="icon-forward icon-white"></i> </button>                  
+    <!-- <button class="btn ca_button"><i class="icon-forward icon-white"></i> </button> -->                  
   </div>
   <div>
     <h4>{{controller.newTitle}} - {{controller.newArtist}}</h4>
@@ -179,10 +179,8 @@
 <script type="text/x-handlebars" data-template-name="memory">  
   <div class="control-group row-fluid">      
     <!-- <button class="btn ca_button"><i class="icon-random icon-white"></i></button> -->
-    {{#link-to "results"}}
-      <button class="btn ca_button"><i class="icon-resize-small icon-white"></i> </button>
-    {{/link-to}}
-    <button class="btn ca_button"><i class="icon-map-marker icon-white"></i> </button>    
+      <button class="btn ca_button" {{action 'zoomOut'}}><i class="icon-resize-small icon-white"></i> </button>
+    <button class="btn ca_button" {{action 'centerMapSingle'}}><i class="icon-map-marker icon-white"></i> </button>    
    <!-- <button class="btn ca_button"><i class="icon-resize-full icon-white"></i> </button>
     <button class="btn ca_button"><i class=" icon-zoom-out icon-white"></i> </button> -->
     <button class="btn ca_button offset1"><i class="icon-heart icon-white"></i> </button>   
