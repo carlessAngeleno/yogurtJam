@@ -29,8 +29,12 @@ def api():
     # def GET(tablename,id):
         # if not tablename=='person': raise HTTP(400)
         # return dict(person = db.person(id))
-    def GET(tablename, title, artist):
-        results = db((db[tablename].title == title) & (db[tablename].artist == artist)).select()
+    def GET(tablename, title=None, artist=None, id=0):
+        if id is not 0:
+            results = db(db[tablename].id == id).select()
+        else:
+            results = db((db[tablename].title == title) & (db[tablename].artist == artist)).select()
+        print results
         return dict(memories = results)         
         
     def POST(tablename,**fields):
