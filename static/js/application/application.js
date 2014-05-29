@@ -1,4 +1,4 @@
-window.Memories = Ember.Application.create({
+window.App = Ember.Application.create({
   // rootElement: "#main_body",
     LOG_TRANSITIONS: true,
     ready: function() {
@@ -10,6 +10,6 @@ window.Memories = Ember.Application.create({
 });
 
 // Memories.ApplicationAdapter = DS.FixtureAdapter.extend();
-Memories.ApplicationAdapter = DS.LSAdapter.extend({
+App.ApplicationAdapter = DS.LSAdapter.extend({
   namespace: 'yogurtJam-emberjs'
 });

@@ -1,4 +1,4 @@
-Memories.GoogleMapView = Ember.View.extend({
+App.GoogleMapView = Ember.View.extend({
   didInsertElement: function () {
     this.draw();
   },
@@ -94,4 +94,4 @@ Memories.GoogleMapView = Ember.View.extend({
   }
 });
 
-Ember.Handlebars.helper('google-map', Memories.GoogleMapView);
+Ember.Handlebars.helper('google-map', App.GoogleMapView);

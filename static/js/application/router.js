@@ -1,4 +1,4 @@
-Memories.Router.map(function() {
+App.Router.map(function() {
   this.resource('memories', { path: '/' }, function() {
   });  
   this.resource('share', {path: '/share'}, function() {
@@ -10,27 +10,27 @@ Memories.Router.map(function() {
   this.resource('results');
 });
 
-Memories.MemoriesRoute = Ember.Route.extend({
+App.MemoriesRoute = Ember.Route.extend({
   model: function() {
     return this.store.find('memory');
   }
 });
 
-Memories.MemoriesIndexRoute = Ember.Route.extend({
+App.MemoriesIndexRoute = Ember.Route.extend({
   model: function() {
     return this.modelFor('memories');
   },
   controllerName: 'Memories'
 });
 
-Memories.ResultsRoute = Ember.Route.extend({
+App.ResultsRoute = Ember.Route.extend({
   model: function() {
     return this.store.find('memory');
   },
   controllerName: 'Memories'
 });
 
-Memories.ShareRoute = Ember.Route.extend({
+App.ShareRoute = Ember.Route.extend({
   model: function() {
     return this.modelFor('memories');
   },
@@ -40,28 +40,28 @@ Memories.ShareRoute = Ember.Route.extend({
   }
 });
 
-Memories.ShareSongRoute = Ember.Route.extend({
+App.ShareSongRoute = Ember.Route.extend({
   model: function() {
     return this.modelFor('memories');
   },
   controllerName: 'Memories'
 });
 
-Memories.ShareLocationRoute = Ember.Route.extend({
+App.ShareLocationRoute = Ember.Route.extend({
   model: function() {
     return this.modelFor('memories');
   },
   controllerName: 'Memories'
 });
 
-Memories.ShareStoryRoute = Ember.Route.extend({
+App.ShareStoryRoute = Ember.Route.extend({
   model: function() {
     return this.modelFor('memories');
   },
   controllerName: 'Memories'
 });
 
-Memories.MemoryRoute = Ember.Route.extend({
+App.MemoryRoute = Ember.Route.extend({
   model: function(params) {
     return this.store.find('memory', params.memory_id);
   },

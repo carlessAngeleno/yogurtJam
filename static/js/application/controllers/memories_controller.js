@@ -1,4 +1,4 @@
-Memories.MemoriesController = Ember.ArrayController.extend({
+App.MemoriesController = Ember.ArrayController.extend({
 
   actions: {
     createTodo: function() {
@@ -28,7 +28,7 @@ Memories.MemoriesController = Ember.ArrayController.extend({
       $.getJSON('/yogurtjam/default/api/memory?artist=' + artist + '&title=' + title)
         .then(function(response) {          
           var markers = response.memories;          
-          scope.store.unloadAll(Memories.Memory);
+          scope.store.unloadAll(App.Memory);
           scope.store.pushMany('memory', markers);    
           scope.drawOnMap(markers);
       });

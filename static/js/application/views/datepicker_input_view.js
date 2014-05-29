@@ -1,4 +1,4 @@
-Memories.DatepickerInputView = Ember.TextField.extend({
+App.DatepickerInputView = Ember.TextField.extend({
   didInsertElement: function() {
     this.$().datepicker({
         defaultDate: "+1w",
@@ -9,4 +9,4 @@ Memories.DatepickerInputView = Ember.TextField.extend({
   }
 });
 
-Ember.Handlebars.helper('datepicker-input', Memories.DatepickerInputView);
+Ember.Handlebars.helper('datepicker-input', App.DatepickerInputView);

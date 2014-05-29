@@ -1,4 +1,4 @@
-Memories.MemoryController = Ember.ObjectController.extend({
+App.MemoryController = Ember.ObjectController.extend({
   needs: "memories",
 
   actions: {

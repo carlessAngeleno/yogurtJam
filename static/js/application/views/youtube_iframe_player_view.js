@@ -1,4 +1,4 @@
-Memories.YoutubeIframePlayerView = Ember.View.extend({
+App.YoutubeIframePlayerView = Ember.View.extend({
   
   video_idBinding: 'controller.content.video_id',
 

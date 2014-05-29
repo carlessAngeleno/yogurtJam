@@ -1,4 +1,4 @@
-Memories.GPlacesInputView = Ember.TextField.extend({
+App.GPlacesInputView = Ember.TextField.extend({
   didInsertElement: function() {
 
     var map = this.get('controller').get('g_map');
@@ -55,4 +55,4 @@ Memories.GPlacesInputView = Ember.TextField.extend({
   }
 });
 
-Ember.Handlebars.helper('g-places-input', Memories.GPlacesInputView);
+Ember.Handlebars.helper('g-places-input', App.GPlacesInputView);
