@@ -3,12 +3,13 @@ App.MemoryController = Ember.ObjectController.extend({
 
   actions: {
     zoomOut: function() {
+      var g_map = App.get('g_map');      
       g_map.setZoom(g_map.zoom - 3);
     },
 
     centerMapSingle: function() {      
       var position = new google.maps.LatLng(this.get('lat'), this.get('lng'));
-
+      var g_map = App.get('g_map');
       
       $.when(g_map.setZoom(5)).then(function() {
         window.setTimeout(function() {panAndZoom(g_map, position);}, 1000)

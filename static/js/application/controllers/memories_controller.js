@@ -100,12 +100,6 @@ App.MemoriesController = Ember.ArrayController.extend({
       });
     },
 
-    centerMap: function(lat, lng) {
-      var position = new google.maps.LatLng(lat, lng);
-      g_map.panTo(position);
-      g_map.setZoom(14);
-    },
-
     pickRandomMemory: function() {
       var that = this;
       var markers = this.get('model').get('content');
