@@ -112,7 +112,9 @@ db.define_table('memory',
     Field('g_place'), 
     Field('story', length=2000),   
     Field('tag1', length=50),   
-    Field('memoryDateShare', 'datetime')
+    Field('memoryDateShare', 'datetime'),
+    Field('likes', 'integer', default=0),
+    Field('dislikes', 'integer', default=0)
 )
 
 # field type  default field validators

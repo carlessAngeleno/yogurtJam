@@ -47,6 +47,30 @@ def api():
     return locals()
 
 
+@request.restful()
+def like():
+    response.view = 'generic.json'
+        
+    def POST(tablename,id):
+        db(db[tablename]._id==id).update(likes=db[tablename].likes + 1)
+        db.commit()
+        new = db(db[tablename]._id==id).select()[0].likes
+        return new
+
+    return locals()
+
+@request.restful()
+def dislike():
+    response.view = 'generic.json'
+        
+    def POST(tablename,id):
+        db(db[tablename]._id==id).update(dislikes=db[tablename].dislikes + 1)
+        db.commit()
+        new = db(db[tablename]._id==id).select()[0].dislikes
+        return new
+
+    return locals()
+
 def user():
     """
     exposes:

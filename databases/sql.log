@@ -435,3 +435,14 @@ CREATE TABLE web2py_session_yogurtjam(
     PRIMARY KEY(id)
 ) ENGINE=InnoDB CHARACTER SET utf8;
 success!
+timestamp: 2014-05-31T11:48:41.508364
+ALTER TABLE memory ADD dislikes INT;
+timestamp: 2014-05-31T11:57:16.164458
+ALTER TABLE memory ADD dislikes INT;
+timestamp: 2014-05-31T11:58:03.443106
+ALTER TABLE memory ADD dislikes INT;
+success!
+timestamp: 2014-05-31T11:58:03.669575
+ALTER TABLE memory ADD likes INT;
+success!
+success!

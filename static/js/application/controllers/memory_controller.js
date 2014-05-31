@@ -27,8 +27,43 @@ App.MemoryController = Ember.ObjectController.extend({
         })      
       }
 
+    },
+
+    like: function() {
+
+      if (!this.get('didClickLike')) {
+        var that = this;
+        $.post(
+          "/yogurtjam/default/like/memory",
+          { 
+            "id": this.get('id')
+          }
+        )
+        .done(function(data) {
+          that.set('likes', data);
+          that.set('didClickLike', true);
+        });
+      }
+    },
+
+    dislike: function() {
+
+      if (!this.get('didClickDislike')) {
+        var that = this;
+        $.post(
+          "/yogurtjam/default/dislike/memory",
+          { 
+            "id": this.get('id')
+          }
+        )
+        .done(function(data) {
+          that.set('dislikes', data);
+          that.set('didClickDislike', true);
+        });
+      }
     }
-  },  
+        
+  },  // end of actions
 
 
 

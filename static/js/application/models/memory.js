@@ -10,7 +10,9 @@ App.Memory = DS.Model.extend({
   lng: DS.attr('number'), 
   artist: DS.attr('string'), 
   time_added: DS.attr('string'), 
-  memoryDateShare: DS.attr('string')
+  memoryDateShare: DS.attr('string'),
+  likes: DS.attr('number'),
+  dislikes: DS.attr('number')
 });
 
 // // FIXTURE
