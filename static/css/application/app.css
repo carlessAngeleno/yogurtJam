@@ -31,6 +31,14 @@ button.ca_button.active {
   color: #fff;  
 }
 
+button.btn-primary.ca_button {
+  background-color: rgba(231,41,138, 0.9);  
+}
+
+button.btn-primary.ca_button:hover {
+  background-color: rgba(231,41,138, 1);
+}
+
 .nav-pills>.active>a, .nav-pills>.active>a:hover {
   background-color: rgba(255, 110, 86, 0.9);  
 }
