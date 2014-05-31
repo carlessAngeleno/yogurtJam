@@ -102,3 +102,12 @@ button.ca_button.active {
   position:relative; 
   z-index: 20;
 }
+
+#interface div.memory_display li {
+  list-style: none;
+}
+
+#interface div.memory_display li a {
+  /*color: rgba(231,41,138, 1);*/
+  font-size: 14px;
+}
