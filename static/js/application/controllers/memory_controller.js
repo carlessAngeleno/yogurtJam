@@ -13,7 +13,7 @@ App.MemoryController = Ember.ObjectController.extend({
       g_map.panTo(position);
     },
 
-    centerMapSingle: function() {      
+    moveMapToNew: function() {      
       var position = new google.maps.LatLng(this.get('lat'), this.get('lng'));
       var g_map = App.get('g_map');
       

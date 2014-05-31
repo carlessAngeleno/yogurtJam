@@ -77,7 +77,7 @@ App.MemoryRoute = Ember.Route.extend({
     });
 // debugger;
     this.controllerFor('memory').send(
-      'centerMapSingle', 
+      'moveMapToNew', 
       this.controllerFor('memory').get('model').get('lat'), 
       this.controllerFor('memory').get('model').get('lng')
     );
