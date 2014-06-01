@@ -27,7 +27,16 @@ button.ca_button:hover {
 }
 
 button.ca_button.active {
-  background-color: rgba(255, 110, 86, 0.7);  
+  background-color: rgba(255, 110, 86, 0.7);
+  color: #fff;  
+}
+
+button.btn-primary.ca_button {
+  background-color: rgba(231,41,138, 0.9);  
+}
+
+button.btn-primary.ca_button:hover {
+  background-color: rgba(231,41,138, 1);
 }
 
 .nav-pills>.active>a, .nav-pills>.active>a:hover {
@@ -58,7 +67,7 @@ button.ca_button.active {
 }
 
 #interface {
-  width: 380px;
+  width: 400px;
   z-index: 20;
   position: relative;  
   overflow: auto;
@@ -66,15 +75,19 @@ button.ca_button.active {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;    
 }   
  
-#share_tab {
+/*#share_tab {
   display: none;
-}
+}*/
 
 
 /* content player */
 
+#player {
+  display: none;
+}
+
 .content_display iframe {
-    display: block;
+    display: none;
     margin-right:auto;
     margin-left: auto;   
 }
@@ -89,6 +102,20 @@ button.ca_button.active {
 }
 
 #main_body {
-  width: 100%;
-  margin-left: 20px;
+  /*width: 100%;*/
+  /*margin-left: 20px;*/
+}
+
+#search_tab, #share_tab {
+  position:relative; 
+  z-index: 20;
+}
+
+#interface div.memory_display li {
+  list-style: none;
+}
+
+#interface div.memory_display li a {
+  /*color: rgba(231,41,138, 1);*/
+  font-size: 14px;
 }

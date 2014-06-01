@@ -6,7 +6,7 @@
 #########################################################################
 
 response.logo = A(XML("&nbsp"), 'yogurtJam',
-                  _class="brand",_href=URL('../..'))
+                  _class="brand",_href=URL('../..') + '/#/')
 response.title = 'yogurtJam'
 response.subtitle = ''
 

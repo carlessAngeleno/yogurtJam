@@ -8,8 +8,11 @@
 ## - download is for downloading files uploaded in the db (does streaming)
 ## - call exposes all registered services (none by default)
 #########################################################################
+import pdb
+import datetime
 
-
+response.delimiters = ('<?','?>')
+# @auth.requires_login()
 def index():
     """
     example action using the internationalization operator T and flash
@@ -18,9 +21,56 @@ def index():
     if you need a simple wiki simple replace the two lines below with:
     return auth.wiki()
     """
-    # return auth.wiki()
     return dict(message=T('Hello World'))
-   
+
+@request.restful()
+def api():
+    response.view = 'generic.json'
+    # def GET(tablename,id):
+        # if not tablename=='person': raise HTTP(400)
+        # return dict(person = db.person(id))
+    def GET(tablename, title=None, artist=None, id=0):
+        if id is not 0:
+            results = db(db[tablename].id == id).select()
+        else:
+            results = db((db[tablename].title == title) & (db[tablename].artist == artist)).select()
+        print results
+        return dict(memories = results)         
+        
+    def POST(tablename,**fields):
+        # pdb.set_trace()
+        # if not tablename=='person': raise HTTP(400)
+        # return db.person.validate_and_insert(**fields)
+        fields['time_added'] = datetime.datetime.now()
+        return db[tablename].validate_and_insert(**fields)
+
+    return locals()
+
+
+@request.restful()
+def like():
+    response.view = 'generic.json'
+        
+    def POST(tablename,id):
+        db(db[tablename]._id==id).update(likes=db[tablename].likes + 1)
+        db.commit()
+        new = db(db[tablename]._id==id).select()[0].likes
+        return new
+
+    return locals()
+
+@request.restful()
+def dislike():
+    response.view = 'generic.json'
+        
+    def POST(tablename,id):
+        db(db[tablename]._id==id).update(dislikes=db[tablename].dislikes + 1)
+        db.commit()
+        new = db(db[tablename]._id==id).select()[0].dislikes
+        return new
+
+    return locals()
+
 def user():
     """
     exposes:
