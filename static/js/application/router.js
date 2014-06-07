@@ -1,5 +1,12 @@
 App.Router.map(function() {
   this.resource('memories', { path: '/' }, function() {
+    this.resource('artists', { path: '/artists' }, function() {
+      this.resource('songs', { path: '/songs' }, function() {
+        this.resource('story', { path: '/story'}, function() {
+
+        })
+      })
+    })
   });  
   this.resource('share', {path: '/share'}, function() {
     this.route('song');
@@ -22,6 +29,37 @@ App.MemoriesIndexRoute = Ember.Route.extend({
   },
   controllerName: 'Memories'
 });
+
+App.ArtistsRoute = Ember.Route.extend({
+  model: function() {
+     var that = this;
+     return $.getJSON('/yogurtjam/default/api/memory?artist=' + 'wye oak' + '&title=' + 'for prayer')
+        .then(function(response) {   
+          debugger;       
+          var markers = response.memories; 
+          App.set('markers', markers);
+          console.log(markers);         
+          
+          that.store.unloadAll(App.Memory);
+          that.store.pushMany('memory', markers);    
+          // that.drawOnMap(markers);
+          return markers;
+          // return that.store.find('memory');
+           
+     });
+  },
+  controllerName: 'Memories'
+  // renderTemplate: function(controller) {
+  //   this.render('/memories/results', {controller: controller});
+  // }  
+});
+
+// App.MemoriesArtistsSongsRoute = Ember.Route.extend({
+//   model: function() {
+//     return this.store.find('memory');
+//   },
+//   controllerName: 'Memories'
+// });
 
 App.ResultsRoute = Ember.Route.extend({
   model: function() {
