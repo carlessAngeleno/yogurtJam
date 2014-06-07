@@ -32,6 +32,8 @@ def api():
     def GET(tablename, title=None, artist=None, id=0):
         if id is not 0:
             results = db(db[tablename].id == id).select()
+        elif title is None:
+            results = db(db[tablename].artist == artist).select()
         else:
             results = db((db[tablename].title == title) & (db[tablename].artist == artist)).select()
         print results

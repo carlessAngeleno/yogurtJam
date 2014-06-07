@@ -1,7 +1,7 @@
 App.Router.map(function() {
   this.resource('memories', { path: '/' }, function() {
-    this.resource('artists', { path: '/artists' }, function() {
-      this.resource('songs', { path: '/songs' }, function() {
+    this.resource('artists', { path: '/artists/:artist' }, function() {
+      this.resource('songs', { path: '/songs/:title' }, function() {
         this.resource('story', { path: '/story'}, function() {
 
         })
@@ -31,35 +31,36 @@ App.MemoriesIndexRoute = Ember.Route.extend({
 });
 
 App.ArtistsRoute = Ember.Route.extend({
-  model: function() {
+  model: function(params) {
      var that = this;
-     return $.getJSON('/yogurtjam/default/api/memory?artist=' + 'wye oak' + '&title=' + 'for prayer')
+     return $.getJSON('/yogurtjam/default/api/memory?artist=' + params.artist)
         .then(function(response) {   
-          debugger;       
           var markers = response.memories; 
           App.set('markers', markers);
-          console.log(markers);         
-          
           that.store.unloadAll(App.Memory);
           that.store.pushMany('memory', markers);    
-          // that.drawOnMap(markers);
           return markers;
-          // return that.store.find('memory');
-           
      });
   },
   controllerName: 'Memories'
-  // renderTemplate: function(controller) {
-  //   this.render('/memories/results', {controller: controller});
-  // }  
 });
 
-// App.MemoriesArtistsSongsRoute = Ember.Route.extend({
-//   model: function() {
-//     return this.store.find('memory');
-//   },
-//   controllerName: 'Memories'
-// });
+App.SongsRoute = Ember.Route.extend({
+  model: function(params) {
+    var filtered = [];
+    App.markers.forEach(function(data) {
+      console.log(params.title);
+      if (data.title === params.title) {
+        filtered.pushObject(data);
+      }
+    });     
+    App.set('markers', filtered);
+    this.store.unloadAll(App.Memory);
+    this.store.pushMany('memory', filtered);      
+    return filtered;
+  },
+  controllerName: 'Memories'
+});
 
 App.ResultsRoute = Ember.Route.extend({
   model: function() {
