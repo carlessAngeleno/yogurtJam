@@ -117,7 +117,7 @@
   </div>  
 </script>
 
-<script type="text/x-handlebars" data-template-name="songs"> 
+<script type="text/x-handlebars" data-template-name="songssss"> 
   <div class="control-group">      
     <button class="btn btn-primary ca_button" {{action 'pickRandomMemory'}} style="float:right;"><i class="icon-random icon-white"></i></button>
     <!-- <button class="btn ca_button"><i class=" icon-zoom-out icon-white"></i> </button> -->
@@ -221,6 +221,32 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="memory">  
+  <div class="control-group row-fluid">      
+    <!-- <button class="btn ca_button"><i class="icon-random icon-white"></i></button> -->
+      <button class="btn ca_button" {{action 'zoomOut'}}><i class="icon-resize-small icon-white"></i> </button>
+    <button class="btn ca_button" {{action 'centerMap'}}><i class="icon-map-marker icon-white"></i> </button>    
+   <!-- <button class="btn ca_button"><i class="icon-resize-full icon-white"></i> </button>
+    <button class="btn ca_button"><i class=" icon-zoom-out icon-white"></i> </button> -->
+    <button class="btn ca_button offset1" {{action 'like'}}><i class="icon-heart icon-white"></i> <small>{{likes}}</small></button>  
+    <button class="btn ca_button" {{action 'dislike'}}><i class="icon-thumbs-down icon-white"></i> <small>{{dislikes}}</small></button>       
+    <button class="btn ca_button"><i class="icon-gift icon-white"></i> </button>
+    {{#link-to "memory" next}}       
+    <button class="btn btn-primary ca_button" style="float:right;"><i class="icon-forward icon-white"></i> </button>                  
+    {{/link-to}}
+  </div>
+  <div class="content_display">
+    {{#view App.YoutubeIframePlayerView}}{{/view}}
+  </div> 
+  <h4>{{g_place}} <small> - {{formattedDate memoryDateShare}}</small></h4>
+  
+  <div>
+  <blockquote class="ca_blockquote">{{story}}</blockquote>
+  <!--<p><small>{{tag1}}</small></p> -->
+  <p class="muted"><small>uploaded {{timeAgo time_added}}</small></p>
+  </div> 
+</script>
+
+<script type="text/x-handlebars" data-template-name="stories">  
   <div class="control-group row-fluid">      
     <!-- <button class="btn ca_button"><i class="icon-random icon-white"></i></button> -->
       <button class="btn ca_button" {{action 'zoomOut'}}><i class="icon-resize-small icon-white"></i> </button>

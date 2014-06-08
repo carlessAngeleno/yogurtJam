@@ -4,7 +4,7 @@ App.YoutubeIframePlayerView = Ember.View.extend({
 
   didInsertElement: function() {
     var video_id = this.get('video_id');
-
+debugger;
     var player = new YT.Player(this.$().attr('id'), {
       height: '260',
       width: '360',
