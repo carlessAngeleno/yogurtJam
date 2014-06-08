@@ -1,5 +1,5 @@
 App.MemoriesController = Ember.ArrayController.extend({
-
+  needs: "memory",
   actions: {
     createTodo: function() {
       // Get the todo title set by the "New Todo" text field

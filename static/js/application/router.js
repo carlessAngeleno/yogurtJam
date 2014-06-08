@@ -133,11 +133,15 @@ App.StoriesRoute = Ember.Route.extend({
       var newId = ids[index];
       controller.set('next', newId);
     });
+
+    App.needToMove = true;
+    App.newLat = model.get('lat');
+    App.newLng = model.get('lng');
 // debugger;
     // this.controllerFor('memory').send(
     //   'moveMapToNew', 
-    //   this.controllerFor('memory').get('model').get('lat'), 
-    //   this.controllerFor('memory').get('model').get('lng')
+    //   model.get('lat'), 
+    //   model.get('lng')
     // );
 
     function findOthers(markers) {
@@ -211,7 +215,7 @@ App.MemoryRoute = Ember.Route.extend({
       var newId = ids[index];
       controller.set('next', newId);
     });
-// debugger;
+
     this.controllerFor('memory').send(
       'moveMapToNew', 
       this.controllerFor('memory').get('model').get('lat'), 

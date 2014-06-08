@@ -14,6 +14,7 @@ App.MemoryController = Ember.ObjectController.extend({
     },
 
     moveMapToNew: function() {
+      debugger;
       var position = new google.maps.LatLng(this.get('lat'), this.get('lng'));
       var g_map = App.get('g_map');
       

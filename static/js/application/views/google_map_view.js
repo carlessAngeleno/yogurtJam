@@ -91,6 +91,11 @@ App.GoogleMapView = Ember.View.extend({
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
     this.drawOnMap(App.markers);
+
+    if (App.needToMove) {
+      this.moveMapToNew();
+    }
+
   },
 
   drawOnMap: function(markers) {
@@ -151,7 +156,22 @@ App.GoogleMapView = Ember.View.extend({
               }
           })(marker, i));
       } 
-  }
+  },
+
+  moveMapToNew: function() {
+    var position = new google.maps.LatLng(App.newLat, App.newLng);
+    var g_map = App.get('g_map');
+    
+    $.when(g_map.setZoom(5)).then(function() {
+      window.setTimeout(function() {panAndZoom(g_map, position);}, 1000)
+    })
+    
+    function panAndZoom(map, position) {
+      $.when(map.panTo(position)).then(function() {
+        window.setTimeout(function() {map.setZoom(14);}, 1000)
+      })      
+    }
+  },  
 
 });
 
