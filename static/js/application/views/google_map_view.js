@@ -1,4 +1,7 @@
 App.GoogleMapView = Ember.View.extend({
+
+  needToMoveBinding: 'App.needToMove',
+
   didInsertElement: function () {
     this.draw();
   },
@@ -92,8 +95,9 @@ App.GoogleMapView = Ember.View.extend({
     map.setMapTypeId('map_style');
     this.drawOnMap(App.markers);
 
-    if (App.needToMove) {
-      this.moveMapToNew();
+
+    if (this.needToMove) {
+      this.moveMapToNew(true);
     }
 
   },
@@ -158,20 +162,23 @@ App.GoogleMapView = Ember.View.extend({
       } 
   },
 
-  moveMapToNew: function() {
-    var position = new google.maps.LatLng(App.newLat, App.newLng);
-    var g_map = App.get('g_map');
-    
-    $.when(g_map.setZoom(5)).then(function() {
-      window.setTimeout(function() {panAndZoom(g_map, position);}, 1000)
-    })
-    
-    function panAndZoom(map, position) {
-      $.when(map.panTo(position)).then(function() {
-        window.setTimeout(function() {map.setZoom(14);}, 1000)
-      })      
+  moveMapToNew: function(needToMove) {
+    if (needToMove) {
+      var position = new google.maps.LatLng(App.newLat, App.newLng);
+      var g_map = App.get('g_map');
+      
+      $.when(g_map.setZoom(5)).then(function() {
+        window.setTimeout(function() {panAndZoom(g_map, position);}, 1000);
+        App.set('needToMove', false);
+      })
+      
+      function panAndZoom(map, position) {
+        $.when(map.panTo(position)).then(function() {
+          window.setTimeout(function() {map.setZoom(14);}, 1000)
+        })      
+      }
     }
-  },  
+  }.observes('needToMove'),  
 
 });
 

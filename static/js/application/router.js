@@ -90,9 +90,10 @@ App.MemoryRoute = Ember.Route.extend({
       controller.set('next', newId);
     });
 
-    App.needToMove = true;
     App.newLat = model.get('lat');
     App.newLng = model.get('lng');
+    
+    App.set('needToMove', true);
 
     function findOthers(markers) {
       return $.map(markers, function(marker) {
