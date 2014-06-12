@@ -2,7 +2,8 @@ App.Router.map(function() {
   this.resource('memories', { path: '/' }, function() {
     this.resource('artists', { path: '/artists/:artist' }, function() {
       this.resource('songs', { path: '/songs/:title' }, function() {
-        this.resource('stories', { path: '/stories/:memory_id'});
+        // this.resource('stories', { path: '/stories/:memory_id'});
+        this.resource('memory', { path: '/memory/:memory_id' });
       })
     })
   });  
@@ -11,7 +12,7 @@ App.Router.map(function() {
     this.route('location');
     this.route('story');
   })  
-  this.resource('memory', { path: '/memory/:memory_id' });
+
   this.resource('results');
 });
 
@@ -60,7 +61,14 @@ App.SongsRoute = Ember.Route.extend({
   controllerName: 'Memories'
 });
 
-App.StoriesRoute = Ember.Route.extend({
+App.SongsIndexRoute = Ember.Route.extend({
+  model: function() {
+    return this.modelFor('memories');
+  },
+  controllerName: 'Memories'
+});
+
+App.MemoryRoute = Ember.Route.extend({
   model: function(params) {
     var filtered = [];
     App.markers.forEach(function(data) {
@@ -93,7 +101,7 @@ App.StoriesRoute = Ember.Route.extend({
         }
       });
     }    
-  }  
+  }
 });
 
 App.StoriesIndexRoute = Ember.Route.extend({
@@ -141,33 +149,33 @@ App.ShareStoryRoute = Ember.Route.extend({
   controllerName: 'Memories'
 });
 
-App.MemoryRoute = Ember.Route.extend({
-  model: function(params) {
-    return this.store.find('memory', params.memory_id);
-  },
-  setupController: function(controller, model) {
-    this._super(controller, model);
-    var currentId = this.get('context').id;
-    var markers = this.controllerFor('memories').get('model').get('content');    
+// App.MemoryRoute = Ember.Route.extend({
+//   model: function(params) {
+//     return this.store.find('memory', params.memory_id);
+//   },
+//   setupController: function(controller, model) {
+//     this._super(controller, model);
+//     var currentId = this.get('context').id;
+//     var markers = this.controllerFor('memories').get('model').get('content');    
 
-    $.when(findOthers(markers)).then(function(ids) {
-      var index = Math.floor(Math.random() * (ids.length));
-      var newId = ids[index];
-      controller.set('next', newId);
-    });
+//     $.when(findOthers(markers)).then(function(ids) {
+//       var index = Math.floor(Math.random() * (ids.length));
+//       var newId = ids[index];
+//       controller.set('next', newId);
+//     });
 
-    this.controllerFor('memory').send(
-      'moveMapToNew', 
-      this.controllerFor('memory').get('model').get('lat'), 
-      this.controllerFor('memory').get('model').get('lng')
-    );
+//     this.controllerFor('memory').send(
+//       'moveMapToNew', 
+//       this.controllerFor('memory').get('model').get('lat'), 
+//       this.controllerFor('memory').get('model').get('lng')
+//     );
 
-    function findOthers(markers) {
-      return $.map(markers, function(marker) {
-        if (marker.id !== currentId) {
-          return marker.id;
-        }
-      });
-    }    
-  }  
-});
+//     function findOthers(markers) {
+//       return $.map(markers, function(marker) {
+//         if (marker.id !== currentId) {
+//           return marker.id;
+//         }
+//       });
+//     }    
+//   }  
+// });
