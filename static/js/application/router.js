@@ -60,58 +60,6 @@ App.SongsRoute = Ember.Route.extend({
   controllerName: 'Memories'
 });
 
-// App.StoriesRoute = Ember.Route.extend({
-//   model: function(params) {
-
-//     var filtered = [];
-//     App.markers.forEach(function(data) {
-//       if (data.id === +params.memory_id) {
-//         filtered.pushObject(data);
-//       }
-//     });     
-//     App.set('markers', filtered);
-//     this.store.unloadAll(App.Memory);
-//     this.store.pushMany('memory', filtered);      
-//     return this.store.find('memory', params.memory_id);
-//   },
-
-//   // setupController: function(controller, model) {
-//   //     this.controllerFor('memory').setProperties({isNew:true,content:model});
-//   // },
-//   renderTemplate: function() {
-//       this.render('memory')         
-//   },  
-//   // controllerName: 'Memory'
-//   setupController: function(controller, model) {
-//     debugger;
-//     this._super(controller, model);
-//     var currentId = this.get('context').id;
-//     var markers = this.controllerFor('memories').get('model').get('content');    
-
-//     $.when(findOthers(markers)).then(function(ids) {
-//       var index = Math.floor(Math.random() * (ids.length));
-//       var newId = ids[index];
-//       controller.set('next', newId);
-//     });
-// // // debugger;
-// //     this.controllerFor('memory').send(
-// //       'moveMapToNew', 
-// //       this.get('context')[0].lat,
-// //       this.get('context')[0].lng
-// //       // model.get('lat'), 
-// //       // model.get('lng')
-// //     );
-
-//     function findOthers(markers) {
-//       return $.map(markers, function(marker) {
-//         if (marker.id !== currentId) {
-//           return marker.id;
-//         }
-//       });
-//     }    
-//   }  
-// });
-
 App.StoriesRoute = Ember.Route.extend({
   model: function(params) {
     var filtered = [];
@@ -137,12 +85,6 @@ App.StoriesRoute = Ember.Route.extend({
     App.needToMove = true;
     App.newLat = model.get('lat');
     App.newLng = model.get('lng');
-// debugger;
-    // this.controllerFor('memory').send(
-    //   'moveMapToNew', 
-    //   model.get('lat'), 
-    //   model.get('lng')
-    // );
 
     function findOthers(markers) {
       return $.map(markers, function(marker) {
@@ -153,8 +95,6 @@ App.StoriesRoute = Ember.Route.extend({
     }    
   }  
 });
-
-
 
 App.StoriesIndexRoute = Ember.Route.extend({
   model: function() {
