@@ -40,10 +40,10 @@
   <script src="<?=URL('static','js/modernizr.custom.js')?>"></script>
 
   <!-- enable GSVideoBar -->
-  <link href="http://www.google.com/uds/css/gsearch.css" rel="stylesheet" type="text/css"/>
-  <script src="http://www.google.com/uds/api?file=uds.js&v=1.0" type="text/javascript"></script>
-  <script src="http://www.google.com/uds/solutions/videobar/gsvideobar.js" type="text/javascript"></script>
-  <link href="http://www.google.com/uds/solutions/videobar/gsvideobar.css" rel="stylesheet" type="text/css"/>
+  <link href=<?=URL('shared', 'static','vendor/gsvideobar/gsearch.css')?> rel="stylesheet" type="text/css"/>
+  <script src=<?=URL('shared', 'static','vendor/gsvideobar/gsapi.js')?> type="text/javascript"></script>
+  <script src=<?=URL('shared', 'static','vendor/gsvideobar/gsvideobar.js')?> type="text/javascript"></script>
+  <link href=<?=URL('shared', 'static','vendor/gsvideobar/gsvideobar.css')?> rel="stylesheet" type="text/css"/>
 
   <!-- include stylesheets -->
   <?
@@ -73,15 +73,15 @@
   <?block head?><?end?>
 
   <!-- enable YouTube API -->
-  <script type="text/javascript" src="http://swfobject.googlecode.com/svn/trunk/swfobject/swfobject.js"></script> 
+  <script type="text/javascript" src=<?=URL('shared', 'static','vendor/youtubeapi/swfobject.js')?>></script> 
   <!-- google maps extra stuff -->
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7PEZa32AVC6IYmBZcQYyrSW7I2gFuXww&sensor=true&libraries=places"></script>
+  <script type="text/javascript" src=<?=URL('shared', 'static','vendor/gmapsapi/gmapsapi.js')?>></script>
 
 
   <!-- to enable jQuery ui datepicker -->
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href=<?=URL('shared', 'static','vendor/jquery-ui/css/jquery-ui.css')?>/>
+  <script src=<?=URL('shared', 'static','vendor/jquery-ui/js/jquery-1.9.1.js')?>></script>
+  <script src=<?=URL('shared', 'static','vendor/jquery-ui/js/jquery-ui.js')?>></script>
 
 
 </head>
