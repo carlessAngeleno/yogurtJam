@@ -172,8 +172,7 @@ App.MemoriesController = Ember.ArrayController.extend({
                   );                
                   infowindow.open(map, marker);
 
-                  window.location.href = "#/memory/" + markers[i].id;  
-            
+                  window.location.href = "#/artists/" + markers[i].artist + "/songs/" + markers[i].title + "/memory/" + markers[i].id;              
               }
           })(marker, i));
       } 
