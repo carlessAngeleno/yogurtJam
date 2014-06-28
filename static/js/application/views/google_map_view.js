@@ -1,4 +1,7 @@
 App.GoogleMapView = Ember.View.extend({
+
+  needToMoveBinding: 'App.needToMove',
+
   didInsertElement: function () {
     this.draw();
   },
@@ -90,7 +93,93 @@ App.GoogleMapView = Ember.View.extend({
     //Associate styled map
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
-  }
+    this.drawOnMap(App.markers);
+
+
+    if (this.needToMove) {
+      this.moveMapToNew(true);
+    }
+
+  },
+
+  drawOnMap: function(markers) {
+
+      function panAndZoom(map, position) {
+        $.when(map.panTo(position)).then(function() {
+          window.setTimeout(function() {map.setZoom(14);}, 1000)
+        })      
+      }
+
+      var map = App.get('g_map');
+      var player = this.get('player');
+
+      var infowindow = new google.maps.InfoWindow({
+          maxWidth: 240
+      });      
+      // if data (memories) were fed in the form of an array called "markers", plan them 
+      // global array "current_markers" - used to keep track of planted markers and clear maps throughout the website        
+      var current_markers = [];
+
+      // for every element in the "markers" array
+      for (i = 0; i < markers.length; i++) {  
+          
+          // plant a marker on the map using lat/long coordinates
+          var marker = new google.maps.Marker({
+              map: map,
+              clickable: true,
+              position: new google.maps.LatLng(markers[i].lat, markers[i].lng)                                            
+          });
+          
+          // add the marker to the current_markers array (so we can remove them later by referring to this)
+          current_markers.push(marker)
+          
+          // plant info (pulled from db) into each marker
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              return function() {  
+
+                  // map focuses onto marker
+                  panAndZoom(map, marker.position)
+                  // map.panTo(marker.position);
+                  // map.setZoom(14);
+
+
+                  // display infowindow                  
+                  infowindow.setContent(
+                      '<div><strong>' 
+                      //+ markers[i].m_month + '/' + markers[i].m_year + ' - ' + markers[i].g_place 
+                      + markers[i].memoryDateShare.split(" ")[0]
+                      + '</strong><br>' 
+                      + markers[i].g_place + '<br></div>'
+                      // + markers[i].story + '<br><br>'
+                      // + '<div style="font-style:italic; font-size:8pt;"> shared:' + markers[i].time_added + '</div>'
+                  );                
+                  infowindow.open(map, marker);
+
+                  window.location.href = "#/artists/" + markers[i].artist + "/songs/" + markers[i].title + "/memory/" + markers[i].id;  
+            
+              }
+          })(marker, i));
+      } 
+  },
+
+  moveMapToNew: function(needToMove) {
+    if (needToMove) {
+      var position = new google.maps.LatLng(App.newLat, App.newLng);
+      var g_map = App.get('g_map');
+      
+      $.when(g_map.setZoom(5)).then(function() {
+        window.setTimeout(function() {panAndZoom(g_map, position);}, 1000);
+        App.set('needToMove', false);
+      })
+      
+      function panAndZoom(map, position) {
+        $.when(map.panTo(position)).then(function() {
+          window.setTimeout(function() {map.setZoom(14);}, 1000)
+        })      
+      }
+    }
+  }.observes('needToMove'),  
+
 });
 
 Ember.Handlebars.helper('google-map', App.GoogleMapView);

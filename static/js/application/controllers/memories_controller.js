@@ -1,5 +1,5 @@
 App.MemoriesController = Ember.ArrayController.extend({
-
+  needs: "memory",
   actions: {
     createTodo: function() {
       // Get the todo title set by the "New Todo" text field
@@ -172,8 +172,7 @@ App.MemoriesController = Ember.ArrayController.extend({
                   );                
                   infowindow.open(map, marker);
 
-                  window.location.href = "#/memory/" + markers[i].id;  
-            
+                  window.location.href = "#/artists/" + markers[i].artist + "/songs/" + markers[i].title + "/memory/" + markers[i].id;              
               }
           })(marker, i));
       } 

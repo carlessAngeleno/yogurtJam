@@ -23,7 +23,7 @@ button.ca_button {
 }
 
 button.ca_button:hover {
-  background-color: rgba(255,66,35, 1);  
+  background-color: rgba(255, 110, 86, 1);  
 }
 
 button.ca_button.active {
@@ -37,6 +37,14 @@ button.btn-primary.ca_button {
 
 button.btn-primary.ca_button:hover {
   background-color: rgba(231,41,138, 1);
+}
+
+button.btn-success.ca_button {
+  background-color: rgba(155, 89, 182, 0.9);  
+}
+
+button.btn-success.ca_button:hover {
+  background-color: rgba(155, 89, 182, 1.0);
 }
 
 .nav-pills>.active>a, .nav-pills>.active>a:hover {

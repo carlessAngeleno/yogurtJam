@@ -63,7 +63,7 @@
             {{input type="text" placeholder="artist (e.g. nirvana)" value=newArtist}}
           </div>
           <div class="control-group">
-           {{#link-to "results"}}
+           {{#link-to "songs" newArtist newTitle}}
             <button class="btn ca_button" {{action 'searchMemories'}}><i class="icon-search icon-white"></i> search</button>
             {{/link-to}}
           </div>   
@@ -73,11 +73,13 @@
   </div>  
 </script>
 
-<script type="text/x-handlebars" data-template-name="results"> 
+<script type="text/x-handlebars" data-template-name="songs">
+  {{outlet}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="songs/index"> 
   <div class="control-group">      
-    <button class="btn btn-primary ca_button" {{action 'pickRandomMemory'}} style="float:right;"><i class="icon-random icon-white"></i></button>
-    <!-- <button class="btn ca_button"><i class=" icon-zoom-out icon-white"></i> </button> -->
-    <!-- <button class="btn ca_button"><i class="icon-forward icon-white"></i> </button> -->                  
+    <button class="btn btn-primary ca_button" {{action 'pickRandomMemory'}} style="float:right;"><i class="icon-random icon-white"></i></button>             
   </div>
   <div>
     <h4>{{controller.newTitle}} - {{controller.newArtist}}</h4>
@@ -85,7 +87,7 @@
       <ul>
         {{#each controller}}
           <li>
-            {{#link-to 'memory' this}}
+            {{#link-to 'memory' this}}            
               {{g_place}}, {{tag1}}
             {{/link-to}}
           </li>
@@ -169,7 +171,7 @@
         {{input type="text" placeholder="tags (e.g. trip, friend)" value=newTags}} 
     </div>                                                                   
     <div class="control-group">
-    {{#link-to "results"}}    
+    {{#link-to "songs" newArtist newTitle}}    
         <button class="btn ca_button" {{action 'insertMemory'}}>share memory</button> 
     {{/link-to}}
     </div>                
@@ -179,8 +181,8 @@
 <script type="text/x-handlebars" data-template-name="memory">  
   <div class="control-group row-fluid">      
     <!-- <button class="btn ca_button"><i class="icon-random icon-white"></i></button> -->
-      <button class="btn ca_button" {{action 'zoomOut'}}><i class="icon-resize-small icon-white"></i> </button>
-    <button class="btn ca_button" {{action 'centerMap'}}><i class="icon-map-marker icon-white"></i> </button>    
+      <button class="btn btn-success ca_button" {{action 'zoomOut'}}><i class="icon-resize-small icon-white"></i> </button>
+    <button class="btn btn-success ca_button" {{action 'centerMap'}}><i class="icon-map-marker icon-white"></i> </button>    
    <!-- <button class="btn ca_button"><i class="icon-resize-full icon-white"></i> </button>
     <button class="btn ca_button"><i class=" icon-zoom-out icon-white"></i> </button> -->
     <button class="btn ca_button offset1" {{action 'like'}}><i class="icon-heart icon-white"></i> <small>{{likes}}</small></button>  
