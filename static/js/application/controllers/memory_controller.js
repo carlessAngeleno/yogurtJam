@@ -62,6 +62,10 @@ App.MemoryController = Ember.ObjectController.extend({
           that.set('didClickDislike', true);
         });
       }
+    },
+
+    share: function() {
+      $("#share_modal").modal();
     }
         
   },  // end of actions

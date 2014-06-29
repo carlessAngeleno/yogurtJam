@@ -127,3 +127,8 @@ button.btn-success.ca_button:hover {
   /*color: rgba(231,41,138, 1);*/
   font-size: 14px;
 }
+
+#share_modal {
+  width: 300px;
+  margin-left: -150px;
+}
