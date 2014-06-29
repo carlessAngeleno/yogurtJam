@@ -31,6 +31,7 @@ App.MemoriesController = Ember.ArrayController.extend({
           scope.store.unloadAll(App.Memory);
           scope.store.pushMany('memory', markers);    
           scope.drawOnMap(markers);
+          scope.transitionTo("songs", artist, title);
       });
     },
 
