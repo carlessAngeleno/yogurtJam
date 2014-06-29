@@ -1,7 +1,26 @@
 <?extend "layout.html"?>     
 
-<script type="text/x-handlebars" data-template-name="application">  
-
+<script type="text/x-handlebars" data-template-name="application">
+  <!-- Share modal -->
+  <div id="share_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Share</h3>
+    </div>
+    <div class="modal-body">
+      <ul class="share-buttons">
+        <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.yogurtjam.com&t=" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><img src="<?=URL('../../shared/static', 'images/flat_web_icon_set/color/Facebook.png')?>"></a></li>
+        <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fwww.yogurtjam.com&text=: http%3A%2F%2Fwww.yogurtjam.com" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ': '  + encodeURIComponent(document.URL)); return false;"><img src="<?=URL('../../shared/static', 'images/flat_web_icon_set/color/Twitter.png')?>"></a></li>
+        <li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.yogurtjam.com" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><img src="<?=URL('../../shared/static', 'images/flat_web_icon_set/color/Google.png')?>"></a></li>
+        <li><a href="http://www.tumblr.com/share?v=3&u=http%3A%2F%2Fwww.yogurtjam.com&t=&s=" target="_blank" title="Post to Tumblr" onclick="window.open('http://www.tumblr.com/share?v=3&u=' + encodeURIComponent(document.URL) + '&t=' +  encodeURIComponent(document.title)); return false;"><img src="<?=URL('../../shared/static', 'images/flat_web_icon_set/color/Tumblr.png')?>"></a></li>
+        <li><a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.yogurtjam.com&description=" target="_blank" title="Pin it" onclick="window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(document.URL) + '&description=' +  encodeURIComponent(document.title)); return false;"><img src="<?=URL('../../shared/static', 'images/flat_web_icon_set/color/Pinterest.png')?>"></a></li>
+        <li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.yogurtjam.com&title=" target="_blank" title="Submit to Reddit" onclick="window.open('http://www.reddit.com/submit?url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img src="<?=URL('../../shared/static', 'images/flat_web_icon_set/color/Reddit.png')?>"></a></li>
+      </ul>
+    </div>
+    <div class="modal-footer">      
+        <button class="ca_button" data-dismiss="modal" aria-hidden="true">Done</button>      
+    </div>
+  </div> 
   <!-- Navbar ================================================== -->
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="flash"><?=response.flash or ''?></div>
@@ -41,7 +60,7 @@
 
   <div id="main_container">
     {{render 'google-map' controller='Memories' id="map_canvas"}}
-    <div id="interface">             
+    <div id="interface">
       <div class="memory_display ca_section">
         {{outlet}}
       </div> 
@@ -178,7 +197,7 @@
   </form>    
 </script>
 
-<script type="text/x-handlebars" data-template-name="memory">  
+<script type="text/x-handlebars" data-template-name="memory"> 
   <div class="control-group row-fluid">      
     <!-- <button class="btn ca_button"><i class="icon-random icon-white"></i></button> -->
       <button class="btn btn-success ca_button" {{action 'zoomOut'}}><i class="icon-resize-small icon-white"></i> </button>
@@ -191,7 +210,7 @@
     {{#link-to "memory" next}}       
     <button class="btn btn-primary ca_button" style="float:right;"><i class="icon-forward icon-white"></i> </button>                  
     {{/link-to}}
-  </div>
+  </div> 
   <div class="content_display">
     {{#view App.YoutubeIframePlayerView}}{{/view}}
   </div> 
