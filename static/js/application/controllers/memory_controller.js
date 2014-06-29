@@ -87,3 +87,5 @@ App.MemoryController = Ember.ObjectController.extend({
   }.property('model.isCompleted')
 
 });
+
+

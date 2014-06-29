@@ -33,9 +33,9 @@ def api():
         if id is not 0:
             results = db(db[tablename].id == id).select()
         elif title is None:
-            results = db(db[tablename].artist == artist).select()
+            results = db(db[tablename].artist == fill_space(artist)).select()
         else:
-            results = db((db[tablename].title == title) & (db[tablename].artist == artist)).select()
+            results = db((db[tablename].title == fill_space(title)) & (db[tablename].artist == fill_space(artist))).select()
         print results
         return dict(memories = results)         
         
@@ -125,3 +125,7 @@ def data():
       LOAD('default','data.load',args='tables',ajax=True,user_signature=True)
     """
     return dict(form=crud())
+
+
+def fill_space(raw):
+    return raw.replace(' ', '_')

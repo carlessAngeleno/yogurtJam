@@ -21,8 +21,8 @@ App.MemoriesController = Ember.ArrayController.extend({
 
     searchMemories: function() {
                 // debugger;
-      var title = this.get('newTitle');
-      var artist = this.get('newArtist');
+      var title = App.fill_space(this.get('newTitle'));
+      var artist = App.fill_space(this.get('newArtist'));
       var scope = this;
 
       $.getJSON('/yogurtjam/default/api/memory?artist=' + artist + '&title=' + title)
@@ -86,12 +86,12 @@ App.MemoriesController = Ember.ArrayController.extend({
         { 
           "story": this.get('newStory'), 
           "tag1": this.get('newTags'), 
-          "title": this.get('newTitle'), 
+          "title": App.fill_space(this.get('newTitle')), 
           "video_id": this.get('video_id'), 
           "g_place": this.get('g_place'), 
           "lat": this.get('lat'),
           "lng": this.get('lng'),
-          "artist": this.get('newArtist'),
+          "artist": App.fill_space(this.get('newArtist')),
           "memoryDateShare": formatDate(this.get('newMemoryDate'))
         }
       )

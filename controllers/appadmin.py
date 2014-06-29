@@ -17,7 +17,7 @@ except ImportError:
     pgv = None
 
 response.subtitle = 'Database Administration (appadmin)'
-
+response.delimiters = ('<?','?>')
 # ## critical --- make a copy of the environment
 
 global_env = copy.copy(globals())
