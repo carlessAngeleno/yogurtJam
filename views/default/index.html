@@ -73,8 +73,10 @@
           <div class="control-group">
             {{input type="text" placeholder="artist (e.g. nirvana)" value=newArtist}}
           </div>
-          <div class="control-group">           
+          <div class="control-group">    
+            {{#link-to "songs" artistCode titleCode}}                 
             <button class="btn ca_button" {{action 'searchMemories'}}><i class="icon-search icon-white"></i> search</button>           
+            {{/link-to}}
           </div>   
         </fieldset>            
       </form>
@@ -87,8 +89,11 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="songs/index"> 
-  <div class="control-group">      
-    <button class="btn btn-primary ca_button" {{action 'pickRandomMemory'}} style="float:right;"><i class="icon-random icon-white"></i></button>             
+  <div class="control-group">
+    {{#link-to "memory" randomId}}
+    <button class="btn btn-primary ca_button" style="float:right;"><i class="icon-random icon-white"></i></button>             
+    {{/link-to}}
+
   </div>
   <div>
     <h4>{{controller.newTitle}} - {{controller.newArtist}}</h4>
@@ -175,7 +180,7 @@
         {{input type="text" placeholder="tags (e.g. trip, friend)" value=newTags}} 
     </div>                                                                   
     <div class="control-group">
-    {{#link-to "songs" newArtist newTitle}}    
+    {{#link-to "songs" artistCode titleCode}}    
         <button class="btn ca_button" {{action 'insertMemory'}}>share memory</button> 
     {{/link-to}}
     </div>                
