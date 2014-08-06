@@ -35,7 +35,7 @@ App.MemoriesController = Ember.ArrayController.extend({
     },
 
     searchYoutube: function() {
-      $("#gsvb_modal").modal({backdrop: false});
+      $("#gsvb_modal").modal({backdrop: true});
 
       var title = this.get('newTitle');
       var artist = this.get('newArtist');

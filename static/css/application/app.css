@@ -78,7 +78,6 @@ button.btn-success.ca_button:hover {
   width: 400px;
   z-index: 20;
   position: relative;  
-  overflow: auto;
   color: #2e081b;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;    
 }   
@@ -126,4 +125,9 @@ button.btn-success.ca_button:hover {
 #interface div.memory_display li a {
   /*color: rgba(231,41,138, 1);*/
   font-size: 14px;
+}
+
+/* Over-ride bootstrap */
+.modal-backdrop {
+  z-index: 19;
 }
