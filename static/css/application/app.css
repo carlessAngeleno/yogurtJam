@@ -100,7 +100,7 @@ button.btn-success.ca_button:hover {
 }
 
 .playerInnerBox_gsvb .player_gsvb {
-  width: 420px;
+  width: 300px;
   height: 260px;
 }
 
@@ -127,7 +127,7 @@ button.btn-success.ca_button:hover {
   font-size: 14px;
 }
 
-/* Over-ride bootstrap */
-.modal-backdrop {
-  z-index: 19;
+#share_modal {
+  width: 260px;
+  margin-left: -130px;
 }

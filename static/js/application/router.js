@@ -58,14 +58,39 @@ App.SongsRoute = Ember.Route.extend({
     this.store.pushMany('memory', filtered);      
     return filtered;
   },
-  controllerName: 'Memories'
+  controllerName: 'Memories',
+  setupController: function(controller, model) {
+    this._super(controller, model);
+    var newArtist = this.context[0].artist.replace('_', ' ');
+    var newTitle = this.context[0].title.replace('_', ' ');
+    this.get('controller').set('newArtist', newArtist);
+    this.get('controller').set('newTitle', newTitle);
+  }  
 });
 
 App.SongsIndexRoute = Ember.Route.extend({
   model: function() {
     return this.modelFor('memories');
   },
-  controllerName: 'Memories'
+  controllerName: 'Memories',
+  setupController: function(controller, model) {
+    this._super(controller, model);
+
+    var that = this;
+    var markers = model.get('content');
+
+    $.when(findIds(markers)).then(function(ids) {
+      var index = Math.floor(Math.random() * (ids.length));
+      var newId = ids[index];
+      that.get('controller').set('randomId', newId);
+    });
+
+    function findIds(markers) {
+      return $.map(markers, function(marker) {
+          return marker.id;
+      });
+    }
+  }    
 });
 
 App.MemoryRoute = Ember.Route.extend({
