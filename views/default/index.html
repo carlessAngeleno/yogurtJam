@@ -132,24 +132,29 @@
         </div>
         <!-- clicking on button pulls up next stage -->
         <div class="control-group">
-          <button class="ca_button" style="display: inline;" {{action 'searchYoutube'}}> find videos</button>
-            <span id="choose-video" class="hidden">
-            {{#link-to "share.location"}}
-              <button class="ca_button btn-primary right" style="display: inline;" {{action 'selectVideo'}}><i class="icon-ok icon-white"></i> Choose</button>
-            {{/link-to}}          
-            </span>
+          <button class="ca_button" {{action 'searchYoutube'}}> find videos for it </button> 
         </div>
       </fieldset>
     </form>  
   </div>  
 
-  <div>
-    <div>
+  <div id="gsvb_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Which Song?</h3>
+    </div>
+    <div class="modal-body">
         <!-- container for YT player -->
         <div>
-          <div id="player_container_share"></div>
+          <div id="player_container_share"> </div>              
+          <!-- GSVideoBar (interactive search result that plays YT videos when you click on thumbnails)-->
           <div><div id="videoBar"></div></div>                  
         </div>      
+    </div>
+    <div class="modal-footer">
+      {{#link-to "share.location"}}
+        <button class="ca_button" data-dismiss="modal" aria-hidden="true" {{action 'selectVideo'}}>Choose</button>
+      {{/link-to}}
     </div>
   </div> 
 

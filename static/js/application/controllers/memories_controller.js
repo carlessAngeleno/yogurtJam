@@ -186,7 +186,7 @@ App.MemoriesController = Ember.ArrayController.extend({
 
       // config video bar; search is done using title and artist as keywords
       var options = {
-          // largeResultSet : true,
+          largeResultSet : true,
           autoExecuteList : {
               cycleTime : GSvideoBar.CYCLE_TIME_SHORT,
               cycleMode : GSvideoBar.CYCLE_MODE_LINEAR,
