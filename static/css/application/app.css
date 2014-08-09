@@ -127,6 +127,11 @@ button.btn-success.ca_button:hover {
   font-size: 14px;
 }
 
+/* Over-ride bootstrap */
+.modal-backdrop {
+  z-index: 19;
+}
+
 #share_modal {
   width: 260px;
   margin-left: -130px;
