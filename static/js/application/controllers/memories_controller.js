@@ -20,7 +20,6 @@ App.MemoriesController = Ember.ArrayController.extend({
     },
 
     searchMemories: function() {
-                // debugger;
       var title = App.fill_space(this.get('newTitle'));
       var artist = App.fill_space(this.get('newArtist'));
       var scope = this;
@@ -127,6 +126,14 @@ App.MemoriesController = Ember.ArrayController.extend({
         })      
       }
 
+      var current_markers = App.get('current_markers');
+
+      if (current_markers !== undefined) {
+        for (var i = 0; i < current_markers.length; i++) {
+          current_markers[i].setMap(null);
+        }
+      }
+
       var map = this.get('g_map');
       var player = this.get('player');
 
@@ -135,7 +142,7 @@ App.MemoriesController = Ember.ArrayController.extend({
       });      
       // if data (memories) were fed in the form of an array called "markers", plan them 
       // global array "current_markers" - used to keep track of planted markers and clear maps throughout the website        
-      var current_markers = [];
+      current_markers = [];
 
       // for every element in the "markers" array
       for (i = 0; i < markers.length; i++) {  
@@ -176,6 +183,8 @@ App.MemoriesController = Ember.ArrayController.extend({
               }
           })(marker, i));
       } 
+
+      App.set('current_markers', current_markers);
   },
 
   loadVideoBar: function(title, artist, yt_player_name) {

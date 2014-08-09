@@ -95,7 +95,6 @@ App.GoogleMapView = Ember.View.extend({
     map.setMapTypeId('map_style');
     this.drawOnMap(App.markers);
 
-
     if (this.needToMove) {
       this.moveMapToNew(true);
     }

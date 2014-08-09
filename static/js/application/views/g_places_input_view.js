@@ -24,6 +24,10 @@ App.GPlacesInputView = Ember.TextField.extend({
         map: map
       });
       
+      var current_markers = App.get('current_markers') || [];
+      current_markers.push(marker);
+      App.set('current_markers', current_markers);
+
       // extract place info
       var place = autocomplete.getPlace();
       
