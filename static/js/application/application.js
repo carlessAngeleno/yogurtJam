@@ -8,7 +8,7 @@ window.App = Ember.Application.create({
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);      
     },
     fill_space: function(raw) {
-    	return raw.replace(' ', '_');
+    	return raw.replace(/ /g, '_');
     }
 });
 

@@ -61,8 +61,8 @@ App.SongsRoute = Ember.Route.extend({
   controllerName: 'Memories',
   setupController: function(controller, model) {
     this._super(controller, model);
-    var newArtist = this.context[0].artist.replace('_', ' ');
-    var newTitle = this.context[0].title.replace('_', ' ');
+    var newArtist = this.context[0].artist.replace(/_/g, ' ');
+    var newTitle = this.context[0].title.replace(/_/g, ' ');
     this.get('controller').set('newArtist', newArtist);
     this.get('controller').set('newTitle', newTitle);
   }  
