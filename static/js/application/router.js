@@ -53,7 +53,7 @@ App.SongsRoute = Ember.Route.extend({
         filtered.pushObject(data);
       }
     });     
-    App.set('markers', filtered);
+    App.set('markers', filtered); 
     this.store.unloadAll(App.Memory);
     this.store.pushMany('memory', filtered);      
     return filtered;
