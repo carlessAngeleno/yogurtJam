@@ -34,7 +34,7 @@ App.ArtistsRoute = Ember.Route.extend({
      var that = this;
      return $.getJSON('/yogurtjam/default/api/memory?artist=' + params.artist)
         .then(function(response) {   
-          var markers = response.memories; 
+          var markers = response.memories;
           App.set('markers', markers);
           that.store.unloadAll(App.Memory);
           that.store.pushMany('memory', markers);    
@@ -61,10 +61,15 @@ App.SongsRoute = Ember.Route.extend({
   controllerName: 'Memories',
   setupController: function(controller, model) {
     this._super(controller, model);
-    var newArtist = this.context[0].artist.replace(/_/g, ' ');
-    var newTitle = this.context[0].title.replace(/_/g, ' ');
-    this.get('controller').set('newArtist', newArtist);
-    this.get('controller').set('newTitle', newTitle);
+    if (this.context.length === 0) {
+      this.get('controller').set('noResults', true);
+    } else {
+      this.get('controller').set('noResults', false);
+      var newArtist = this.context[0].artist.replace(/_/g, ' ');
+      var newTitle = this.context[0].title.replace(/_/g, ' ');
+      this.get('controller').set('newArtist', newArtist);
+      this.get('controller').set('newTitle', newTitle);
+    }
   }  
 });
 

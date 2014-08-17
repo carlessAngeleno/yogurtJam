@@ -88,27 +88,46 @@
   {{outlet}}
 </script>
 
-<script type="text/x-handlebars" data-template-name="songs/index"> 
-  <div class="control-group">
-    {{#link-to "memory" randomId}}
-    <button class="btn btn-primary ca_button" style="float:right;"><i class="icon-random icon-white"></i></button>             
-    {{/link-to}}
+<script type="text/x-handlebars" data-template-name="songs/index">
 
-  </div>
-  <div>
-    <h4>{{controller.newTitle}} - {{controller.newArtist}}</h4>
-    <div> 
-      <ul>
-        {{#each controller}}
-          <li>
-            {{#link-to 'memory' this}}            
-              {{g_place}}, {{tag1}}
-            {{/link-to}}
-          </li>
-        {{/each}}
-      </ul>
+  {{#if controller.noResults}}
+
+    <div class="control-group">  
+      {{#link-to "memories.index"}}
+        <button class="btn btn ca_button" style="float:right;"><i class="icon-repeat icon-white"></i></button>             
+      {{/link-to}}
     </div>
-  </div>  
+    <div>
+      <h4>{{controller.newTitle}} - {{controller.newArtist}}</h4>
+      <div>
+        <p>No memories!</p>      
+      </div>
+    </div>
+
+  {{else}}
+
+    <div class="control-group">  
+        {{#link-to "memory" randomId}}
+        <button class="btn btn-primary ca_button" style="float:right;"><i class="icon-random icon-white"></i></button>             
+        {{/link-to}}
+    </div>
+    <div>
+      <h4>{{controller.newTitle}} - {{controller.newArtist}}</h4>
+      <div>
+        <ul>
+          {{#each controller}}
+            <li>
+              {{#link-to 'memory' this}}            
+                {{g_place}}, {{tag1}}
+              {{/link-to}}
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+
+  {{/if}}
+  
 </script>
 
 <script type="text/x-handlebars" data-template-name="share">  
