@@ -94,7 +94,7 @@ button.btn-success.ca_button:hover {
 }
 
 .content_display iframe {
-    display: none;
+    /*display: none;*/
     margin-right:auto;
     margin-left: auto;   
 }
