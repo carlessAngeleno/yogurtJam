@@ -39,13 +39,9 @@ App.MemoriesController = Ember.ArrayController.extend({
       var title = this.get('newTitle');
       var artist = this.get('newArtist');
 
-      // GSVideoBar
-      this.loadVideoBar(title, artist, "player_container_share");
+      searchYoutubeApi(artist + ' ' + title);
 
       // simulate a click on the first thumnail so user doesn't have to
-      setTimeout(function(){
-        $('.resultDiv_gsvb img[vspace$="1"]')[0].click();
-      }, 1000);
       
       return false;        
     },
