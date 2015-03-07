@@ -42,6 +42,9 @@ App.MemoriesController = Ember.ArrayController.extend({
       searchYoutubeApi(artist + ' ' + title);
 
       // simulate a click on the first thumnail so user doesn't have to
+      setTimeout(function(){
+        $('img.yj-thumbnail')[0].click();
+      }, 1500);      
       
       return false;        
     },
@@ -49,12 +52,7 @@ App.MemoriesController = Ember.ArrayController.extend({
     selectVideo: function() {
       // parse video_url and store video's unique id (by YT)
       // as a global that can be used by other functions
-      var video_url = $("a.title_gsvb").attr("href");
-      var video_id = video_url.substr(
-          video_url.indexOf("watch?v=") + 8, 
-          video_url.length
-      );
-      this.set('video_id', video_id);
+      this.set('video_id', YT_VIDEO_ID_DUMMY_GLOBAL);
     },
 
     confirmLocation: function() {
