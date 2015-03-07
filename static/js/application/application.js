@@ -57,8 +57,7 @@ function showResponse(sel, response) {
     item.attr('style', 'padding-bottom: 10px;');
     item.click(function() {
       player.loadVideoById(videoId);
-      foo = videoId;
-      console.log(player.getVideoEmbedCode());
+      YT_VIDEO_ID_DUMMY_GLOBAL = videoId;
     })    
     results.append(item);
   })
