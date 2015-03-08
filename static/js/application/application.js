@@ -20,9 +20,16 @@ App.ApplicationAdapter = DS.LSAdapter.extend({
 
 function showResponse(sel, response) {
 
-  
+  function onPlayerReady(event) {
+    $(event.target.a).show();
+  }
 
-  $('#' + sel).append('<div id="test-video-wrapper"></div>');
+  // Refresh
+  $('#' + sel).empty();
+  $('#lala').remove();
+  $('#foofoo').append('<div id="lala"></div>');
+
+  // Create player
   var player = new YT.Player('lala', {
     height: '260',
     width: '360',
@@ -30,12 +37,13 @@ function showResponse(sel, response) {
       'onReady' : onPlayerReady
     }    
   });
-  var results = $('<div class="row-fluid"></div>');
-  $('#' + sel).append(results);
+  $('button.close.video-search').click(function() {
+    debugger;
+    player.stopVideo();
+  })
 
-  function onPlayerReady(event) {
-    $(event.target.a).show();
-  }
+  var results = $('<div class="search-results row-fluid"></div>');
+  $('#' + sel).append(results);
 
   $.each(response['items'], function(k, v) {
     var videoId = v['id']['videoId'];
@@ -61,14 +69,6 @@ function showResponse(sel, response) {
     })    
     results.append(item);
   })
-
-  // var thumbnail = $('<img>').attr(
-  //   'src', 
-  //   response['items'][0]['snippet']['thumbnails']['default']['url']
-  // ); 
-  // $('#' + sel).append(thumbnail);
-  // var responseString = JSON.stringify(response, '', 2);
-  // document.getElementById(sel).innerHTML += responseString;
 }
 
 function onClientLoad() {
