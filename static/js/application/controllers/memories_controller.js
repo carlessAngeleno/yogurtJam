@@ -20,10 +20,8 @@ App.MemoriesController = Ember.ArrayController.extend({
     },
 
     searchMemories: function() {
-      var title = App.fill_space(this.get('newTitle')
-                     .toLowerCase());
-      var artist = App.fill_space(this.get('newArtist')
-                     .toLowerCase());
+      var title = App.fill_space(this.get('newTitle');
+      var artist = App.fill_space(this.get('newArtist');
       var scope = this;
 
       $.getJSON('/yogurtjam/default/api/memory?artist=' + 
