@@ -4,7 +4,7 @@ window.App = Ember.Application.create({
     ready: function() {     
     },
     fill_space: function(raw) {
-    	return filled = raw.replace(/ /g, '_').toLowerCase();
+    	return raw.replace(/ /g, '_').toLowerCase();
     }
 });
 
