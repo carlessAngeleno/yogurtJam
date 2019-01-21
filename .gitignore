@@ -1,5 +1,6 @@
-/.project
-private/*.*
-errors/*.*
+venv
 *.pyc
-sessions/*.*
+staticfiles
+.env
+db.sqlite3
+getting-started/*
